@@ -1,0 +1,17 @@
+{
+    "name": "claudio/liveup",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "clmjunior",
+            "email": "claudiomartinsjr6@gmail.com"
+        }
+    ],
+    "require": {
+        "league/plates": "^3.5"
+    }
+}
