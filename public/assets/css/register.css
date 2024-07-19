@@ -1,6 +1,6 @@
 .register-container {
     max-width: 100vw;
-    height: fit-content;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -145,4 +145,10 @@ footer, .right-container {
 
 .phone-group {
     width: 100% !important;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
 }

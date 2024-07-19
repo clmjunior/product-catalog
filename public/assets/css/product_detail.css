@@ -76,7 +76,6 @@
 .product-container {
     display: flex;
     justify-content: space-between;
-    background-color: #ffffff;
     border-radius: 5px;
     margin-bottom: 100px;
 }

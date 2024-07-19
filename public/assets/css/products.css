@@ -104,7 +104,7 @@
     }
 }
 
-@media (max-width: 391px) {
+@media (max-width: 429px) {
 
     .card-footer {
         flex-direction: column;

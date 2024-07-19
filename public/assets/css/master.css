@@ -72,11 +72,11 @@ a {
 }
 
 .banner {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
     display: block;
-    filter: grayscale(50%);
-
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
 }
 
 .banner-content {
@@ -382,11 +382,14 @@ a {
 }
 
 .image-container {
-    height: fit-content;
+    background-color: #000000;
+    height: 85vh;
+    width: 100%;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 8px 35px 60px #000000;
 }
 
 .animate__zoomOutSmooth {
@@ -448,7 +451,7 @@ a {
     
 }
 
-@media (max-width: 391px) {
+@media (max-width: 429px) {
     
     .navbar {
         padding: 40px 30px 40px 30px;

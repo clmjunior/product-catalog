@@ -9,6 +9,7 @@
         </div>
         <div class="product-details">
             <h1><?= htmlspecialchars($product['name']) ?></h1>
+            <hr class="divisor"/>
             <h3>R$ <?= htmlspecialchars($product['price']) ?></h3>
             <p><?= htmlspecialchars($product['details']) ?></p>
             

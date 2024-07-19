@@ -2,7 +2,7 @@
 /** @var \League\Plates\Template\Template $this */
 use app\controllers\CategoryController;
 
-$categoriesArray = CategoryController::getCategories();
+$categoriesArray = CategoryController::getTopCategories();
 
 ?>
 <?php $this->layout('master', ['title' => 'Home', 'name' => 'home']) ?>
@@ -60,11 +60,12 @@ $categoriesArray = CategoryController::getCategories();
         <h1 class="text-center">EXPLORE NOSSAS CATEGORIAS</h1>
     </div>
     <form class="categories" action="/produtos" method="post">
-        <?php foreach($categoriesArray as $key => $value): ?>
-            <input type="hidden" name="category_id" value="<?= $key ?>" />
+        <?php foreach($categoriesArray as $category):?>
+            <input type="hidden" name="category_id" value="<?= $category['id'] ?>" />
             <button type="submit" class="category">
-                <h1 class="category-title"><?= $value ?></h1>
-                <img class="category-img" src="../assets/img/home_banner.png" alt="">
+                <h1 class="category-title"><?= $category['categoria'] ?></h1>
+                <!-- <img class="category-img" src="<?= htmlspecialchars(preg_replace("/sitesamuel/", "totalcommerce-dev", $category['url_icone'])) ?>" alt=""> -->
+                <img class="category-img" src="https://totalcommerce-dev.ddns.net/dados_empresa/imagens/categorias/categ_culinaria_oriental.png" alt="">
             </button>
         <?php endforeach; ?>
     </form>
