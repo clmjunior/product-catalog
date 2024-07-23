@@ -173,10 +173,10 @@
 
 .category-img {
     height: 90%;
-    width: auto;
+    width: 100%;
     -webkit-filter: grayscale(100%);
     transition: all 1s ease;
-    filter: grayscale(100%) blur(2px);
+    filter: grayscale(100%) blur(1px);
 
 }
 
@@ -199,7 +199,7 @@
 
 .category:hover .category-title {
     top: 10px; 
-    transform: translate(-25%, 10px);
+    transform: translate(-55%, 10px);
 }
 
 .category::before {
@@ -216,7 +216,7 @@
 }
 
 .category:hover::before {
-    width: 50%;
+    width: 70%;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
 }
 

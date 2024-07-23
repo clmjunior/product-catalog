@@ -4,61 +4,81 @@
 <?php $this->layout('master', ['title' => 'Detalhe', 'name' => 'product_detail']) ?>
 <div class="container-wrapper-detail">
     <section class="product-container">
-        <div class="product-image">
-            <img src="<?= htmlspecialchars($product['img']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
-        </div>
-        <div class="product-details">
-            <h1><?= htmlspecialchars($product['name']) ?></h1>
-            <hr class="divisor"/>
-            <h3>R$ <?= htmlspecialchars($product['price']) ?></h3>
-            <p><?= htmlspecialchars($product['details']) ?></p>
-            
-            <div class="info-card">
-                <div class="top">
-                    <small><ion-icon class="stock-check" name="checkbox"></ion-icon> <?= htmlspecialchars($product['stock']) ?> Em estoque</small>
-                    <form class="add-to-cart" action="add_to_cart.php" method="post">
-                        <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['id']) ?>">
-                        <div class="quantity-input">
-                            <button class="minus-button" type="button" onclick="updateQuantity(-1)">-</button>
-                            <input type="number" name="quantity" id="quantity" value="1" min="1" max="<?= htmlspecialchars($product['stock']) ?>">
-                            <button class="plus-button" type="button" onclick="updateQuantity(1)">+</button>
+        <div class="product-detail">
+            <div class="product-image-container">
+                <div class="img-main">
+                    <?php foreach($product['fotos'] as $img): ?>
+                        <div class="img-caroussel-container">
+                            <img class="product-caroussel-image" src="<?= htmlspecialchars($img['url_imagem_0750']) ?>" alt="<?= htmlspecialchars($product['descricao_produto']) ?>">
                         </div>
-                        <button class="add-button" type="submit">Adicionar ao Carrinho</button>
-                    </form>
+                    <?php endforeach; ?>
                 </div>
-
-                <div class="bottom">
-                    <hr class="divisor"/>
-                    <small><b>CATEGORIAS:</b> <?= htmlspecialchars($product['categories']) ?></small>
-
+                <div class="img-caroussel">
+                    <?php foreach($product['fotos'] as $img): ?>
+                        <div class="img-caroussel-container">
+                            <img class="product-caroussel-image" src="<?= htmlspecialchars($img['url_imagem_0750']) ?>" alt="<?= htmlspecialchars($product['descricao_produto']) ?>">
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
+            <div class="product-details">
+                <h1><?= htmlspecialchars($product['titulo_produto']) ?></h1>
+                <hr class="divisor"/>
+                <h3>R$ <?= htmlspecialchars($product['precos']['valor_final']) ?></h3>
+                <p><?= htmlspecialchars($product['descricao_produto']) ?></p>
+                
+                <div class="info-card">
+                    <div class="top">
+                        <small><ion-icon class="stock-check" name="checkbox"></ion-icon> <?= htmlspecialchars($product['quantidade_estoque']) ?> Em estoque</small>
+                        <form class="add-to-cart" action="add_to_cart.php" method="post">
+                            <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['sku']) ?>">
+                            <div class="quantity-input">
+                                <button class="minus-button" type="button" onclick="updateQuantity(-1)">-</button>
+                                <input type="number" name="quantity" id="quantity" value="1" min="1" max="<?= htmlspecialchars($product['quantidade_estoque']) ?>">
+                                <button class="plus-button" type="button" onclick="updateQuantity(1)">+</button>
+                            </div>
+                            <button class="add-button" type="submit">Adicionar ao Carrinho</button>
+                        </form>
+                    </div>
+
+                    <div class="bottom">
+                        <hr class="divisor"/>
+                        <!-- <small><b>CATEGORIAS:</b> <?= htmlspecialchars($product['categories']) ?></small> -->
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
-    <div class="product-specifications">
-        <h2>Especificações</h2>
-        <table class="spec-table">
-            <?php foreach ($product['specifications'] as $key => $value): ?>
-                <?php if (is_array($value)): ?>
-                    <tr>
-                        <th><?= htmlspecialchars($key) ?></th>
-                        <td>
-                            <ul>
-                                <?php foreach ($value as $subValue): ?>
-                                    <li><?= htmlspecialchars($subValue) ?></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </td>
-                    </tr>
-                <?php else: ?>
-                    <tr>
-                        <th><?= htmlspecialchars($key) ?></th>
-                        <td><?= htmlspecialchars($value) ?></td>
-                    </tr>
-                <?php endif; ?>
+    <section class="specs-container">
+        <div class="product-specifications">
+            <?php foreach ($product['especificacoes_produto'] as $category => $specs): ?>
+                
+                <table class="spec-table">
+                    <th colspan="2"><h2 class="spec-category"><?= htmlspecialchars($category) ?></h2></th>
+                    <tbody>
+                        <?php foreach ($specs as $spec):
+                                $specArr = explode(":", $spec);
+                                if(count($specArr) > 1):
+                                    list($key, $value) = $specArr;
+                        ?>
+                            <tr>
+                                <td><?= htmlspecialchars($key) ?></td>
+                                <td><?= htmlspecialchars($value) ?></td>
+                            </tr>
+                            <?php else: ?>
+                                <tr>
+                                <td><?= htmlspecialchars($spec) ?></td>
+                            </tr>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             <?php endforeach; ?>
-        </table>
-    </div>
+        </div>
+    </section>
+
 </div>
 <script>
     function updateQuantity(amount) {

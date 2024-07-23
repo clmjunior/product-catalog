@@ -64,8 +64,7 @@ $categoriesArray = CategoryController::getTopCategories();
             <input type="hidden" name="category_id" value="<?= $category['id'] ?>" />
             <button type="submit" class="category">
                 <h1 class="category-title"><?= $category['categoria'] ?></h1>
-                <!-- <img class="category-img" src="<?= htmlspecialchars(preg_replace("/sitesamuel/", "totalcommerce-dev", $category['url_icone'])) ?>" alt=""> -->
-                <img class="category-img" src="https://totalcommerce-dev.ddns.net/dados_empresa/imagens/categorias/categ_culinaria_oriental.png" alt="">
+                <img class="category-img" src="<?= htmlspecialchars($category['url_banner']) ?>" alt="">
             </button>
         <?php endforeach; ?>
     </form>

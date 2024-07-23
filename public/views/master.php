@@ -22,7 +22,15 @@
 </head>
 <body>
     <nav class="navbar">
-        <img src="../assets/img/liveup-logo.png" alt="">
+        <!-- <img src="../assets/img/liveup-logo.png" alt=""> -->
+
+        <?php
+            if(!isset($logoImg)) {
+                $logoImg = "liveup-logo.png";
+            }
+        ?>
+        <img src="../assets/img/<?=$this->e($logoImg)?>" alt="">
+        
         <div class="nav-links">
             <a id="home" class="nav-link" href="/">HOME</a>
             <a id="company" class="nav-link" href="">EMPRESA</a>

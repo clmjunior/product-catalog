@@ -5,7 +5,7 @@ use app\controllers\CategoryController;
 $categoriesArray = CategoryController::getCategories();
 
 ?>
-<?php $this->layout('master', ['title' => 'Categorias', 'name' => 'categories']) ?>
+<?php $this->layout('master', ['title' => 'Categorias', 'name' => 'categories', 'logoImg' => 'liveup-original-logo.png']) ?>
 <section class="banner-container">
     <div class="image-container">
         <img src="../assets/img/categories_banner.png" class="banner" alt="">
@@ -16,14 +16,29 @@ $categoriesArray = CategoryController::getCategories();
         <h1 class="text-center">CATEGORIAS</h1>
         <small class="text-center">Subtitulo categorias</small>
     </div>
-    <form class="categories" action="/produtos" method="post">
-        <?php foreach($categoriesArray as $key => $value): ?>
-            <input type="hidden" name="category_id" value="<?= $key ?>" />
-            <button type="submit" class="category">
-                <h1 class="category-title"><?= $value ?></h1>
-                <img class="category-img" src="../assets/img/home_banner.png" alt="">
-            </button>
+    <div class="categories" >
+        <?php foreach($categoriesArray['nivel_abaixo'] as $category):?>
+            <div type="submit" class="category">
+                <?php
+                    if(empty($category['url_banner'])) {
+                        $banner = "https://picsum.photos/500/300";
+                    } else {
+                        $banner = $category['url_banner'];
+                    }
+                ?>
+                <img class="category-img" src="<?= htmlspecialchars($banner) ?>" alt="">
+                <!-- <h1 class="category-title"><a class="category-link" href="/produtos?categoria=<?= $category['slug_categoria'] ?>"><?= $category['categoria'] ?></a> -->
+                <h1 class="category-title"><a class="category-link" href="/produtos?categoria=<?= $category['id'] ?>"><?= $category['categoria'] ?></a>
+                    <?php if(count($category['nivel_abaixo']) > 0): ?>
+                        <div class="subcategory-container">
+                            <?php foreach($category['nivel_abaixo'] as $subCategory):?>
+                                <div class="subcategory-title"><?= htmlspecialchars($subCategory['categoria']) ?></div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                </h1>
+            </div>
         <?php endforeach; ?>
-    </form>
+    </div>
 </section>
 

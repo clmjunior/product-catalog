@@ -46,7 +46,7 @@ class Router
             ],
             
             'POST' => [
-                '/produtos' => fn() => self::load('ProductController', 'proccessCategoryItems'),
+                // '/produtos' => fn() => self::load('ProductController', 'proccessCategoryItems'),
                 '/auth' => fn() => self::load('UserController', 'authenticate'),
             ],
         ];

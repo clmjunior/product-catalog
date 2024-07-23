@@ -32,6 +32,7 @@
    border: none;
    outline: none;
 }
+
 .quantity-input button {
     padding: 5px 10px;
     background-color: #ddd;
@@ -39,6 +40,7 @@
     cursor: pointer;
     height: 40px;
 }
+
 .add-to-cart button {
     padding: 10px 20px;
     background-color: #E74101;
@@ -73,7 +75,15 @@
     background-color: #aa4017;
 }
 
-.product-container {
+.specs-container, .product-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-detail {
+    width: 85%;
     display: flex;
     justify-content: space-between;
     border-radius: 5px;
@@ -90,7 +100,7 @@
 }
 
 .info-card {
-    background-color: #bebebe4e;
+    background-color: #bebebe18;
     height: 50%;
     margin-top: 70px;
     border-radius: 3px;
@@ -101,51 +111,93 @@
 }
 
 .divisor {
-    background-color: #bebebe88;
+    background-color: #bebebe18;
     margin: 25px 0 25px 0;
 }
 
-.product-image {
+.product-image-container {
     width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
-.product-image img {
-    width: 100%;
+
+.product-main-image {
+    width: 500px;
     height: auto;
     border-radius: 5px;
 }
+
+.img-caroussel {
+    width: 100%;
+    text-align: center;
+}
+
+.img-caroussel-container {
+    width: 100px !important;
+    height: 100px;
+    border: 1px solid #E74101;
+    padding: 4px;
+}
+
+.product-caroussel-image {
+    width: 100%;
+    height: 100%;
+}
+
 .product-details {
     width: 55%;
     padding-left: 20px;
 }
+
 .product-details h1 {
     font-size: 24px;
     margin-bottom: 5px;
+    width: 100%;
 }
+
 .product-details h3 {
     font-size: 24px;
     margin-bottom: 15px;
 }
+
 .product-details p {
     margin-bottom: 10px;
 }
+
 .product-specifications {
-    margin-top: 20px;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    width: 85%;
 }
+
+.spec-category {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 25px;
+}
+
 .spec-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #fff;
-}
-.spec-table th, .spec-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-.spec-table th {
-    background-color: #f2f2f2;
+    margin: 10px 0;
+    background-color: #bebebe18;
 }
 
-li {
-    list-style: none;
+.spec-table th, .spec-table td {
+    border: 1px solid #dddddd;
+}
+
+.spec-table td {
+    padding: 25px;
+    text-align: left;
+    text-transform:uppercase;
+    width: 50%;
+}
+
+.spec-table tr {
+    border-bottom: 1px solid #dddddd;
 }
