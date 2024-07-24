@@ -27,12 +27,11 @@ $categoriesArray = CategoryController::getCategories();
                     }
                 ?>
                 <img class="category-img" src="<?= htmlspecialchars($banner) ?>" alt="">
-                <!-- <h1 class="category-title"><a class="category-link" href="/produtos?categoria=<?= $category['slug_categoria'] ?>"><?= $category['categoria'] ?></a> -->
                 <h1 class="category-title"><a class="category-link" href="/produtos?categoria=<?= $category['id'] ?>"><?= $category['categoria'] ?></a>
                     <?php if(count($category['nivel_abaixo']) > 0): ?>
                         <div class="subcategory-container">
                             <?php foreach($category['nivel_abaixo'] as $subCategory):?>
-                                <div class="subcategory-title"><?= htmlspecialchars($subCategory['categoria']) ?></div>
+                                <a href="/produtos?categoria=<?= $subCategory['id'] ?>"><div class="subcategory-title"><?= htmlspecialchars($subCategory['categoria']) ?></div></a>
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>

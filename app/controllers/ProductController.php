@@ -16,7 +16,7 @@ class ProductController extends Controller
         $product_id = $_GET['id'];
         $product_id;
 
-        $url = "https://totalcommerce-dev.ddns.net/api/product/get_product_by_id?sku={$product_id}&Sku={$product_id}";
+        $url = "https://totalcommerce-dev.ddns.net/api/product/get_product_by_id?sku={$product_id}";
 
         // Inicializa uma nova sessão cURL
         $ch = curl_init();
@@ -116,7 +116,7 @@ class ProductController extends Controller
         $nextPageUrl = $next >= $productsArray['paginacao']['paginas'] ? $productsArray['paginacao']['url_ultima_pagina'] : "/produtos?categoria={$_GET['categoria']}&pagina={$next}";
 
         $productsArray['paginacao']['url_proxima_pagina'] = $nextPageUrl;
-
+        
         
         $this->view('products', ['products' => $productsArray]);
     }

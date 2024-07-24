@@ -3,8 +3,9 @@
 ?>
 <?php $this->layout('master', ['title' => 'Produtos', 'name' => 'products', 'logoImg' => 'liveup-original-logo.png']) ?>
 <section class="image-container">
-    <!-- <div class="image-container">
-        <img src="../assets/img/products_banner.png" class="banner" alt=""> -->
+        <div class="product-img-container">
+            <img src="<?= htmlspecialchars($product['fotos'][0]['url_imagem_0350']) ?>" alt="<?= htmlspecialchars($product['titulo_produto']) ?>" class="product-image">
+        </div>
     </div>
 </section>
 
