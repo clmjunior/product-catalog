@@ -7,14 +7,6 @@
     opacity: 0.7;
 }
 
-.navbar {
-    background-color: #ffffff !important;
-}
-
-.nav-link {
-    color: black;
-}
-
 .products-section {
     display: flex;
     flex-wrap: wrap;
@@ -28,7 +20,6 @@
 .product-card {
     width: 23%;
     display: flex;
-    height: 70vh;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -39,6 +30,8 @@
     transition: all 0.5s ease;
     border: 2px solid #e7420117;
     position: relative;
+    box-sizing: border-box;
+    height: auto;
 }
 
 .product-card:hover {
@@ -49,32 +42,46 @@
 }
 
 .product-image {
-    width: 250px;
-    height: auto;
-    object-fit: cover;
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
 }
 
 .product-img-container {
     text-align: center;
-    display: flex !important; 
-    justify-content: center; 
+    display: flex !important;
+    justify-content: center;
     align-items: center;
-}
-
-.product-info {
-    padding: 20px 20px;
-    text-align: center;
     width: 100%;
 }
 
+.product-info {
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .product-name {
-    font-size: 1.5em;
+    font-size: 1.2em;
     margin: 10px 0;
 }
 
 .product-description {
     font-size: 1em;
     color: #555;
+    flex-grow: 1;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
 }
 
 .product-button {
@@ -94,7 +101,7 @@
 .watermark {
     position: absolute;
     top: 10px;
-    left: 10px;
+    right: 10px;
     opacity: 0.5;
 }
 
@@ -128,41 +135,4 @@
     color: #ffffff;
     width: 38px;
     height: 38px;
-}
-
-
-@media (max-width: 1440px) {
-    
-   .product-card {
-        height: 60vh;
-   }
-    
-}
-
-@media (max-width: 769px) {
-    
-    .product-card {
-        width: 46%;
-    }
-
-    .product-info h2 {
-        font-size: 16px;
-    }
-   
-   .products-section {
-        padding: 10px;
-   }
-
-    .product-card {
-        height: 56vh;
-    }
-}
-
-@media (max-width: 429px) {
-
-    .card-footer {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
 }

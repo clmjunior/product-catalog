@@ -11,7 +11,7 @@ class HomeController extends Controller
         self::proccessHotItems();
         $productsArray = $_SESSION['productsArray'] ?? [];
 
-        $this->view('home', ['products' => $productsArray]);
+        self::view('home', ['products' => $productsArray]);
 
     }
 

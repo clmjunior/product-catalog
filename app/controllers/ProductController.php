@@ -8,7 +8,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $this->view('products');
+        self::view('products');
     }
 
     public function showProductDetail()
@@ -44,7 +44,7 @@ class ProductController extends Controller
         $product = json_decode($response, true);
         $product['especificacoes_produto'] = $this->formatSpecifications($product['especificacoes_produto']);
                 
-        $this->view('product_detail', ['product' => $product]);
+        self::view('product_detail', ['product' => $product]);
     }
 
     private function formatSpecifications($specString)
@@ -118,6 +118,6 @@ class ProductController extends Controller
         $productsArray['paginacao']['url_proxima_pagina'] = $nextPageUrl;
         
         
-        $this->view('products', ['products' => $productsArray]);
+        self::view('products', ['products' => $productsArray]);
     }
 }

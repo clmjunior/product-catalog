@@ -5,7 +5,7 @@ use app\controllers\CategoryController;
 $categoriesArray = CategoryController::getCategories();
 
 ?>
-<?php $this->layout('master', ['title' => 'Categorias', 'name' => 'categories', 'logoImg' => 'liveup-original-logo.png']) ?>
+<?php $this->layout('master', ['title' => 'Categorias', 'name' => 'categories']) ?>
 <section class="banner-container">
     <div class="image-container">
         <img src="../assets/img/categories_banner.png" class="banner" alt="">

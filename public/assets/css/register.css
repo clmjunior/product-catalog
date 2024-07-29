@@ -87,10 +87,6 @@ footer, .right-container {
     display: none;
 }
 
-.navbar {
-    background-color: rgba(24, 26, 29) !important; 
-}
-
 .register-button {
     width: 100%;
     height: 40px;

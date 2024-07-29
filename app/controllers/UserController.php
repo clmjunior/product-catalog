@@ -6,12 +6,12 @@ class UserController extends Controller
 {
     public function indexLogin()
     {
-        $this->view('login');
+        self::view('login');
     }
 
     public function indexRegister()
     {
-        $this->view('register');
+        self::view('register');
     }
     
     public function authenticate()
