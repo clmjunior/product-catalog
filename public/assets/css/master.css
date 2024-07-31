@@ -85,7 +85,7 @@ a {
 
 .banner-content {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     font-size: 20px;
     transform: translate(-50%, -50%);
@@ -123,8 +123,10 @@ a {
 }
 
 .icon-img {
+    width: 40px;
     display: block;
     transition: display 0.3s ease;
+    opacity: 0.6;
 }
 
 .nav-bot {
@@ -135,7 +137,8 @@ a {
     gap: 20px;
     transition: height 0.3s ease;
     justify-content: center;
-    height: 90px;
+    margin-top: 10px;
+    height: 70px;
 }
 
 .categ-icon {
@@ -424,7 +427,7 @@ a {
     right: 10px;   
     width: 50px;  
     opacity: 0.8;  
-    z-index: 10;
+    z-index: 2;
 }
 
 @keyframes zoomOutSmooth {
@@ -451,14 +454,15 @@ a {
 
 .image-container {
     background-color: #0a0a0a;
-    height: 75vh;
-    padding-top: 70px;
+    height: 85vh;
+    padding-top: 180px;
     width: 100%;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 8px 5px 5px #0a0a0a;
+    border-bottom: 6px solid #E74101;
+    opacity: 0.8;
 }
 
 .animate__zoomOutSmooth {

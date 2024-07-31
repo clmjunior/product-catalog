@@ -1,8 +1,10 @@
 <?php
 /** @var \League\Plates\Template\Template $this */
 use app\controllers\CategoryController;
-$topCategoriesArray = CategoryController::getTopCategories();
+use app\controllers\ConfigController;
 
+$topCategoriesArray = CategoryController::getTopCategories();
+$config = ConfigController::getConfig();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +23,7 @@ $topCategoriesArray = CategoryController::getTopCategories();
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script type="text/javascript" src="../assets/js/master.js"></script>
     <script type="text/javascript" src="../assets/js/<?=$this->e($name)?>.js"></script>
+    <link rel="icon" type="image/x-icon" href="<?=$config['favicon_url']?>">
     <title><?=$this->e($title)?></title>
 </head>
 <body>
@@ -31,7 +34,6 @@ $topCategoriesArray = CategoryController::getTopCategories();
             <div class="nav-links">
                 <a id="home" class="nav-link" href="/">HOME</a>
                 <a id="company" class="nav-link" href="">EMPRESA</a>
-                <a id="products" class="nav-link" href="/categorias">PRODUTOS</a>
                 <a id="contact" class="nav-link" href="">CONTATO</a>
             </div>
             <div class="right-container">
@@ -56,7 +58,7 @@ $topCategoriesArray = CategoryController::getTopCategories();
                             <img src="<?= $topCategory['url_icone'] ?>" class="icon-img" alt="">
                         </div>
                         <div class="categ-name">
-                            <?= $topCategory['categoria'] ?>     
+                            <small><?= $topCategory['categoria'] ?></small>     
                         </div>
                     </div>
                 </a>

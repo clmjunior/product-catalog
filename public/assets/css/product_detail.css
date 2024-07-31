@@ -1,6 +1,7 @@
 .container-wrapper-detail {
-    padding: 20vh 150px 10vh 150px;
+    padding: 40vh 150px 10vh 150px;
     background-color: #f7f7f7;
+    overflow-x: hidden;
 }
 
 .stock-check {
