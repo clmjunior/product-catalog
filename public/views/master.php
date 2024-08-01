@@ -4,6 +4,7 @@ use app\controllers\CategoryController;
 use app\controllers\ConfigController;
 
 $topCategoriesArray = CategoryController::getTopCategories();
+$categoriesArray = CategoryController::getCategories();
 $config = ConfigController::getConfig();
 ?>
 <!DOCTYPE html>
@@ -29,13 +30,8 @@ $config = ConfigController::getConfig();
 <body>
     <nav class="navbar">
         <div class="nav-top">
-            <img src="../assets/img/liveup-original-logo.png" class="nav-logo" alt="">
+            <img src="<?=$config['empresa_logomarca']?>" class="nav-logo" alt="">
             
-            <div class="nav-links">
-                <a id="home" class="nav-link" href="/">HOME</a>
-                <a id="company" class="nav-link" href="">EMPRESA</a>
-                <a id="contact" class="nav-link" href="">CONTATO</a>
-            </div>
             <div class="right-container">
                 <div class="search-input">
                     <input type="text" name="searchbar" class="searchbar" />
@@ -63,6 +59,18 @@ $config = ConfigController::getConfig();
                     </div>
                 </a>
             <?php endforeach; ?>
+            <div class="all-center more-categories">
+                <div class="categ-name">
+                    <small><h3>+ Categorias</h3></small>
+                </div>
+                <ul class="dropdown-menu">
+                    <?php foreach($categoriesArray['nivel_abaixo'] as $category): ?>
+                        <li>
+                            <a href="/produtos?categoria=<?= $category['id'] ?>"><?= htmlspecialchars($category['categoria']) ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
         </div>
     </nav>
 

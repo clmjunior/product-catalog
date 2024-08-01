@@ -3,7 +3,6 @@
 use app\controllers\CategoryController;
 
 $categoriesArray = CategoryController::getTopCategories();
-
 ?>
 <?php $this->layout('master', ['title' => 'Home', 'name' => 'home']) ?>
 <section class="banner-container">
