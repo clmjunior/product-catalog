@@ -180,7 +180,8 @@ a {
     display: none;
     position: absolute;
     top: 90%;
-    height: 200px;
+    height: 500px;
+    width: 350px;
     overflow-y: auto;
     left: 0;
     background-color: white;
@@ -189,7 +190,19 @@ a {
     list-style: none;
     padding: 0;
     margin: 0;
-    width: 200px;
+}
+
+.dropdown-menu::-webkit-scrollbar {
+    width: 1px; 
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+    border-radius: 5px; 
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 5px; 
 }
 
 .dropdown-menu li {
@@ -272,7 +285,7 @@ a {
 .search-input {
     position: relative;
     display: inline-block;
-    width: 100%;
+    width: 250px;
     transition: all 1.2s ease;
 }
 
@@ -284,6 +297,7 @@ a {
     outline: none;
     padding: 2px 10px;
     font-size: 10px;
+    transition: all 1.2s ease;
     background-color: #eeeeee;
 }
 
@@ -305,6 +319,7 @@ a {
 
 .login-link {
     display: flex;
+    transition: all 1.2s ease;
     align-items: center;
     justify-content: center;
     height: 40px;
@@ -502,7 +517,7 @@ a {
 
 .image-container {
     background-color: #0a0a0a;
-    height: 85vh;
+    height: 90vh;
     padding-top: 180px;
     width: 100%;
     overflow: hidden;
