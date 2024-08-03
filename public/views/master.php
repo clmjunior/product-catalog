@@ -30,7 +30,9 @@ $config = ConfigController::getConfig();
 <body>
     <nav class="navbar">
         <div class="nav-top">
-            <img src="<?=$config['empresa_logomarca']?>" class="nav-logo" alt="">
+            <a href="/">
+                <img src="<?=$config['empresa_logomarca']?>" class="nav-logo" alt="">
+            </a>
             
             <div class="right-container">
                 <div class="search-input">
