@@ -48,6 +48,15 @@ a {
     color: #E74101;
 }
 
+.resp-wrap {
+    display: none;
+    margin-top: -20px;
+}
+
+.text-danger {
+    color: #e70101;
+}
+
 .w-100 {
     width: 100%;
 }
@@ -181,7 +190,7 @@ a {
     position: absolute;
     top: 90%;
     height: 500px;
-    width: 350px;
+    width: 30vw;
     overflow-y: auto;
     left: 0;
     background-color: white;
@@ -207,6 +216,7 @@ a {
 
 .dropdown-menu li {
     padding: 12px 16px;
+    position: relative; /* Adicionado */
 }
 
 .dropdown-menu li a {
@@ -223,8 +233,59 @@ a {
     display: block;
 }
 
-.more-categories .categ-name {
-    opacity: 0.6;
+.subdropdown-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    height: auto;
+    width: 100%;
+    overflow-y: auto;
+    background-color: #f1f1f1;
+    z-index: 3;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.subdropdown-menu::-webkit-scrollbar {
+    width: 1px; 
+}
+
+.subdropdown-menu::-webkit-scrollbar-thumb {
+    border-radius: 5px; 
+}
+
+.subdropdown-menu::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 5px; 
+}
+
+.subdropdown-menu li {
+    padding: 12px 16px;
+}
+
+.subdropdown-menu li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.subdropdown-menu li:hover {
+    background-color: #e9e9e9;
+}
+
+.subdropdown-link {
+    width: 50%;
+}
+
+.subdropdown-link:hover .subdropdown-menu {
+    display: block;
+}
+
+.categ-name {
+    opacity: 0.7;
+    font-weight: bold;
 }
 
 .nav-logo {
@@ -327,16 +388,12 @@ a {
     width: 150px;
     border-radius: 60px;
     border: none;
-}
-
-.login-link a {
-    display: flex;
-    align-items: center;
     gap: 10px;
     text-decoration: none;
     font-weight: bold;
     transition: all 0.5s;
     color: #ffffff;
+    cursor: pointer;
 }
 
 .login-link:hover {
@@ -486,8 +543,8 @@ a {
 
 .watermark {
     position: absolute;
-    top: 10px;  
-    right: 10px;   
+    top: 20px;  
+    right: 20px;   
     width: 50px;  
     opacity: 0.8;  
     z-index: 2;

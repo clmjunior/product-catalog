@@ -2,6 +2,7 @@
 .product-caroussel-image-main {
     max-width: 100% !important;
     opacity: 1 !important;
+    border-radius: 10px;
 }
 
 .slider-nav {
@@ -14,9 +15,13 @@
     opacity: 0.7;
 }
 
+.slick-arrow::before, .slick-dots li.slick-active button:before {
+    color:#E74101;
+}
+
 .container-wrapper-detail {
     padding: 40vh 150px 10vh 150px;
-    background-color: #f7f7f7;
+    background-color: #fafafa;
     overflow-x: hidden;
 }
 
@@ -113,10 +118,10 @@
 }
 
 .info-card {
-    background-color: #bebebe18;
+    background-color: #f3f3f3;
     height: 50%;
     margin-top: 70px;
-    border-radius: 3px;
+    border-radius: 10px;
     padding: 35px 20px 35px 20px;
     display: flex;
     flex-direction: column;
@@ -124,7 +129,7 @@
 }
 
 .divisor {
-    background-color: #bebebe18;
+    background-color: #f3f3f3;
     margin: 25px 0 25px 0;
 }
 
@@ -174,7 +179,7 @@
     width: 100%;
     border-collapse: collapse;
     margin: 10px 0;
-    background-color: #bebebe18;
+    background-color: #f3f3f3;
 }
 
 .spec-table th, .spec-table td {

@@ -1,12 +1,34 @@
+.navbar {
+    padding: 12px 80px 12px 80px;
+    box-shadow: 1px 1px 10px #eee;
+}
+
+.nav-bot {
+    height: 30px;
+}
+
+.icon-img, .categ-icon {
+    display: none;
+}
+
+.nav-logo {
+    width: 200px
+}
+
+.cpf-data, .cnpj-data {
+    display: none;
+    width: 100% !important;
+}
+
 .register-container {
     max-width: 100vw;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f7f7f7;
-    padding-top: 100px;
+    background-color: #fafafa;
     padding: 50px 0 50px 0;
+    padding-top: 100px;
     overflow-x: hidden;
 }
 

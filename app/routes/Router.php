@@ -47,7 +47,9 @@ class Router
             
             'POST' => [
                 // '/produtos' => fn() => self::load('ProductController', 'proccessCategoryItems'),
+                '/check-user' => fn() => self::load('UserController', 'check'),
                 '/auth' => fn() => self::load('UserController', 'authenticate'),
+                '/register' => fn() => self::load('UserController', 'register'),
             ],
         ];
     }

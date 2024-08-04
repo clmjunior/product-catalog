@@ -16,7 +16,7 @@
 }
 
 .categories-container {
-    background-color: #f7f7f7;
+    background-color: #fafafa;
     padding: 40px 100px 40px 100px;
     color: #000000;
     display: flex;
@@ -145,7 +145,7 @@
     .category {
         box-sizing: border-box;
         border-radius: 2px;
-        background-color: #f7f7f7;
+        background-color: #fafafa;
         border: 1px solid #bebebe;
         margin-top: 25px;
         cursor: pointer;

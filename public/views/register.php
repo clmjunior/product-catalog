@@ -1,17 +1,55 @@
 <?php
 /** @var \League\Plates\Template\Template $this */
+use app\controllers\ConfigController;
+
+$config = ConfigController::getConfig();
 ?>
 <?php $this->layout('master', ['title' => 'Register', 'name' => 'register']) ?>
 <section class="register-container">
     <div class="container">
         <div class="register-form">
             <h2>Cadastro</h2>
-            <form action="/auth" method="post">
-                <label for="cpf">CPF:</label>
-                <input type="text" id="cpf" name="cpf" required>
-                
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" required>
+            <form action="/register" method="post">
+                <?php
+                switch($config['metodo_login']) {
+                    case "EMAIL":
+                        $field = "EMAIL";
+                        break;
+                    case "CPF_CNPJ":
+                        $field = "CPF OU CNPJ";
+                        break;
+                    case "TODOS":
+                        $field = "CPF OU CNPJ";
+                        break;
+                    case "CPF":
+                        $field = "CPF";
+                        break;
+                    case "CNPJ":
+                        $field = "CNPJ";
+                        break;
+                }
+                ?>
+                <label for="document"><?= $field ?></label>
+                <input type="text" id="document" name="document" required>
+                <div class="resp-wrap">
+                    <small id="response-message" class="text-danger"></small>
+                </div>
+
+                <div class="cpf-data">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="cnpj-data">
+                    <label for="corporate_name">Razão Social:</label>
+                    <input type="text" id="corporate_name" name="corporate_name" required>
+                    
+                    <label for="trade_name">Nome Fantasia:</label>
+                    <input type="text" id="trade_name" name="trade_name" required>
+                    
+                    <label for="state_registration">Inscrição Estadual:</label>
+                    <input type="text" id="state_registration" name="state_registration" required>
+                </div>
                 
                 <div class="d-flex phone-group">
                     <div class="w-25">

@@ -2,7 +2,8 @@ $(document).ready(function() {
     $('.slider-single').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: false,
+        arrows: true,
+        dots: true,
         fade: false,
         adaptiveHeight: true,
         infinite: true,

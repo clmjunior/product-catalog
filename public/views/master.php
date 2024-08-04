@@ -40,15 +40,34 @@ $config = ConfigController::getConfig();
                     <ion-icon class="search-icon" name="search"></ion-icon>
                 </div>
                 <div class="separator"></div>
-                <button class="login-link">
-                    <a href="/login">
+                <a href="/login">
+                    <button class="login-link">
                         <ion-icon name="log-in"></ion-icon> <p>Login</p>
-                    </a>
-                </button>
+                    </button>
+                </a>
             </div>
             <ion-icon class="navbar-menu" name="menu"></ion-icon>
         </div>
         <div class="nav-bot">
+            <div class="all-center more-categories">
+                <div class="categ-name">
+                    <small><h3>+ Categorias</h3></small>
+                </div>
+                <ul class="dropdown-menu">
+                    <?php foreach($categoriesArray['nivel_abaixo'] as $category): ?>
+                        <li class="subdropdown-link">
+                            <a href="/produtos?categoria=<?= $category['id'] ?>"><?= htmlspecialchars($category['categoria']) ?></a>
+                            <ul class="subdropdown-menu">
+                                <?php foreach($category['nivel_abaixo'] as $subCategory): ?>
+                                    <li>
+                                        <a href="/produtos?categoria=<?= $subCategory['id'] ?>"><?= htmlspecialchars($subCategory['categoria']) ?></a>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
             <?php foreach($topCategoriesArray as $topCategory): ?>
                 <a href="/produtos?categoria=<?= $topCategory['id'] ?>">
                     <div class="categ-wrap">
@@ -61,18 +80,6 @@ $config = ConfigController::getConfig();
                     </div>
                 </a>
             <?php endforeach; ?>
-            <div class="all-center more-categories">
-                <div class="categ-name">
-                    <small><h3>+ Categorias</h3></small>
-                </div>
-                <ul class="dropdown-menu">
-                    <?php foreach($categoriesArray['nivel_abaixo'] as $category): ?>
-                        <li>
-                            <a href="/produtos?categoria=<?= $category['id'] ?>"><?= htmlspecialchars($category['categoria']) ?></a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
         </div>
     </nav>
 
