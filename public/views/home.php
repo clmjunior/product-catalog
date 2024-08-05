@@ -22,6 +22,7 @@ $config = ConfigController::getConfig();
         foreach(explode(";", $success_msg) as $msg) {
             echo "<div class='message-box bg-success'>{$msg}</div>";
         } 
+        unset($_SESSION['success_msg']);
     }
 ?>
 
