@@ -2,7 +2,7 @@
 /** @var \League\Plates\Template\Template $this */
 use app\controllers\Controller;
 
-$configArray = Controller::getConfig();
+$config = Controller::getConfig();
 ?>
 <?php $this->layout('master', ['title' => 'Produtos', 'name' => 'products']);
 ?>
@@ -17,11 +17,17 @@ $configArray = Controller::getConfig();
             </div>
             <div class="product-info">
                 <h1 class="product-name"><?= htmlspecialchars($product['titulo_produto']) ?></h1>
-                <p class="product-description">Descrição do produto aqui</p>
-                <div class="card-footer">
-                    <div class="price"><h3>R$ <?= htmlspecialchars(number_format($product['precos']['valor_final'], 2, ',', '.')) ?></h3></div>
-                    <button class="product-button">Comprar</button>
-                </div>
+                <p class="product-description"><small><b><?= $product['referencia'] ?></b></small></p>
+                <?php if($config['mostrar_preco_site'] == "S" || $config['liberado_comprar'] == "S"): ?>
+                    <div class="card-footer">
+                        <?php if($config['mostrar_preco_site'] == "S"): ?>
+                            <div class="price"><h3>R$ <?= htmlspecialchars(number_format($product['precos']['valor_final'], 2, ',', '.')) ?></h3></div>
+                        <?php endif; ?>
+                        <?php if($config['liberado_comprar'] == "S"): ?>
+                            <button class="product-button">Comprar</button>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </a>
     <?php endforeach; ?>

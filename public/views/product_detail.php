@@ -1,5 +1,8 @@
 <?php 
 /** @var \League\Plates\Template\Template $this */
+use app\controllers\Controller;
+
+$config = Controller::getConfig();
 ?>
 <?php $this->layout('master', ['title' => 'Detalhe', 'name' => 'product_detail']) ?>
 
@@ -28,27 +31,34 @@
                 </div>
             </div>
 
-
-              
-
             <div class="product-details">
                 <h1><?= htmlspecialchars($product['titulo_produto']) ?></h1>
                 <hr class="divisor"/>
-                <h3>R$ <?= htmlspecialchars($product['precos']['valor_final']) ?></h3>
+
+                <?php if($config['mostrar_preco_site'] == "S" || $config['liberado_comprar'] == "S"): ?>
+                    <div class="card-footer">
+                        <?php if($config['mostrar_preco_site'] == "S"): ?>
+                            <h3>R$ <?= htmlspecialchars($product['precos']['valor_final']) ?></h3>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
+
                 <p><?= htmlspecialchars($product['descricao_produto']) ?></p>
                 
                 <div class="info-card">
                     <div class="top">
                         <small><ion-icon class="stock-check" name="checkbox"></ion-icon> <?= htmlspecialchars($product['quantidade_estoque']) ?> Em estoque</small>
-                        <form class="add-to-cart" action="add_to_cart.php" method="post">
-                            <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['sku']) ?>">
-                            <div class="quantity-input">
-                                <button class="minus-button" type="button" onclick="updateQuantity(-1)">-</button>
-                                <input type="number" name="quantity" id="quantity" value="1" min="1" max="<?= htmlspecialchars($product['quantidade_estoque']) ?>">
-                                <button class="plus-button" type="button" onclick="updateQuantity(1)">+</button>
-                            </div>
-                            <button class="add-button" type="submit">Adicionar ao Carrinho</button>
-                        </form>
+                        <?php if($config['liberado_comprar'] == "S"): ?>
+                            <form class="add-to-cart" action="add_to_cart.php" method="post">
+                                <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['sku']) ?>">
+                                <div class="quantity-input">
+                                    <button class="minus-button" type="button" onclick="updateQuantity(-1)">-</button>
+                                    <input type="number" name="quantity" id="quantity" value="1" min="1" max="<?= htmlspecialchars($product['quantidade_estoque']) ?>">
+                                    <button class="plus-button" type="button" onclick="updateQuantity(1)">+</button>
+                                </div>
+                                <button class="add-button" type="submit">Adicionar ao Carrinho</button>
+                            </form>
+                        <?php endif; ?>
                     </div>
 
                     <div class="bottom">
