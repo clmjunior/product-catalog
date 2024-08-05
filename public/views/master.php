@@ -50,7 +50,7 @@ $config = ConfigController::getConfig();
                         </button>
                     </a>
                     <?php else: ?>
-                        <div class="dropdown">
+                        <div class="dropdown account">
                             <a class="nav-link dropdown-toggle" id="dropdownMenuButton">
                                 <ion-icon name="person-circle"></ion-icon> <p>Conta</p>
                             </a>

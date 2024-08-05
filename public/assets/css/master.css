@@ -239,9 +239,11 @@ a {
     list-style: none;
     padding: 0;
     margin: 0;
-    height: fit-content;
-    max-height: 500px;
+    height: 500px;
+}
 
+.account .dropdown-menu {
+    height: fit-content;
 }
 
 .dropdown-menu::-webkit-scrollbar {
