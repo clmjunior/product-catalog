@@ -42,6 +42,7 @@ class Router
                 '/produtos' => fn() => self::load('ProductController', 'showProducts'),
                 '/produto' => fn() => self::load('ProductController', 'showProductDetail'),
                 '/login' => fn() => self::load('UserController', 'indexLogin'),
+                '/logout' => fn() => self::load('UserController', 'logout'),
                 '/cadastro' => fn() => self::load('UserController', 'indexRegister'),
             ],
             

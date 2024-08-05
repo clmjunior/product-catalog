@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 if (data.error) {
                     responseMessage.textContent = data.error;
-                    responseWrap.style.display = 'block'; // Mensagem de erro geral
+                    responseWrap.style.display = 'block';
                 } else {
                     responseMessage.textContent = ''; 
                     responseWrap.style.display = 'none';
@@ -54,11 +54,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             })
             .catch(error => {
-                responseMessage.textContent = 'Erro ao conectar com o servidor.'; // Mensagem de erro geral
+                responseMessage.textContent = 'Erro ao conectar com o servidor.'; 
                 console.error('Erro:', error);
             });
         } else {
-            responseMessage.textContent = ''; // Limpa a mensagem se o campo estiver vazio
+            responseMessage.textContent = '';
             responseWrap.style.display = 'none';
         }
     });

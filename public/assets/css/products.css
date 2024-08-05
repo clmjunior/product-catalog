@@ -17,7 +17,7 @@
     background-color: #fafafa;
 }
 
-.product-card {
+/* .product-card {
     width: 23%;
     display: flex;
     flex-direction: column;
@@ -98,7 +98,7 @@
 
 .product-button:hover {
     background-color: #555;
-}
+} */
 
 .pages-container {
     background-color: #fafafa;

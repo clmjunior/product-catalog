@@ -1,31 +1,12 @@
 $(document).ready(function(){
-    $('.multiple-items').slick({
-        infinite: true,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        infinite: true,
-        dots: true,
-
-        responsive: [
-            {
-              breakpoint: 769,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-              }
-            },
-            {
-              breakpoint: 391,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-              }
-            }
-          ]
-
-
-    });
+  $('.multiple-items').slick({
+      infinite: true,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      dots: false,
+  });
 });
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const imageContainers = document.querySelectorAll('.category');

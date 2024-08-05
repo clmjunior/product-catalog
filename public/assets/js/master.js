@@ -24,3 +24,33 @@ window.addEventListener('scroll', function() {
         iconImg.forEach(icon => icon.style.display = 'none');
     }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const dropdownToggle = document.getElementById("dropdownMenuButton");
+    const dropdownMenu = document.querySelector(".dropdown-menu");
+
+    dropdownToggle.addEventListener("click", function() {
+        dropdownMenu.classList.toggle("show");
+    });
+
+    window.addEventListener("click", function(event) {
+        if (!dropdownToggle.contains(event.target)) {
+            dropdownMenu.classList.remove("show");
+        }
+    });
+
+    function showMessage() {
+        const messageBoxes = document.querySelectorAll('.message-box');
+
+        messageBoxes.forEach(function(messageBox) {
+            messageBox.classList.add('show'); 
+            setTimeout(function() {
+                messageBox.classList.remove('show');
+            }, 5000);
+        });
+    }
+
+    showMessage();
+
+});

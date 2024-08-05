@@ -48,6 +48,43 @@ a {
     color: #E74101;
 }
 
+.message-container {
+    position: fixed; /* Mantém o contêiner fixo no canto superior direito da tela */
+    top: 15vh;
+    right: 20px;
+    width: fit-content;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.message-box {
+    position: relative;
+    width: fit-content;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    border-radius: 2px;
+    color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+    z-index: 1000;
+}
+
+.message-box.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.bg-danger {
+    background-color: #e70101;
+}
+
+.bg-success {
+    background-color: #01e727;
+}
+
 .resp-wrap {
     display: none;
     margin-top: -20px;
@@ -63,6 +100,10 @@ a {
 
 .w-75 {
     width: 75% !important;
+}
+
+.w-50 {
+    width: 50% !important;
 }
 
 .w-25 {
@@ -293,6 +334,46 @@ a {
     transition: all 1.2s ease;
 }
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    min-width: 160px;
+    z-index: 1;
+    border-radius: 5px;
+    padding: 10px 0;
+    height: fit-content;
+}
+
+.dropdown-item {
+    padding: 12px 16px;
+    color: #333;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+.show {
+    display: block;
+}
+
+
 .nav-link {
     position: relative;
     text-decoration: none;
@@ -300,6 +381,11 @@ a {
     font-weight: bold;
     padding: 10px 0;
     transition: all 0.5s;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-link::after {
@@ -404,8 +490,9 @@ a {
     width: 100%;
     height: 60vh;
     padding: 40px 100px 40px 100px;
-    background-color: rgba(24, 26, 29, 1);
+    background-color: transparent;
     z-index: 2;
+    border-top: 1px solid #E74101;
 }
 
 .company-info {
@@ -416,8 +503,11 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    color: #ffffff;
     height: 100%;
+}
+
+.footer-img {
+    width: 40%;
 }
 
 .footer-company {
@@ -427,7 +517,6 @@ a {
 
 .info-items {
     list-style: none;
-    color: #ffffff;
 }
 
 .info-item {
@@ -447,10 +536,11 @@ a {
 }
 
 .contact-input {
-    width: 300px;
+    width: 100%;
     border-radius: 6px;
     height: 40px;
     padding: 5px 10px 5px 10px;
+    border: 1px solid #ccc; 
 }
 
 .contact-submit {
@@ -466,6 +556,7 @@ a {
     height: 100%;
     flex-direction: column;
     display: flex;
+    width: 30%;
 }
 
 .message-input {
@@ -476,19 +567,22 @@ a {
 }
 
 .product-card {
+    width: 23%; 
     display: flex !important;
-    height: 65vh;
-    justify-content: space-between;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     padding: 2px;
     overflow: hidden;
     cursor: pointer;
-    margin: 20px 15px;
+    margin: 20px 0;
     transition: all 0.5s ease;
     border: 2px solid #e7420117;
-    color: #000000;
     position: relative;
+    box-sizing: border-box;
+    min-height: 55vh;
+    height: auto;
+    background-color: #ffffff;
 }
 
 .product-card:hover {
@@ -499,25 +593,60 @@ a {
 }
 
 .product-image {
+    height: 200px;
+    object-fit: contain;
+}
+
+.product-img-container {
+    text-align: center;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: auto;
-    object-fit: cover;
+    padding: 20px 20px 0 20px;
 }
 
 .product-info {
-    padding: 20px 20px;
+    padding: 20px;
     text-align: center;
     width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .product-name {
-    font-size: 1.5em;
+    font-size: 1.2em;
     margin: 10px 0;
 }
 
 .product-description {
     font-size: 1em;
-    color: #555;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 30px !important;
+    padding: 5px;
+    flex-grow: 1;
+}
+
+.product-description small{
+    color: #ffffff;
+    background-color: #555;
+    padding: 8px;
+    border-radius: 5px;
+    width: fit-content;
+
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
 }
 
 .product-button {
@@ -532,13 +661,6 @@ a {
 
 .product-button:hover {
     background-color: #555;
-}
-
-.card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 25px;
 }
 
 .watermark {
@@ -599,67 +721,12 @@ a {
 }
 
 @media (max-width: 768px) {
-    
-    .navbar {
-        padding: 40px 50px 40px 50px;
-    }
-
-    .navbar img {
-        width: 20%;
-    }
-
-    .navbar-menu {
-        display: block;
-        font-size: 30px;
-    }
-
-    .banner-content {
-        top: 60%;
-    }
-
-    .footer {
-        height: fit-content;
-        padding: 40px 50px 40px 50px;
-    }
-
-    .footer-wrapper {
-        flex-direction: column;
-    }
-
-    .footer-wrapper div img {
-        width: 25%;
-    }
-
-    .company-contact {
-        margin-top: 90px;
-    }
-
-    .contact-input {
-        width: 100%;
-    }
+   
     
 }
 
 @media (max-width: 429px) {
     
-    .navbar {
-        padding: 40px 30px 40px 30px;
-    }
-
-    .navbar img {
-        width: 30%;
-    }
-
-    .footer-wrapper div img {
-        width: 50%;
-    }
-
-    .footer-wrapper div {
-        text-align: center;
-    }
-
-    .company-info {
-        text-align: left !important;
-    }
+ 
     
 }

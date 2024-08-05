@@ -8,11 +8,15 @@ class ProductController extends Controller
 {
     public function index()
     {
+        // session_start();
+
         self::view('products');
     }
 
     public function showProductDetail()
     {
+        // session_start();
+
         $product_id = $_GET['id'];
         $product_id;
 
@@ -68,6 +72,7 @@ class ProductController extends Controller
 
     public function showProducts()
     {
+        // session_start();
 
         if(!isset($_GET['pagina'])) {
             $pagina = '1';

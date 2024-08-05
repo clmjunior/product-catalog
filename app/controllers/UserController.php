@@ -1,22 +1,66 @@
 <?php
 
 namespace app\controllers;
-
+use app\helpers\ApiHelper;
 class UserController extends Controller
 {
     public function indexLogin()
     {
+        // session_start();
+
         self::view('login');
     }
 
     public function indexRegister()
     {
+        // session_start();
+
         self::view('register');
     }
     
     public function authenticate()
     {
+        // session_start();
 
+        if(!isset($_POST['remember'])) {
+            $_POST['remember'] = "off";
+        }
+
+        $data = [
+            "login" => $_POST['login'],
+            "password" => $_POST['password'],
+            "remember" => $_POST['remember'],
+        ];
+
+        $url = 'https://totalcommerce-dev.ddns.net/api/user/authenticate_user';
+        
+        $options = array(
+            'http' => array(
+                'header'  => "Content-type: application/json\r\n",
+                'method'  => 'POST',
+                'content' => json_encode($data),
+            ),
+        );
+        $context  = stream_context_create($options);
+        $response = file_get_contents($url, false, $context);
+
+        $error = false;
+        if(!empty(json_decode($response,true)['error'])) {
+            $error = true;
+        }
+
+        $response = ApiHelper::responseMap($response);
+
+        if ($response !== false) {
+            if($error == false) {
+                $_SESSION['user'] = true;
+                return self::view('home', ['success_msg' => $response]);
+            } else {
+                return self::view('login', ['error_msg' => $response, 'data' => $data]);
+            }
+        } else {
+            echo json_encode(array('error' => 'Não foi possível obter a resposta do endpoint.'));
+        }
     }
 
     public function check()
@@ -51,23 +95,26 @@ class UserController extends Controller
 
     public function register()
     {
-        header('Content-Type: application/json');
+        // session_start();
+
+        if(!isset($_POST['receive'])) {
+            $_POST['receive'] = "off";
+        }
         
         $data = [
             "customer_name" => $_POST['name'],
-            "corporate_name" => $_POST['name'],
-            "trade_name" => $_POST['name'],
-            "state_registration" => "8",
+            "corporate_name" => $_POST['corporate_name'],
+            "trade_name" => $_POST['trade_name'],
+            "state_registration" => $_POST["state_registration"],
             "access_email" => $_POST['email'],
             "password" => $_POST['password'],
             "confirmed_password" => $_POST['confirm-password'],
-            "receber_email" => false,
-            "customer_type" => "F",
+            "receber_email" => $_POST['receive'],
             "contact" => [
-                "contact_name" => "10",
-                "phone_ddd" => "11",
-                "phone_number" => "12154875",
-                "phone_extension" => "13"
+                "contact_name" => $_POST['cont-name'],
+                "phone_ddd" => $_POST['ddd'],
+                "phone_number" => $_POST['phone'],
+                "phone_extension" => ""
             ]           
         ];
 
@@ -82,6 +129,7 @@ class UserController extends Controller
             echo "Parâmetro incorreto";
         }
 
+
         $url = 'https://totalcommerce-dev.ddns.net/api/user/register_user';
         
         $options = array(
@@ -93,10 +141,31 @@ class UserController extends Controller
         );
         $context  = stream_context_create($options);
         $response = file_get_contents($url, false, $context);
-        if ($response !== FALSE) {
-            echo $response;
+
+        $error = false;
+        if(!empty(json_decode($response,true)['error'])) {
+            $error = true;
+        }
+
+        $response = ApiHelper::responseMap($response);
+
+        if ($response !== false) {
+            if($error == false) {
+                return self::view('home', ['success_msg' => $response]);
+            } else {
+                return self::view('register', ['error_msg' => $response, 'data' => $data]);
+            }
         } else {
             echo json_encode(array('error' => 'Não foi possível obter a resposta do endpoint.'));
         }
+    }
+
+    public function logout()
+    {
+        session_start();
+        session_unset();
+        session_destroy();
+        header("Location: /login");
+        exit();
     }
 }

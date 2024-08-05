@@ -1,7 +1,34 @@
 <?php
+
+if (isset($_SESSION['user'])) {
+    header('Location: /');
+    exit();
+}
+
 /** @var \League\Plates\Template\Template $this */
+use app\controllers\ConfigController;
+
+$config = ConfigController::getConfig();
 ?>
 <?php $this->layout('master', ['title' => 'Login', 'name' => 'login']) ?>
+
+<div class="message-container">
+    
+<?php
+    if (isset($error_msg) && !empty($error_msg)) {
+        foreach(explode(";", $error_msg) as $msg) {
+            echo "<div class='message-box bg-danger'>{$msg}</div>";
+        } 
+    }
+
+    if (isset($success_msg) && !empty($success_msg)) {
+        foreach(explode(";", $success_msg) as $msg) {
+            echo "<div class='message-box bg-success'>{$msg}</div>";
+        } 
+    }
+?>
+
+</div>
 <section class="login-container">
     <div class="container">
         <div class="login-form">
@@ -16,8 +43,27 @@
                 <div class="separator"></div>
             </div>
             <form action="/auth" method="post">
-                <label for="email">Email:</label>
-                <input type="text" id="email" name="email" required>
+                <?php
+                switch($config['metodo_login']) {
+                    case "EMAIL":
+                        $field = "EMAIL";
+                        break;
+                    case "CPF_CNPJ":
+                        $field = "CPF OU CNPJ";
+                        break;
+                    case "TODOS":
+                        $field = "CPF, CNPJ OU EMAIL";
+                        break;
+                    case "CPF":
+                        $field = "CPF";
+                        break;
+                    case "CNPJ":
+                        $field = "CNPJ";
+                        break;
+                }
+                ?>
+                <label for="login"><?= $field ?></label>
+                <input type="text" id="login" name="login" value="<?= isset($data['login']) ? $data['login'] : '' ?>" required>
                 
                 <div class="password-wrap">
                     <label for="password">Senha:</label>
@@ -26,7 +72,7 @@
                 </div>
 
                 <div class="checkbox-input">
-                    <input type="checkbox" name="remember" id="remember">
+                    <input type="checkbox" name="remember" id="remember" <?= isset($data['remember']) && $data['remember'] == "on" ? "checked" : "" ?>>
                     <label for="remember"><small>Mantenha-me conectado</small></label>
                 </div>
                 

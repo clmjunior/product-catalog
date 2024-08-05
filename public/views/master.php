@@ -1,4 +1,5 @@
 <?php
+
 /** @var \League\Plates\Template\Template $this */
 use app\controllers\CategoryController;
 use app\controllers\ConfigController;
@@ -6,6 +7,7 @@ use app\controllers\ConfigController;
 $topCategoriesArray = CategoryController::getTopCategories();
 $categoriesArray = CategoryController::getCategories();
 $config = ConfigController::getConfig();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,11 +42,26 @@ $config = ConfigController::getConfig();
                     <ion-icon class="search-icon" name="search"></ion-icon>
                 </div>
                 <div class="separator"></div>
-                <a href="/login">
-                    <button class="login-link">
-                        <ion-icon name="log-in"></ion-icon> <p>Login</p>
-                    </button>
-                </a>
+
+                <?php if(!isset($_SESSION['user'])): ?>
+                    <a href="/login">
+                        <button class="login-link">
+                            <ion-icon name="log-in"></ion-icon> <p>Login</p>
+                        </button>
+                    </a>
+                    <?php else: ?>
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" id="dropdownMenuButton">
+                                <ion-icon name="person-circle"></ion-icon> <p>Conta</p>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/boletos">Meus Boletos</a>
+                                <a class="dropdown-item text-danger" href="/logout">Sair</a>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    
+
             </div>
             <ion-icon class="navbar-menu" name="menu"></ion-icon>
         </div>
@@ -83,13 +100,12 @@ $config = ConfigController::getConfig();
         </div>
     </nav>
 
-    
     <?= $this->section('content') ?>
 
     <footer class="footer">
         <div class="footer-wrapper">
             <div>
-                <img src="../assets/img/liveup-logo.png" alt="">
+                <img src="<?=$config['empresa_logomarca']?>" class="footer-img" alt="">
                 <div class="company-info">
                     <h3 class="footer-company">PURYS IMPORTADORA E EXPORTADORA LTDA</h3>
                     <ul class="info-items">
