@@ -1,9 +1,7 @@
 <?php
 /** @var \League\Plates\Template\Template $this */
-use app\controllers\CategoryController;
 use app\controllers\ConfigController;
 
-$categoriesArray = CategoryController::getTopCategories();
 $config = ConfigController::getConfig();
 ?>
 <?php $this->layout('master', ['title' => 'Home', 'name' => 'home']) ?>

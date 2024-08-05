@@ -20,11 +20,11 @@ class HomeController extends Controller
     protected  function proccessHotItems()
     {
 
-        $topCategories = CategoryController::getTopCategories();
+        $showcaseCategories = CategoryController::getShowcaseCategories();
         
-        foreach($topCategories as $topCategory) {
+        foreach($showcaseCategories as $showcaseCategory) {
             
-            $url = "https://totalcommerce-dev.ddns.net/api/product/get_home_products?limit=10&category_id={$topCategory['id']}&order=frequencia_venda";
+            $url = "https://totalcommerce-dev.ddns.net/api/product/get_home_products?limit=10&category_id={$showcaseCategory['id']}&order=frequencia_venda";
 
             // Inicializa uma nova sessão cURL
             $ch = curl_init();
