@@ -16,7 +16,7 @@ $config = Controller::getConfig();
                 <img src="../assets/img/liveup-original-logo.png" alt="Marca d'água" class="watermark">
             </div>
             <div class="product-info">
-                <h1 class="product-name"><?= htmlspecialchars($product['titulo_produto']) ?></h1>
+                <p class="product-name"><?= htmlspecialchars($product['titulo_produto']) ?></p>
                 <p class="product-description"><small><b><?= $product['referencia'] ?></b></small></p>
                 <?php if($config['mostrar_preco_site'] == "S" || $config['liberado_comprar'] == "S"): ?>
                     <div class="card-footer">

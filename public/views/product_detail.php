@@ -34,12 +34,18 @@ $config = Controller::getConfig();
             <div class="product-details">
                 <h1><?= htmlspecialchars($product['titulo_produto']) ?></h1>
                 <hr class="divisor"/>
-
-                <?php if($config['mostrar_preco_site'] == "S" || $config['liberado_comprar'] == "S"): ?>
+                    <?php 
+                    $mostrarPrecoLogin = $config['mostrar_preco_login'] == "S";
+                    $mostrarPrecoLogout = $config['mostrar_preco_logout'] == "S";
+                    $usuarioLogado = $_SESSION['user'] == true;
+                    
+                    $mostrarPreco = ($mostrarPrecoLogin && $mostrarPrecoLogout) ||
+                                    ($mostrarPrecoLogin && !$mostrarPrecoLogout && $usuarioLogado) ||
+                                    ($mostrarPrecoLogout && !$mostrarPrecoLogin && !$usuarioLogado);
+                    
+                    if($mostrarPreco): ?>
                     <div class="card-footer">
-                        <?php if($config['mostrar_preco_site'] == "S"): ?>
-                            <h3>R$ <?= htmlspecialchars($product['precos']['valor_final']) ?></h3>
-                        <?php endif; ?>
+                        <h3>R$ <?= htmlspecialchars($product['precos']['valor_final']) ?></h3>
                     </div>
                 <?php endif; ?>
 
@@ -47,7 +53,21 @@ $config = Controller::getConfig();
                 
                 <div class="info-card">
                     <div class="top">
-                        <small><ion-icon class="stock-check" name="checkbox"></ion-icon> <?= htmlspecialchars($product['quantidade_estoque']) ?> Em estoque</small>
+
+                        <?php 
+                        $mostrarEstoqueLogin = $config['mostrar_estoque_login'] == "S";
+                        $mostrarEstoqueLogout = $config['mostrar_estoque_logout'] == "S";
+                        $usuarioLogado = $_SESSION['user'] == true;
+                        
+                        $mostrarEstoque = ($mostrarEstoqueLogin && $mostrarEstoqueLogout) ||
+                                        ($mostrarEstoqueLogin && !$mostrarEstoqueLogout && $usuarioLogado) ||
+                                        ($mostrarEstoqueLogout && !$mostrarEstoqueLogin && !$usuarioLogado);
+                        
+                        if($mostrarEstoque): ?>
+                            <small><ion-icon class="stock-check" name="checkbox"></ion-icon> <?= htmlspecialchars($product['quantidade_estoque']) ?> Em estoque</small>
+                        <?php endif; ?>
+
+
                         <?php if($config['liberado_comprar'] == "S"): ?>
                             <form class="add-to-cart" action="add_to_cart.php" method="post">
                                 <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['sku']) ?>">

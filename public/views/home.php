@@ -72,12 +72,21 @@ $config = ConfigController::getConfig();
                                 <img src="../assets/img/liveup-original-logo.png" alt="Marca d'água" class="watermark">
                             </div>
                             <div class="product-info">
-                                <h1 class="product-name"><?= htmlspecialchars($productCard['titulo_produto']) ?></h1>
+                                <p class="product-name"><?= htmlspecialchars($productCard['titulo_produto']) ?></p>
                                 <p class="product-description"><small><b><?= $productCard['referencia'] ?></b></small></p>
 
-                                <?php if($config['mostrar_preco_site'] == "S" || $config['liberado_comprar'] == "S"): ?>
+                                <?php if($config['mostrar_preco_login'] == "S" || $config['mostrar_preco_logout'] == "S" || $config['liberado_comprar'] == "S"): ?>
                                     <div class="card-footer">
-                                        <?php if($config['mostrar_preco_site'] == "S"): ?>
+                                        <?php 
+                                        $mostrarPrecoLogin = $config['mostrar_preco_login'] == "S";
+                                        $mostrarPrecoLogout = $config['mostrar_preco_logout'] == "S";
+                                        $usuarioLogado = $_SESSION['user'] == true;
+                                        
+                                        $mostrarPreco = ($mostrarPrecoLogin && $mostrarPrecoLogout) ||
+                                                        ($mostrarPrecoLogin && !$mostrarPrecoLogout && $usuarioLogado) ||
+                                                        ($mostrarPrecoLogout && !$mostrarPrecoLogin && !$usuarioLogado);
+                                        
+                                        if($mostrarPreco): ?>
                                             <div class="price"><h3>R$ <?= htmlspecialchars(number_format($productCard['precos']['valor_final'], 2, ',', '.')) ?></h3></div>
                                         <?php endif; ?>
                                         <?php if($config['liberado_comprar'] == "S"): ?>
