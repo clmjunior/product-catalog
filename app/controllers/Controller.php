@@ -8,8 +8,6 @@ abstract class Controller
 {
     public static function view(string $view, array $data = [])
     {
-        session_start();
-
         $pathViews = dirname(__FILE__, 3).DIRECTORY_SEPARATOR."public".DIRECTORY_SEPARATOR."views";
         $templates = new Engine($pathViews);
 

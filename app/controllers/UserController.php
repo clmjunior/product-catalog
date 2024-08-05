@@ -6,21 +6,21 @@ class UserController extends Controller
 {
     public function indexLogin()
     {
-        // session_start();
+        session_start();
 
         self::view('login');
     }
 
     public function indexRegister()
     {
-        // session_start();
+        session_start();
 
         self::view('register');
     }
     
     public function authenticate()
     {
-        // session_start();
+        session_start();
 
         if(!isset($_POST['remember'])) {
             $_POST['remember'] = "off";
@@ -54,9 +54,12 @@ class UserController extends Controller
         if ($response !== false) {
             if($error == false) {
                 $_SESSION['user'] = true;
-                return self::view('home', ['success_msg' => $response]);
+                 // self::view('home', ['success_msg' => $response]);
+                 $_SESSION['success_msg'] = $response;
+                 header('Location: /');
+                //  self::view('home', ['success_msg' => $response]);
             } else {
-                return self::view('login', ['error_msg' => $response, 'data' => $data]);
+                self::view('login', ['error_msg' => $response, 'data' => $data]);
             }
         } else {
             echo json_encode(array('error' => 'Não foi possível obter a resposta do endpoint.'));
@@ -95,7 +98,7 @@ class UserController extends Controller
 
     public function register()
     {
-        // session_start();
+        session_start();
 
         if(!isset($_POST['receive'])) {
             $_POST['receive'] = "off";
@@ -151,9 +154,11 @@ class UserController extends Controller
 
         if ($response !== false) {
             if($error == false) {
-                return self::view('home', ['success_msg' => $response]);
+                // self::view('home', ['success_msg' => $response]);
+                $_SESSION['success_msg'] = $response;
+                header('Location: /');
             } else {
-                return self::view('register', ['error_msg' => $response, 'data' => $data]);
+                self::view('register', ['error_msg' => $response, 'data' => $data]);
             }
         } else {
             echo json_encode(array('error' => 'Não foi possível obter a resposta do endpoint.'));

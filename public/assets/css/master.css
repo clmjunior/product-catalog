@@ -50,7 +50,7 @@ a {
 
 .message-container {
     position: fixed; /* Mantém o contêiner fixo no canto superior direito da tela */
-    top: 15vh;
+    top: 22vh;
     right: 20px;
     width: fit-content;
     z-index: 1000;
@@ -230,16 +230,18 @@ a {
     display: none;
     position: absolute;
     top: 90%;
-    height: 500px;
     width: 30vw;
     overflow-y: auto;
     left: 0;
     background-color: white;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    z-index: 99999;
     list-style: none;
     padding: 0;
     margin: 0;
+    height: fit-content;
+    max-height: 500px;
+
 }
 
 .dropdown-menu::-webkit-scrollbar {
@@ -343,19 +345,6 @@ a {
     cursor: pointer;
     display: flex;
     align-items: center;
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    background-color: #fff;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    min-width: 160px;
-    z-index: 1;
-    border-radius: 5px;
-    padding: 10px 0;
-    height: fit-content;
 }
 
 .dropdown-item {

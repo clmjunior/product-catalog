@@ -8,6 +8,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
+        session_start();
+
         self::view('categories');
     }
 

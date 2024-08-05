@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // session_start();
+        session_start();
 
         $productsArray = self::proccessHotItems();
 
