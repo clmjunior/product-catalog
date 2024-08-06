@@ -49,17 +49,22 @@ class UserController extends Controller
             $error = true;
         }
 
-        $response = ApiHelper::responseMap($response);
+        $res = ApiHelper::responseMap($response);
 
-        if ($response !== false) {
+        if ($res !== false) {
             if($error == false) {
+                $resArray = explode(";", $res);
+                list($user_data, $msg) = $resArray;
+
                 $_SESSION['user'] = true;
-                 // self::view('home', ['success_msg' => $response]);
-                 $_SESSION['success_msg'] = $response;
+                $_SESSION['user_data'] = json_decode($user_data, true);
+                
+                 // self::view('home', ['success_msg' => $res]);
+                 $_SESSION['success_msg'] = $msg;
                  header('Location: /');
-                //  self::view('home', ['success_msg' => $response]);
+                //  self::view('home', ['success_msg' => $res]);
             } else {
-                self::view('login', ['error_msg' => $response, 'data' => $data]);
+                self::view('login', ['error_msg' => $res, 'data' => $data]);
             }
         } else {
             echo json_encode(array('error' => 'Não foi possível obter a resposta do endpoint.'));

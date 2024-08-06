@@ -48,7 +48,7 @@ $config = ConfigController::getConfig();
                     case "EMAIL":
                         $field = "EMAIL";
                         break;
-                    case "CPF_CNPJ":
+                    case "CNPJ_CPF":
                         $field = "CPF OU CNPJ";
                         break;
                     case "TODOS":

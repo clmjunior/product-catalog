@@ -50,11 +50,11 @@ class HomeController extends Controller
 
             // Convertendo a resposta JSON em um array associativo
             $productsArray = json_decode($response, true);
-
-            $data[$productsArray['filtro']['categorias'][0]['categoria']] = [
-                "items" => $productsArray['itens']
-            ];
-
+            if(isset($productsArray['filtro']['categorias'][0]['categoria'])) {
+                $data[$productsArray['filtro']['categorias'][0]['categoria']] = [
+                    "items" => $productsArray['itens']
+                ];
+            }
         }
 
         return $data;

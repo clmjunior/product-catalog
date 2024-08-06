@@ -19,16 +19,20 @@ class ApiHelper
         $responseArray = json_decode($response, true);
         foreach($responseArray as $key => $value) {
             if($key == "error" || $key == "success") {
+                if($value == "Successfully logged in.") {
+                    $resp['user_data'] = json_encode($responseArray['user_data']);
+
+                } 
                 if(array_key_exists($value, $map)) {
                     $resp[] = $map[$value];
                 }
             }
         }
-
+        
         if(isset($resp)) {
             $response = implode(";",$resp);
         }
-        
+
         return $response;
     }
 }

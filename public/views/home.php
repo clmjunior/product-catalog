@@ -79,7 +79,7 @@ $config = ConfigController::getConfig();
                                         <?php 
                                         $mostrarPrecoLogin = $config['mostrar_preco_login'] == "S";
                                         $mostrarPrecoLogout = $config['mostrar_preco_logout'] == "S";
-                                        $usuarioLogado = $_SESSION['user'] == true;
+                                        $usuarioLogado = isset($_SESSION['user']) && $_SESSION['user'] == true;
                                         
                                         $mostrarPreco = ($mostrarPrecoLogin && $mostrarPrecoLogout) ||
                                                         ($mostrarPrecoLogin && !$mostrarPrecoLogout && $usuarioLogado) ||
