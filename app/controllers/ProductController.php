@@ -22,6 +22,10 @@ class ProductController extends Controller
 
         $url = "https://totalcommerce-dev.ddns.net/api/product/get_product_by_id?sku={$product_id}";
 
+        if($_SESSION['user_data']['cliente_id'] > 0) {
+            $url .= "&client_id={$_SESSION['user_data']['cliente_id']}";
+        }
+
         // Inicializa uma nova sessão cURL
         $ch = curl_init();
 
@@ -82,6 +86,10 @@ class ProductController extends Controller
 
         $url = "https://totalcommerce-dev.ddns.net/api/product/get_products_by_category?category_id={$_GET['categoria']}&limit=24&offset={$pagina}";
 
+        if($_SESSION['user_data']['cliente_id'] > 0) {
+            $url .= "&client_id={$_SESSION['user_data']['cliente_id']}";
+        }
+        
         // Inicializa uma nova sessão cURL
         $ch = curl_init();
 

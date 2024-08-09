@@ -19,6 +19,11 @@
 
 .slick-track {
     padding: 20px 0 !important;
+    width: 100%;    
+}
+
+.slick-list {
+    width: 100%;    
 }
 
 .product-card {

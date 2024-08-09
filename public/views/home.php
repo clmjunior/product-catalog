@@ -75,23 +75,25 @@ $config = ConfigController::getConfig();
                                 <p class="product-description"><small><b><?= $productCard['referencia'] ?></b></small></p>
 
                                 <?php if($config['mostrar_preco_login'] == "S" || $config['mostrar_preco_logout'] == "S" || $config['liberado_comprar'] == "S"): ?>
-                                    <div class="card-footer">
-                                        <?php 
-                                        $mostrarPrecoLogin = $config['mostrar_preco_login'] == "S";
-                                        $mostrarPrecoLogout = $config['mostrar_preco_logout'] == "S";
-                                        $usuarioLogado = isset($_SESSION['user']) && $_SESSION['user'] == true;
-                                        
-                                        $mostrarPreco = ($mostrarPrecoLogin && $mostrarPrecoLogout) ||
-                                                        ($mostrarPrecoLogin && !$mostrarPrecoLogout && $usuarioLogado) ||
-                                                        ($mostrarPrecoLogout && !$mostrarPrecoLogin && !$usuarioLogado);
-                                        
-                                        if($mostrarPreco): ?>
-                                            <div class="price"><h3>R$ <?= htmlspecialchars(number_format($productCard['precos']['valor_final'], 2, ',', '.')) ?></h3></div>
-                                        <?php endif; ?>
-                                        <?php if($config['liberado_comprar'] == "S"): ?>
-                                            <button class="product-button">Comprar</button>
-                                        <?php endif; ?>
-                                    </div>
+
+                                <div class="card-footer">
+                                    <?php 
+                                    $mostrarPrecoLogin = $config['mostrar_preco_login'] == "S";
+                                    $mostrarPrecoLogout = $config['mostrar_preco_logout'] == "S";
+                                    $usuarioLogado = isset($_SESSION['user']) && $_SESSION['user'] == true;
+                                    
+                                    $mostrarPreco = ($mostrarPrecoLogin && $mostrarPrecoLogout) ||
+                                                    ($mostrarPrecoLogin && !$mostrarPrecoLogout && $usuarioLogado) ||
+                                                    ($mostrarPrecoLogout && !$mostrarPrecoLogin && !$usuarioLogado);
+                                    
+                                    if($mostrarPreco): ?>
+                                        <div class="price"><h3>R$ <?= htmlspecialchars(number_format($product['precos']['valor_final'], 2, ',', '.')) ?></h3></div>
+                                    <?php endif; ?>
+                                    
+                                    <?php if($config['liberado_comprar'] == "S"): ?>
+                                        <button class="product-button">Comprar</button>
+                                    <?php endif; ?>
+                                </div>
                                 <?php endif; ?>
                             </div>
                         </a>

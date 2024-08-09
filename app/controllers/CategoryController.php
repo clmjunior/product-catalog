@@ -16,7 +16,11 @@ class CategoryController extends Controller
     public static function getCategories()
     {
         $url = 'https://totalcommerce-dev.ddns.net/api/category/get_categories';
-    
+
+        if($_SESSION['user_data']['cliente_id'] > 0) {
+            $url .= "?client_id={$_SESSION['user_data']['cliente_id']}";
+        }
+        
         // Inicializa uma nova sessão cURL
         $ch = curl_init();
     
@@ -49,6 +53,9 @@ class CategoryController extends Controller
     {
         $url = 'https://totalcommerce-dev.ddns.net/api/category/get_top_categories';
     
+        if($_SESSION['user_data']['cliente_id'] > 0) {
+            $url .= "?client_id={$_SESSION['user_data']['cliente_id']}";
+        }
         // Inicializa uma nova sessão cURL
         $ch = curl_init();
     
@@ -81,6 +88,9 @@ class CategoryController extends Controller
     {
         $url = 'https://totalcommerce-dev.ddns.net/api/category/get_showcase_categories';
     
+        if($_SESSION['user_data']['cliente_id'] > 0) {
+            $url .= "?client_id={$_SESSION['user_data']['cliente_id']}";
+        }
         // Inicializa uma nova sessão cURL
         $ch = curl_init();
     
