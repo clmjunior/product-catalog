@@ -33,8 +33,8 @@ $config = ConfigController::getConfig();
         <img src="../assets/img/home_banner.png" class="banner animate__animated animate__zoomOutSmooth" alt="">
     </div>
     <div class="banner-content">
-        <h1 class="animate__animated  animate__fadeInUp">TÍTULO LIVEUP</h1>
-        <h4 class="animate__animated  animate__fadeInUp animate__delay-1s">SUBTITULO LIVEUP</h4>
+        <h1 class="animate__animated  animate__fadeInUp">ELEVE-SE AO MÁXIMO</h1>
+        <h4 class="animate__animated  animate__fadeInUp animate__delay-1s">FORÇA E SAÚDE EM HARMONIA</h4>
         <button type="submit" class="explore-button animate__animated  animate__fadeInUp animate__delay-2s">EXPLORAR CATEGORIAS</button>
     </div>
 </section>
