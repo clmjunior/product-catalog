@@ -121,7 +121,7 @@ a {
 }
 
 .nav-top-padding {
-    padding-top: 150px;
+    padding-top: 190px;
 }
 
 .banner-container {
@@ -713,8 +713,11 @@ a {
     animation: zoomOutSmooth 0.5s ease-out forwards;
 }
 
-@media (max-width: 768px) {
-   
+@media (max-width: 1700px) {
+    
+    .product-card {
+        min-height: 75vh;
+    }
     
 }
 

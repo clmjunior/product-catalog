@@ -17,6 +17,56 @@ class UserController extends Controller
 
         self::view('register');
     }
+
+    public function indexTickets()
+    {
+        session_start();
+
+        $tickets = self::getUserTickets($_SESSION['user_data']['documento']);
+
+        self::view('tickets', ['tickets' => $tickets]);
+
+    }
+
+    private static function getUserTickets($document)
+    {
+        if(!$document) {
+            return false;
+        }
+
+        $tickets[] = [   
+            'pdf' => "https://eppg.fgv.br/sites/default/files/teste.pdf",
+            'total_amount' => "total_amount",
+            'duplicate_number' => "A12314",
+            'status' => "Aguardando Pagamento",
+            'issuance_date' => "14/05/2024",
+            'due_date' => "14/06/2024",
+            'expires_in' => "30"
+        ];
+        
+        $tickets[] = [   
+            'pdf' => "https://eppg.fgv.br/sites/default/files/teste.pdf",
+            'total_amount' => "total_amount",
+            'duplicate_number' => "A12314",
+            'status' => "Vence Hoje",
+            'issuance_date' => "14/06/2024",
+            'due_date' => "14/06/2024",
+            'expires_in' => "1"
+        ];
+        
+        $tickets[] = [   
+            'pdf' => "https://eppg.fgv.br/sites/default/files/teste.pdf",
+            'total_amount' => "total_amount",
+            'duplicate_number' => "A12314",
+            'status' => "Em Atraso",
+            'issuance_date' => "14/06/2024",
+            'due_date' => "14/05/2024",
+            'expires_in' => "-30"
+        ];
+
+        return $tickets;
+
+    }
     
     public function authenticate()
     {

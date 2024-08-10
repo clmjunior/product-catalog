@@ -87,7 +87,7 @@ $config = ConfigController::getConfig();
                                                     ($mostrarPrecoLogout && !$mostrarPrecoLogin && !$usuarioLogado);
                                     
                                     if($mostrarPreco): ?>
-                                        <div class="price"><h3>R$ <?= htmlspecialchars(number_format($product['precos']['valor_final'], 2, ',', '.')) ?></h3></div>
+                                        <div class="price"><h3>R$ <?= htmlspecialchars(number_format($productCard['precos']['valor_final'], 2, ',', '.')) ?></h3></div>
                                     <?php endif; ?>
                                     
                                     <?php if($config['liberado_comprar'] == "S"): ?>

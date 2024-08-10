@@ -22,7 +22,7 @@ class ProductController extends Controller
 
         $url = "https://totalcommerce-dev.ddns.net/api/product/get_product_by_id?sku={$product_id}";
 
-        if($_SESSION['user_data']['cliente_id'] > 0) {
+        if(isset($_SESSION['user_data']) && $_SESSION['user_data']['cliente_id'] > 0) {
             $url .= "&client_id={$_SESSION['user_data']['cliente_id']}";
         }
 
@@ -74,6 +74,71 @@ class ProductController extends Controller
         return $formatted;
     }
 
+    public function searchItems()
+    {
+
+        session_start();
+
+        if(!isset($_GET['pagina'])) {
+            $pagina = '1';
+        } else {
+            $pagina = $_GET['pagina'];
+        }
+
+        if(!isset($_POST['searchbar'])) {
+            echo "Error";
+        } 
+
+        $url = "https://totalcommerce-dev.ddns.net/api/product/search?term={$_POST['searchbar']}&limit=24&offset={$pagina}";
+
+        if(isset($_SESSION['user_data']) && $_SESSION['user_data']['cliente_id'] > 0) {
+            $url .= "&client_id={$_SESSION['user_data']['cliente_id']}";
+        }
+
+        // Inicializa uma nova sessão cURL
+        $ch = curl_init();
+
+        // Define a URL para a requisição
+        curl_setopt($ch, CURLOPT_URL, $url);
+
+        // Define que a resposta deve ser retornada como string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        // Faz a requisição
+        $response = curl_exec($ch);
+        
+        // Verifica se ocorreu um erro
+        if (curl_errno($ch)) {
+            echo 'Erro no cURL: ' . curl_error($ch);
+            curl_close($ch);
+            return null;
+        }
+
+        // Fecha a sessão cURL
+        curl_close($ch);
+
+        // Convertendo a resposta JSON em um array associativo
+        $productsArray = json_decode($response, true);
+
+        foreach($productsArray['paginacao']['navegacao'] as &$pages) {
+            $pages['url'] = str_replace('http://totalcommerce-dev.ddns.net/api/product/get_products_by_category?p_atual=', "/produtos?categoria={$_GET['categoria']}&pagina=", $pages['url']);
+            $pages['atual'] = $pagina;
+        }
+        $productsArray['paginacao']['url_primeira_pagina'] = "/produtos?categoria={$_GET['categoria']}";
+        $prev = $pagina - 1 <= 0 ? 1 : $pagina - 1;
+        $productsArray['paginacao']['url_pagina_anterior'] = "/produtos?categoria={$_GET['categoria']}&pagina={$prev}";
+
+        $productsArray['paginacao']['url_ultima_pagina'] = "/produtos?categoria={$_GET['categoria']}&pagina={$productsArray['paginacao']['paginas']}";
+
+        $next = $pagina + 1;
+        $nextPageUrl = $next >= $productsArray['paginacao']['paginas'] ? $productsArray['paginacao']['url_ultima_pagina'] : "/produtos?categoria={$_GET['categoria']}&pagina={$next}";
+
+        $productsArray['paginacao']['url_proxima_pagina'] = $nextPageUrl;
+        
+        
+        self::view('products', ['products' => $productsArray]);
+    }
+
     public function showProducts()
     {
         session_start();
@@ -86,10 +151,10 @@ class ProductController extends Controller
 
         $url = "https://totalcommerce-dev.ddns.net/api/product/get_products_by_category?category_id={$_GET['categoria']}&limit=24&offset={$pagina}";
 
-        if($_SESSION['user_data']['cliente_id'] > 0) {
+        if(isset($_SESSION['user_data']) && $_SESSION['user_data']['cliente_id'] > 0) {
             $url .= "&client_id={$_SESSION['user_data']['cliente_id']}";
         }
-        
+
         // Inicializa uma nova sessão cURL
         $ch = curl_init();
 

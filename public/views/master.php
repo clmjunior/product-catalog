@@ -37,10 +37,12 @@ $config = ConfigController::getConfig();
             </a>
             
             <div class="right-container">
-                <div class="search-input">
-                    <input type="text" name="searchbar" class="searchbar" />
-                    <ion-icon class="search-icon" name="search"></ion-icon>
-                </div>
+                <form action="/search-items" method="post">
+                    <div class="search-input">
+                        <input type="text" name="searchbar" class="searchbar" />
+                        <ion-icon class="search-icon" name="search"></ion-icon>
+                    </div>
+                </form>
                 <div class="separator"></div>
 
                 <?php if(!isset($_SESSION['user'])): ?>

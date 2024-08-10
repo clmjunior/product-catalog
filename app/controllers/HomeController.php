@@ -26,7 +26,7 @@ class HomeController extends Controller
             
             $url = "https://totalcommerce-dev.ddns.net/api/product/get_home_products?limit=10&category_id={$showcaseCategory['id']}&order=frequencia_venda";
 
-            if($_SESSION['user_data']['cliente_id'] > 0) {
+            if(isset($_SESSION['user_data']) && $_SESSION['user_data']['cliente_id'] > 0) {
                 $url .= "&client_id={$_SESSION['user_data']['cliente_id']}";
             }
             

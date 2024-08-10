@@ -44,6 +44,7 @@ class Router
                 '/login' => fn() => self::load('UserController', 'indexLogin'),
                 '/logout' => fn() => self::load('UserController', 'logout'),
                 '/cadastro' => fn() => self::load('UserController', 'indexRegister'),
+                '/boletos' => fn() => self::load('UserController', 'indexTickets'),
             ],
             
             'POST' => [
@@ -51,6 +52,7 @@ class Router
                 '/check-user' => fn() => self::load('UserController', 'check'),
                 '/auth' => fn() => self::load('UserController', 'authenticate'),
                 '/register' => fn() => self::load('UserController', 'register'),
+                '/search-items' => fn() => self::load('ProductController', 'searchItems'),
             ],
         ];
     }
