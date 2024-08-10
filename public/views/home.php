@@ -35,7 +35,7 @@ $config = ConfigController::getConfig();
     <div class="banner-content">
         <h1 class="animate__animated  animate__fadeInUp">ELEVE-SE AO MÁXIMO</h1>
         <h4 class="animate__animated  animate__fadeInUp animate__delay-1s">FORÇA E SAÚDE EM HARMONIA</h4>
-        <button type="submit" class="explore-button animate__animated  animate__fadeInUp animate__delay-2s">EXPLORAR CATEGORIAS</button>
+        <button onclick="rollToProductsSection();" type="button" class="explore-button animate__animated  animate__fadeInUp animate__delay-2s">EXPLORAR PRODUTOS</button>
     </div>
 </section>
 <section class="about-container">
@@ -52,7 +52,7 @@ $config = ConfigController::getConfig();
         <p>Uma empresa jovem que através de constantes pesquisas nos mercados externo e interno vem trazendo produtos e oportunidades diferenciadas para o comércio brasileiro.</p>
     </div>
 </section>
-<section class="hot-products-container">
+<section id="products-section" class="hot-products-container">
     <div>
         <h1 class="text-center">PRODUTOS</h1>
         

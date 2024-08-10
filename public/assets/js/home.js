@@ -23,3 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+function rollToProductsSection() {
+    const productsSection = document.getElementById('products-section');
+
+    if (productsSection) {
+        productsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+}
