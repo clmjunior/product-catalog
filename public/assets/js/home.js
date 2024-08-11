@@ -4,6 +4,19 @@ $(document).ready(function(){
       slidesToShow: 4,
       slidesToScroll: 4,
       dots: false,
+      responsive: [{
+            breakpoint: 769,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+        }
+        }, {
+            breakpoint: 420,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+    }
+        }]
   });
 });
 

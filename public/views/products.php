@@ -16,7 +16,7 @@ $config = Controller::getConfig();
                 <img src="../assets/img/liveup-original-logo.png" alt="Marca d'água" class="watermark">
             </div>
             <div class="product-info">
-                <p class="product-name"><?= htmlspecialchars($product['titulo_produto']) ?></p>
+                <p class="product-name" title="<?= htmlspecialchars($productCard['titulo_produto']) ?>"><?= mb_strimwidth(htmlspecialchars($productCard['titulo_produto']), 0, 80, '...') ?></p>
                 <p class="product-description"><small><b><?= $product['referencia'] ?></b></small></p>
                 <?php if($config['mostrar_preco_login'] == "S" || $config['mostrar_preco_logout'] == "S" || $config['liberado_comprar'] == "S"): ?>
 

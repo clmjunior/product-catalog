@@ -181,7 +181,7 @@
     }
 }
 
-@media (max-width: 429px) {
+@media (max-width: 500px) {
     
     .category {
         flex: 0 0 100%;

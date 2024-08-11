@@ -52,7 +52,7 @@ $config = ConfigController::getConfig();
         <p>Uma empresa jovem que através de constantes pesquisas nos mercados externo e interno vem trazendo produtos e oportunidades diferenciadas para o comércio brasileiro.</p>
     </div>
 </section>
-<section id="products-section" class="hot-products-container">
+<section id="products-section" class="products-section">
     <div>
         <h1 class="text-center">PRODUTOS</h1>
         
@@ -71,7 +71,7 @@ $config = ConfigController::getConfig();
                                 <img src="../assets/img/liveup-original-logo.png" alt="Marca d'água" class="watermark">
                             </div>
                             <div class="product-info">
-                                <p class="product-name"><?= htmlspecialchars($productCard['titulo_produto']) ?></p>
+                                <p class="product-name" title="<?= htmlspecialchars($productCard['titulo_produto']) ?>"><?= mb_strimwidth(htmlspecialchars($productCard['titulo_produto']), 0, 80, '...') ?></p>
                                 <p class="product-description"><small><b><?= $productCard['referencia'] ?></b></small></p>
 
                                 <?php if($config['mostrar_preco_login'] == "S" || $config['mostrar_preco_logout'] == "S" || $config['liberado_comprar'] == "S"): ?>
