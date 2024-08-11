@@ -19,13 +19,7 @@ $config = ConfigController::getConfig();
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <link rel="stylesheet" href="../assets/css/master.css">
     <link rel="stylesheet" href="../assets/css/<?=$this->e($name)?>.css">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script type="text/javascript" src="../assets/js/master.js"></script>
-    <script type="text/javascript" src="../assets/js/<?=$this->e($name)?>.js"></script>
+    
     <link rel="icon" type="image/x-icon" href="<?=$config['favicon_url']?>">
     <title><?=$this->e($title)?></title>
 </head>
@@ -58,14 +52,62 @@ $config = ConfigController::getConfig();
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="/boletos">Meus Boletos</a>
-                                <a class="dropdown-item text-danger" href="/logout">Sair</a>
+                                <a class="dropdown-item text-danger" href="/logout"><ion-icon name="log-out"></ion-icon> Sair</a>
                             </div>
                         </div>
                     <?php endif; ?>
                     
 
             </div>
+            
             <ion-icon class="navbar-menu" name="menu"></ion-icon>
+
+            <div class="sidebar" id="sidebar">
+                <ion-icon class="close-sidebar" name="chevron-forward"></ion-icon>
+
+
+                <style>
+                    
+                </style>
+                <div class="side-categories">
+                    <ul class="dropdown-menu-side">
+                        <?php foreach($categoriesArray['nivel_abaixo'] as $category): ?>
+                            <li class="parent-category">
+                                <a href="javascript:void(0);" class="dropdown-toggle"><ion-icon class="caret-forward" name="caret-forward"></ion-icon><?= htmlspecialchars($category['categoria']) ?></a>
+                                <ul class="dropdown-menu-side">
+                                    <?php foreach($category['nivel_abaixo'] as $subCategory): ?>
+                                        <li class="side-subcategory">
+                                            <a href="/produtos?categoria=<?= $subCategory['id'] ?>"><?= htmlspecialchars($subCategory['categoria']) ?></a>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+
+                <script>
+                    document.querySelectorAll('.side-categories .dropdown-toggle').forEach(function(toggle) {
+                        toggle.addEventListener('click', function() {
+                            var parentCategory = this.parentElement;
+                            parentCategory.classList.toggle('open');
+                        });
+                    });
+                </script>
+
+
+
+
+                <?php if(isset($_SESSION['user'])): ?>
+                    <div class="side-account">
+                        <a class="dropdown-item" href="/boletos">Meus Boletos</a>
+                        <a class="dropdown-item text-danger" href="/logout"><ion-icon name="log-out"></ion-icon> Sair</a>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+            <div class="overlay" id="overlay"></div>
+
         </div>
         <div class="nav-bot">
             <div class="all-center more-categories">
@@ -131,6 +173,12 @@ $config = ConfigController::getConfig();
             </div>
         </div>
     </footer>
-    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript" src="../assets/js/master.js"></script>
+    <script type="text/javascript" src="../assets/js/<?=$this->e($name)?>.js"></script>
 </body>
 </html>

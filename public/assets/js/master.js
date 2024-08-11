@@ -52,5 +52,22 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     showMessage();
-
 });
+ 
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
+const navbarMenu = document.querySelector('.navbar-menu');
+const closeSidebar = document.querySelector('.close-sidebar');
+
+function showSidebar() {
+    sidebar.classList.add('active');
+    overlay.classList.add('active');
+}
+
+function hideSidebar() {
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+}
+
+navbarMenu.addEventListener('click', showSidebar);
+closeSidebar.addEventListener('click', hideSidebar);

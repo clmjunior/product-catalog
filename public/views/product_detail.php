@@ -12,7 +12,7 @@ $config = Controller::getConfig();
         <div class="product-detail">
             
 
-            <div style="width: 40%;">
+            <div class="img-prod-container">
                 <div id="page">
                     <div class="row">
                         <div class="column small-11 small-centered">
@@ -37,7 +37,7 @@ $config = Controller::getConfig();
                     <?php 
                     $mostrarPrecoLogin = $config['mostrar_preco_login'] == "S";
                     $mostrarPrecoLogout = $config['mostrar_preco_logout'] == "S";
-                    $usuarioLogado = $_SESSION['user'] == true;
+                    $usuarioLogado = isset($_SESSION['user']) && $_SESSION['user'] == true;
                     
                     $mostrarPreco = ($mostrarPrecoLogin && $mostrarPrecoLogout) ||
                                     ($mostrarPrecoLogin && !$mostrarPrecoLogout && $usuarioLogado) ||
@@ -50,20 +50,22 @@ $config = Controller::getConfig();
                 <?php endif; ?>
 
                 <p><?= htmlspecialchars($product['descricao_produto']) ?></p>
+
                 
+                <?php 
+                $mostrarEstoqueLogin = $config['mostrar_estoque_login'] == "S";
+                $mostrarEstoqueLogout = $config['mostrar_estoque_logout'] == "S";
+                $usuarioLogado = isset($_SESSION['user']) && $_SESSION['user'] == true;
+                
+                $mostrarEstoque = ($mostrarEstoqueLogin && $mostrarEstoqueLogout) ||
+                                ($mostrarEstoqueLogin && !$mostrarEstoqueLogout && $usuarioLogado) ||
+                                ($mostrarEstoqueLogout && !$mostrarEstoqueLogin && !$usuarioLogado);
+
+                if($mostrarEstoque): ?>
                 <div class="info-card">
                     <div class="top">
 
-                        <?php 
-                        $mostrarEstoqueLogin = $config['mostrar_estoque_login'] == "S";
-                        $mostrarEstoqueLogout = $config['mostrar_estoque_logout'] == "S";
-                        $usuarioLogado = $_SESSION['user'] == true;
-                        
-                        $mostrarEstoque = ($mostrarEstoqueLogin && $mostrarEstoqueLogout) ||
-                                        ($mostrarEstoqueLogin && !$mostrarEstoqueLogout && $usuarioLogado) ||
-                                        ($mostrarEstoqueLogout && !$mostrarEstoqueLogin && !$usuarioLogado);
-                        
-                        if($mostrarEstoque): ?>
+                        <?php if($mostrarEstoque): ?>
                             <small><ion-icon class="stock-check" name="checkbox"></ion-icon> <?= htmlspecialchars($product['quantidade_estoque']) ?> Em estoque</small>
                         <?php endif; ?>
 
@@ -87,6 +89,7 @@ $config = Controller::getConfig();
 
                     </div>
                 </div>
+                <?php endif; ?>
             </div>
 
         </div>
