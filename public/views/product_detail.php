@@ -114,7 +114,7 @@ $config = Controller::getConfig();
                                 <td><?= htmlspecialchars($value) ?></td>
                             </tr>
                             <?php else: ?>
-                                <tr>
+                            <tr>
                                 <td><?= htmlspecialchars($spec) ?></td>
                             </tr>
                             <?php endif; ?>
