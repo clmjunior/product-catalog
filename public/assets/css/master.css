@@ -579,11 +579,11 @@ a {
 
 .footer {
     width: 100%;
-    height: 60vh;
+    height: 40vh;
     padding: 40px 100px 40px 100px;
     background-color: transparent;
     z-index: 2;
-    border-top: 1px solid #E74101;
+    border-top: 1px solid #e741013d;
 }
 
 .company-info {
@@ -603,12 +603,13 @@ a {
 
 .footer-company {
     color: #E74101;
-    opacity: 0.5;
+    opacity: 0.7;
     margin-bottom: 20px;
 }
 
 .info-items {
     list-style: none;
+    font-size: 0.9em;
 }
 
 .info-item {
@@ -878,6 +879,16 @@ a {
         display: block;
     }
 
+    .footer-img {
+        margin-left: 50%;
+        transform: translateX(-50%);
+        width: 50%;
+    }
+
+    .company-info {
+        font-size: 0.7em;
+    }
+
     .nav-top-padding {
         padding-top: 100px;
     }
@@ -938,7 +949,7 @@ a {
     }
 
     .footer {
-        padding: 60px 20px;
+        padding: 30px 20px;
     }
     
 }
