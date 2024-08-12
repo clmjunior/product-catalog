@@ -45,11 +45,11 @@ $config = ConfigController::getConfig();
     </div>
     <div class="card">
         <h3>O Que Fazemos</h3>
-        <p>Uma empresa jovem que através de constantes pesquisas nos mercados externo e interno vem trazendo produtos e oportunidades diferenciadas para o comércio brasileiro.</p>
+        <p><?= $config['texto_paginas']['como_comprar'] ?></p>
     </div>
     <div class="card">
         <h3>Missão e Valores</h3>
-        <p>Uma empresa jovem que através de constantes pesquisas nos mercados externo e interno vem trazendo produtos e oportunidades diferenciadas para o comércio brasileiro.</p>
+        <p><?= $config['texto_paginas']['politica_troca'] ?></p>
     </div>
 </section>
 <section id="products-section" class="products-section">
