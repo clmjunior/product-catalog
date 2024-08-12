@@ -35,7 +35,7 @@ $config = Controller::getConfig();
                     <?php endif; ?>
                     
                     <?php if($config['liberado_comprar'] == "S"): ?>
-                        <button class="product-button">Comprar</button>
+                        <!-- <button class="product-button">Comprar</button> -->
                     <?php endif; ?>
                 </div>
                 <?php endif; ?>
