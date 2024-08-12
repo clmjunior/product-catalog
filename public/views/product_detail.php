@@ -74,15 +74,15 @@ $config = Controller::getConfig();
 
 
                         <?php if($config['liberado_comprar'] == "S"): ?>
-                            <form class="add-to-cart" action="add_to_cart.php" method="post">
-                                <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['sku']) ?>">
+                            <!-- <form class="add-to-cart" action="add_to_cart.php" method="post">
+                                <input type="hidden" name="product_id" value=" htmlspecialchars($product['sku']) ">
                                 <div class="quantity-input">
                                     <button class="minus-button" type="button" onclick="updateQuantity(-1)">-</button>
-                                    <input type="number" name="quantity" id="quantity" value="1" min="1" max="<?= htmlspecialchars($product['quantidade_estoque']) ?>">
+                                    <input type="number" name="quantity" id="quantity" value="1" min="1" max=" htmlspecialchars($product['quantidade_estoque']) ">
                                     <button class="plus-button" type="button" onclick="updateQuantity(1)">+</button>
                                 </div>
                                 <button class="add-button" type="submit">Adicionar ao Carrinho</button>
-                            </form>
+                            </form> -->
                         <?php endif; ?>
                     </div>
 

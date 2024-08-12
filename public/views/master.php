@@ -162,7 +162,7 @@ $config = ConfigController::getConfig();
                     </ul>
                 </div>
             </div>
-            <div class="contact-section">
+            <!-- <div class="contact-section">
                 <form action="" class="company-contact">
                     <h4>Fale Conosco</h4>
                     <input placeholder="Nome" class="contact-input" type="text">
@@ -171,7 +171,7 @@ $config = ConfigController::getConfig();
                     <textarea placeholder="Mensagem" class="message-input"></textarea>
                     <button class="contact-submit">Enviar</button>
                 </form>
-            </div>
+            </div> -->
         </div>
     </footer>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
