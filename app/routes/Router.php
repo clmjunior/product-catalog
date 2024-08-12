@@ -38,21 +38,19 @@ class Router
         return [
             'GET' => [
                 '/' => fn() => self::load('HomeController', 'index'),
-                '/categorias' => fn() => self::load('CategoryController', 'index'),
                 '/produtos' => fn() => self::load('ProductController', 'showProducts'),
                 '/produto' => fn() => self::load('ProductController', 'showProductDetail'),
                 '/login' => fn() => self::load('UserController', 'indexLogin'),
                 '/logout' => fn() => self::load('UserController', 'logout'),
                 '/cadastro' => fn() => self::load('UserController', 'indexRegister'),
                 '/boletos' => fn() => self::load('UserController', 'indexTickets'),
+                '/pesquisar' => fn() => self::load('ProductController', 'searchItems'),
             ],
             
             'POST' => [
-                // '/produtos' => fn() => self::load('ProductController', 'proccessCategoryItems'),
                 '/check-user' => fn() => self::load('UserController', 'check'),
                 '/auth' => fn() => self::load('UserController', 'authenticate'),
                 '/register' => fn() => self::load('UserController', 'register'),
-                '/search-items' => fn() => self::load('ProductController', 'searchItems'),
             ],
         ];
     }

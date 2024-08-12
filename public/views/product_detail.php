@@ -28,6 +28,9 @@ $config = Controller::getConfig();
                             </div>
                         </div>
                     </div>
+                    <div class="download-images">
+                        <a href="https://totalcommerce-dev.ddns.net/api/product/download_product_images?sku=<?= htmlspecialchars($product['sku']) ?>" class="download-link">Baixar Imagens do Produto</a>
+                    </div>
                 </div>
             </div>
 

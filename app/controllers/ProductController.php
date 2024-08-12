@@ -85,11 +85,11 @@ class ProductController extends Controller
             $pagina = $_GET['pagina'];
         }
 
-        if(!isset($_POST['searchbar'])) {
+        if(!isset($_GET['search'])) {
             echo "Error";
         } 
 
-        $url = "https://totalcommerce-dev.ddns.net/api/product/search?term={$_POST['searchbar']}&limit=24&offset={$pagina}";
+        $url = "https://totalcommerce-dev.ddns.net/api/product/search?term={$_GET['search']}&limit=24&offset={$pagina}";
 
         if(isset($_SESSION['user_data']) && $_SESSION['user_data']['cliente_id'] > 0) {
             $url .= "&client_id={$_SESSION['user_data']['cliente_id']}";
@@ -120,18 +120,21 @@ class ProductController extends Controller
         // Convertendo a resposta JSON em um array associativo
         $productsArray = json_decode($response, true);
 
+
+
         foreach($productsArray['paginacao']['navegacao'] as &$pages) {
-            $pages['url'] = str_replace('http://totalcommerce-dev.ddns.net/api/product/get_products_by_category?p_atual=', "/produtos?categoria={$_GET['categoria']}&pagina=", $pages['url']);
+            $pages['url'] = str_replace('http://totalcommerce-dev.ddns.net/api/product/search?p_atual=', "/pesquisar?search={$_GET['search']}&pagina=", $pages['url']);
             $pages['atual'] = $pagina;
         }
-        $productsArray['paginacao']['url_primeira_pagina'] = "/produtos?categoria={$_GET['categoria']}";
+        
+        $productsArray['paginacao']['url_primeira_pagina'] = "/pesquisar?search={$_GET['search']}";
         $prev = $pagina - 1 <= 0 ? 1 : $pagina - 1;
-        $productsArray['paginacao']['url_pagina_anterior'] = "/produtos?categoria={$_GET['categoria']}&pagina={$prev}";
+        $productsArray['paginacao']['url_pagina_anterior'] = "/pesquisar?search={$_GET['search']}&pagina={$prev}";
 
-        $productsArray['paginacao']['url_ultima_pagina'] = "/produtos?categoria={$_GET['categoria']}&pagina={$productsArray['paginacao']['paginas']}";
+        $productsArray['paginacao']['url_ultima_pagina'] = "/pesquisar?search={$_GET['search']}&pagina={$productsArray['paginacao']['paginas']}";
 
         $next = $pagina + 1;
-        $nextPageUrl = $next >= $productsArray['paginacao']['paginas'] ? $productsArray['paginacao']['url_ultima_pagina'] : "/produtos?categoria={$_GET['categoria']}&pagina={$next}";
+        $nextPageUrl = $next >= $productsArray['paginacao']['paginas'] ? $productsArray['paginacao']['url_ultima_pagina'] : "/produtos?search={$_GET['search']}&pagina={$next}";
 
         $productsArray['paginacao']['url_proxima_pagina'] = $nextPageUrl;
         

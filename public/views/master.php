@@ -31,9 +31,9 @@ $config = ConfigController::getConfig();
             </a>
             
             <div class="right-container">
-                <form action="/search-items" method="post">
+                <form action="/pesquisar" method="get">
                     <div class="search-input">
-                        <input type="text" name="searchbar" class="searchbar" />
+                        <input type="text" name="search" class="searchbar" />
                         <ion-icon class="search-icon" name="search"></ion-icon>
                     </div>
                 </form>
@@ -56,19 +56,20 @@ $config = ConfigController::getConfig();
                             </div>
                         </div>
                     <?php endif; ?>
-                    
-
             </div>
             
             <ion-icon class="navbar-menu" name="menu"></ion-icon>
 
             <div class="sidebar" id="sidebar">
                 <ion-icon class="close-sidebar" name="chevron-forward"></ion-icon>
-
-
-                <style>
-                    
-                </style>
+                <div class="side-search">
+                    <form action="/pesquisar" method="get">
+                        <div class="search-input">
+                            <input type="text" name="search" class="searchbar" />
+                            <ion-icon class="search-icon" name="search"></ion-icon>
+                        </div>
+                    </form>
+                </div>
                 <div class="side-categories">
                     <ul class="dropdown-menu-side">
                         <?php foreach($categoriesArray['nivel_abaixo'] as $category): ?>

@@ -1,6 +1,5 @@
 <?php 
 /** @var \League\Plates\Template\Template $this */
-session_start();
 
 if (!isset($_SESSION['user']) || $_SESSION['user_data']['cliente_id'] <= 0) {
     
