@@ -40,19 +40,20 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    function showMessage() {
-        const messageBoxes = document.querySelectorAll('.message-box');
-
-        messageBoxes.forEach(function(messageBox) {
-            messageBox.classList.add('show'); 
-            setTimeout(function() {
-                messageBox.classList.remove('show');
-            }, 5000);
-        });
-    }
-
-    showMessage();
 });
+
+function showMessage() {
+    const messageBoxes = document.querySelectorAll('.message-box');
+
+    messageBoxes.forEach(function(messageBox) {
+        messageBox.classList.add('show'); 
+        setTimeout(function() {
+            messageBox.classList.remove('show');
+        }, 5000);
+    });
+}
+
+showMessage();
  
 const sidebar = document.getElementById('sidebar');
 const overlay = document.getElementById('overlay');

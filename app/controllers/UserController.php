@@ -176,6 +176,7 @@ class UserController extends Controller
             ]           
         ];
 
+
         $document = preg_replace('/\D/', '', $_POST['document']); 
         if(strlen($document) == 14) {
             $data['cnpj'] = preg_replace('/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/', '$1.$2.$3/$4-$5', $document);  
@@ -183,6 +184,7 @@ class UserController extends Controller
         } else if(strlen($document) == 11) {
             $data['cpf'] = preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $document);  
             $data['customer_type'] = "F";  
+            $data['trade_name'] = $data['customer_name'];  
         } else {
             echo "Parâmetro incorreto";
         }
@@ -206,7 +208,6 @@ class UserController extends Controller
         }
 
         $response = ApiHelper::responseMap($response);
-
         if ($response !== false) {
             if($error == false) {
                 // self::view('home', ['success_msg' => $response]);
