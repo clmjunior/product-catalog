@@ -75,3 +75,12 @@
     }
     
 }
+
+@media (max-width: 415px) {
+    
+    .products-section {
+        padding: 30px 10px;
+        gap: 10px;
+    }
+    
+}
