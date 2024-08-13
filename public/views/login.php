@@ -33,7 +33,7 @@ $config = ConfigController::getConfig();
     <div class="container">
         <div class="login-form">
             <h2>Login</h2>
-            <div class="google-auth">
+            <!-- <div class="google-auth">
                 <p>Entre com o Google</p>
                 <ion-icon class="logo-google" name="logo-google"></ion-icon>
             </div>
@@ -41,7 +41,7 @@ $config = ConfigController::getConfig();
                 <div class="separator"></div>
                 <p>OU</p>
                 <div class="separator"></div>
-            </div>
+            </div> -->
             <form action="/auth" method="post">
                 <?php
                 switch($config['metodo_login']) {
