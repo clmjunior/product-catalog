@@ -172,6 +172,10 @@ $config = ConfigController::getConfig();
                     <button class="contact-submit">Enviar</button>
                 </form>
             </div> -->
+            <div class="privacy-terms">
+                <a href="/privacidade" target="_blank"><b><small>Política de Privacidade</small></b></a>
+                <p><small>© Copyright 2024 – PURYS IMPORTADORA E EXPORTADORA LTDA</small></p>
+            </div>
         </div>
     </footer>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

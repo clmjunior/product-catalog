@@ -45,6 +45,7 @@ class Router
                 '/cadastro' => fn() => self::load('UserController', 'indexRegister'),
                 '/boletos' => fn() => self::load('UserController', 'indexTickets'),
                 '/pesquisar' => fn() => self::load('ProductController', 'searchItems'),
+                '/privacidade' => fn() => self::load('UserController', 'indexPrivacy'),
             ],
             
             'POST' => [

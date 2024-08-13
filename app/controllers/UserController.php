@@ -4,6 +4,13 @@ namespace app\controllers;
 use app\helpers\ApiHelper;
 class UserController extends Controller
 {
+    public function indexPrivacy()
+    {
+        session_start();
+
+        self::view('privacy');
+    }
+
     public function indexLogin()
     {
         session_start();
