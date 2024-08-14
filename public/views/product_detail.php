@@ -88,11 +88,11 @@ $hostUrl = ApiHelper::getApiHost();
                         <?php endif; ?>
                     </div>
 
-                    <div class="bottom">
-                        <hr class="divisor"/>
+                    <!-- <div class="bottom"> -->
+                        <!-- <hr class="divisor"/> -->
                         <!-- <small><b>CATEGORIAS:</b> <?= htmlspecialchars($product['categories']) ?></small> -->
 
-                    </div>
+                    <!-- </div> -->
                 </div>
                 <?php endif; ?>
             </div>
