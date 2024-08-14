@@ -219,7 +219,7 @@ class UserController extends Controller
             if($error == false) {
                 // self::view('home', ['success_msg' => $response]);
                 $_SESSION['success_msg'] = $response;
-                header('Location: /');
+                header('Location: /login');
             } else {
                 self::view('register', ['error_msg' => $response, 'data' => $data]);
             }

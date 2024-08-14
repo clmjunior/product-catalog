@@ -21,10 +21,14 @@ $config = ConfigController::getConfig();
         } 
     }
 
-    if (isset($success_msg) && !empty($success_msg)) {
+    if (isset($success_msg) && !empty($success_msg) || isset($_SESSION['success_msg'])) {
+        if(isset($_SESSION['success_msg'])) {
+            $success_msg = $_SESSION['success_msg'];
+        }
         foreach(explode(";", $success_msg) as $msg) {
             echo "<div class='message-box bg-success'>{$msg}</div>";
         } 
+        unset($_SESSION['success_msg']);
     }
 ?>
 
