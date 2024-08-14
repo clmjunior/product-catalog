@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\controllers\Controller;
 use app\controllers\CategoryController;
+use app\helpers\ApiHelper;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,7 @@ class HomeController extends Controller
         
         foreach($showcaseCategories as $showcaseCategory) {
             
-            $url = "https://totalcommerce-dev.ddns.net/api/product/get_home_products?limit=10&category_id={$showcaseCategory['id']}&order=frequencia_venda";
+            $url = ApiHelper::getApiHost()."/product/get_home_products?limit=10&category_id={$showcaseCategory['id']}&order=frequencia_venda";
 
             if(isset($_SESSION['user_data']) && $_SESSION['user_data']['cliente_id'] > 0) {
                 $url .= "&client_id={$_SESSION['user_data']['cliente_id']}";

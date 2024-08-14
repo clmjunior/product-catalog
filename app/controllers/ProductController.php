@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\controllers\Controller;
+use app\helpers\ApiHelper;
 
 class ProductController extends Controller
 {
@@ -20,7 +21,7 @@ class ProductController extends Controller
         $product_id = $_GET['id'];
         $product_id;
 
-        $url = "https://totalcommerce-dev.ddns.net/api/product/get_product_by_id?sku={$product_id}";
+        $url = ApiHelper::getApiHost()."/product/get_product_by_id?sku={$product_id}";
 
         if(isset($_SESSION['user_data']) && $_SESSION['user_data']['cliente_id'] > 0) {
             $url .= "&client_id={$_SESSION['user_data']['cliente_id']}";
@@ -89,7 +90,7 @@ class ProductController extends Controller
             echo "Error";
         } 
 
-        $url = "https://totalcommerce-dev.ddns.net/api/product/search?term={$_GET['search']}&limit=24&offset={$pagina}";
+        $url = ApiHelper::getApiHost()."/product/search?term={$_GET['search']}&limit=24&offset={$pagina}";
 
         if(isset($_SESSION['user_data']) && $_SESSION['user_data']['cliente_id'] > 0) {
             $url .= "&client_id={$_SESSION['user_data']['cliente_id']}";
@@ -123,7 +124,7 @@ class ProductController extends Controller
 
 
         foreach($productsArray['paginacao']['navegacao'] as &$pages) {
-            $pages['url'] = str_replace('http://totalcommerce-dev.ddns.net/api/product/search?p_atual=', "/pesquisar?search={$_GET['search']}&pagina=", $pages['url']);
+            $pages['url'] = str_replace(ApiHelper::getApiHost().'/product/search?p_atual=', "/pesquisar?search={$_GET['search']}&pagina=", $pages['url']);
             $pages['atual'] = $pagina;
         }
         
@@ -152,7 +153,7 @@ class ProductController extends Controller
             $pagina = $_GET['pagina'];
         }
 
-        $url = "https://totalcommerce-dev.ddns.net/api/product/get_products_by_category?category_id={$_GET['categoria']}&limit=24&offset={$pagina}";
+        $url = ApiHelper::getApiHost()."/product/get_products_by_category?category_id={$_GET['categoria']}&limit=24&offset={$pagina}";
 
         if(isset($_SESSION['user_data']) && $_SESSION['user_data']['cliente_id'] > 0) {
             $url .= "&client_id={$_SESSION['user_data']['cliente_id']}";
@@ -184,7 +185,7 @@ class ProductController extends Controller
         $productsArray = json_decode($response, true);
 
         foreach($productsArray['paginacao']['navegacao'] as &$pages) {
-            $pages['url'] = str_replace('http://totalcommerce-dev.ddns.net/api/product/get_products_by_category?p_atual=', "/produtos?categoria={$_GET['categoria']}&pagina=", $pages['url']);
+            $pages['url'] = str_replace(ApiHelper::getApiHost().'/product/get_products_by_category?p_atual=', "/produtos?categoria={$_GET['categoria']}&pagina=", $pages['url']);
             $pages['atual'] = $pagina;
         }
         $productsArray['paginacao']['url_primeira_pagina'] = "/produtos?categoria={$_GET['categoria']}";

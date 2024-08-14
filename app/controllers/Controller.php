@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use League\Plates\Engine;
+use app\helpers\ApiHelper;
 
 abstract class Controller
 {
@@ -16,7 +17,7 @@ abstract class Controller
 
     public static function getConfig() {
 
-        $url = "https://totalcommerce-dev.ddns.net/api/config/get_config";
+        $url = ApiHelper::getApiHost()."/config/get_config";
 
         // Inicializa uma nova sessão cURL
         $ch = curl_init();

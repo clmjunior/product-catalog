@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\controllers\Controller;
+use app\helpers\ApiHelper;
 
 class CategoryController extends Controller
 {
@@ -15,7 +16,7 @@ class CategoryController extends Controller
 
     public static function getCategories()
     {
-        $url = 'https://totalcommerce-dev.ddns.net/api/category/get_categories';
+        $url = ApiHelper::getApiHost().'/category/get_categories';
 
         if(isset($_SESSION['user_data']) && $_SESSION['user_data']['cliente_id'] > 0) {
             $url .= "?client_id={$_SESSION['user_data']['cliente_id']}";
@@ -51,7 +52,7 @@ class CategoryController extends Controller
 
     public static function getTopCategories()
     {
-        $url = 'https://totalcommerce-dev.ddns.net/api/category/get_top_categories';
+        $url = ApiHelper::getApiHost().'/category/get_top_categories';
     
         if(isset($_SESSION['user_data']) && $_SESSION['user_data']['cliente_id'] > 0) {
             $url .= "?client_id={$_SESSION['user_data']['cliente_id']}";
@@ -86,7 +87,7 @@ class CategoryController extends Controller
 
     public static function getShowcaseCategories()
     {
-        $url = 'https://totalcommerce-dev.ddns.net/api/category/get_showcase_categories';
+        $url = ApiHelper::getApiHost().'/category/get_showcase_categories';
     
         if(isset($_SESSION['user_data']) && $_SESSION['user_data']['cliente_id'] > 0) {
             $url .= "?client_id={$_SESSION['user_data']['cliente_id']}";

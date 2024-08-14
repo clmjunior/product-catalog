@@ -89,7 +89,7 @@ class UserController extends Controller
             "remember" => $_POST['remember'],
         ];
 
-        $url = 'https://totalcommerce-dev.ddns.net/api/user/authenticate_user';
+        $url = ApiHelper::getApiHost().'/user/authenticate_user';
         
         $options = array(
             'http' => array(
@@ -137,7 +137,7 @@ class UserController extends Controller
         if (isset($input['document'])) {
             $document = $input['document'];
 
-            $url = 'https://totalcommerce-dev.ddns.net/api/user/check_user_registration';
+            $url = ApiHelper::getApiHost().'/user/check_user_registration';
             
             $options = array(
                 'http' => array(
@@ -197,7 +197,7 @@ class UserController extends Controller
         }
 
 
-        $url = 'https://totalcommerce-dev.ddns.net/api/user/register_user';
+        $url = ApiHelper::getApiHost().'/user/register_user';
         
         $options = array(
             'http' => array(

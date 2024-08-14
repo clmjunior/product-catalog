@@ -2,8 +2,20 @@
 
 namespace app\helpers;
 
+use Dotenv\Dotenv;
+
+
 class ApiHelper
 {
+
+    public static function getApiHost()
+    {
+        $dotenv = Dotenv::createImmutable(dirname(__DIR__, 2));
+        $dotenv->load();
+        
+        return $_ENV['API_HOST'];
+    }
+
     public static function responseMap($response)
     {
         $map = [
