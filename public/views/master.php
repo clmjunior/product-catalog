@@ -133,11 +133,8 @@ $config = ConfigController::getConfig();
             <?php foreach($topCategoriesArray as $topCategory): ?>
                 <a href="/produtos?categoria=<?= $topCategory['id'] ?>">
                     <div class="categ-wrap">
-                        <div class="categ-icon">
-                            <img src="<?= $topCategory['url_icone'] ?>" class="icon-img" alt="">
-                        </div>
                         <div class="categ-name">
-                            <small><?= $topCategory['categoria'] ?></small>     
+                            <small><?= mb_strtoupper($topCategory['categoria'], 'UTF-8') ?></small>     
                         </div>
                     </div>
                 </a>
