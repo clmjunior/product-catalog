@@ -3,7 +3,7 @@
         'name' => 'claudio/liveup',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '7f525f74d729d5c951e3379a471ae62723c4b609',
+        'reference' => '82996705564f9ceddbce9121003a9c902e03c6ce',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'claudio/liveup' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '7f525f74d729d5c951e3379a471ae62723c4b609',
+            'reference' => '82996705564f9ceddbce9121003a9c902e03c6ce',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

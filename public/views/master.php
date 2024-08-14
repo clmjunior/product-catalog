@@ -113,7 +113,7 @@ $config = ConfigController::getConfig();
         <div class="nav-bot">
             <div class="all-center more-categories">
                 <div class="categ-name">
-                    <small><h3>+ Categorias</h3></small>
+                    <small><h3>+ CATEGORIAS</h3></small>
                 </div>
                 <ul class="dropdown-menu">
                     <?php foreach($categoriesArray['nivel_abaixo'] as $category): ?>
@@ -152,13 +152,13 @@ $config = ConfigController::getConfig();
             <div>
                 <img src="<?=$config['empresa_logomarca']?>" class="footer-img" alt="">
                 <div class="company-info">
-                    <h3 class="footer-company">PURYS IMPORTADORA E EXPORTADORA LTDA</h3>
+                    <h3 class="footer-company"><?=$config['nome_empresa']?></h3>
                     <ul class="info-items">
-                        <li class="info-item">CNPJ: 00.000.000/0000-00</li>
-                        <li class="info-item">Localização: Rua Marcelino Jasinski, 1023 Tindiquera - Araucaria/PR</li>
-                        <li class="info-item">CEP: 83708-132</li>
-                        <li class="info-item">Tel: +55 (41) 3642-4011</li>
-                        <li class="info-item">E-mail: adm1@purys.com.br</li>
+                        <li class="info-item">CNPJ: <?=$config['cnpj']?></li>
+                        <li class="info-item">LOCALIZAÇÃO: <?=$config['endereco_rua']?>, <?=$config['endereco_numero']?> <?=$config['endereco_bairro']?> - <?=$config['endereco_cidade']?>/<?=$config['endereco_estado']?></li>
+                        <li class="info-item">CEP: <?=$config['endereco_cep']?></li>
+                        <li class="info-item">TEL: <?=$config['contato_telefone']?></li>
+                        <li class="info-item">E-MAIL: <?=$config['contato_email']?></li>
                     </ul>
                 </div>
             </div>
@@ -174,7 +174,7 @@ $config = ConfigController::getConfig();
             </div> -->
             <div class="privacy-terms">
                 <a href="/privacidade" target="_blank"><b><small>Política de Privacidade</small></b></a>
-                <p><small>© Copyright 2024 – PURYS IMPORTADORA E EXPORTADORA LTDA</small></p>
+                <p><small>© Copyright 2024 – <?=$config['nome_empresa']?></small></p>
             </div>
         </div>
     </footer>

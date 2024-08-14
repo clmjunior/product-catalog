@@ -52,57 +52,60 @@ $config = ConfigController::getConfig();
         <p><?= $config['texto_paginas']['politica_troca'] ?></p>
     </div>
 </section>
-<section id="products-section" class="products-section">
-    <div>
-        <h1 class="text-center">PRODUTOS</h1>
-        
-    </div>
-    <?php foreach($products as $key => $value): ?>
-        <div class="options">
-            <div id="hot" class="option-item"><?= $key ?></div>
+<?php if(!empty($products)): ?>
+    <section id="products-section" class="products-section">
+        <div>
+            <h1 class="text-center">PRODUTOS</h1>
+            
         </div>
-        <div class="carousel-container">
-            <div class="multiple-items">
-                <?php foreach($value as $product): ?>
-                    <?php foreach($product as $productCard): ?>
-                        <a class="product-card" href="/produto?id=<?= htmlspecialchars($productCard['sku']) ?>&titulo=<?= htmlspecialchars($productCard['slug_titulo_produto']) ?>">
-                            <div class="product-img-container">
-                                <img src="<?= htmlspecialchars($productCard['fotos'][0]['url_imagem_0350']) ?>" alt="<?= htmlspecialchars($productCard['titulo_produto']) ?>" class="product-image">
-                                <img src="../assets/img/liveup-original-logo.png" alt="Marca d'água" class="watermark">
-                            </div>
-                            <div class="product-info">
-                                <p class="product-name" title="<?= htmlspecialchars($productCard['titulo_produto']) ?>"><?= mb_strimwidth(htmlspecialchars($productCard['titulo_produto']), 0, 80, '...') ?></p>
-                                <p class="product-description"><small><b><?= $productCard['referencia'] ?></b></small></p>
+        <?php foreach($products as $key => $value): ?>
+            <div class="options">
+                <div id="hot" class="option-item"><?= $key ?></div>
+            </div>
+            <div class="carousel-container">
+                <div class="multiple-items">
+                    <?php foreach($value as $product): ?>
+                        <?php foreach($product as $productCard): ?>
+                            <a class="product-card" href="/produto?id=<?= htmlspecialchars($productCard['sku']) ?>&titulo=<?= htmlspecialchars($productCard['slug_titulo_produto']) ?>">
+                                <div class="product-img-container">
+                                    <img src="<?= htmlspecialchars($productCard['fotos'][0]['url_imagem_0350']) ?>" alt="<?= htmlspecialchars($productCard['titulo_produto']) ?>" class="product-image">
+                                    <img src="../assets/img/liveup-original-logo.png" alt="Marca d'água" class="watermark">
+                                </div>
+                                <div class="product-info">
+                                    <p class="product-name" title="<?= htmlspecialchars($productCard['titulo_produto']) ?>"><?= mb_strimwidth(htmlspecialchars($productCard['titulo_produto']), 0, 80, '...') ?></p>
+                                    <p class="product-description"><small><b><?= $productCard['referencia'] ?></b></small></p>
 
-                                <?php if($config['mostrar_preco_login'] == "S" || $config['mostrar_preco_logout'] == "S" || $config['liberado_comprar'] == "S"): ?>
+                                    <?php if($config['mostrar_preco_login'] == "S" || $config['mostrar_preco_logout'] == "S" || $config['liberado_comprar'] == "S"): ?>
 
-                                <div class="card-footer">
-                                    <?php 
-                                    $mostrarPrecoLogin = $config['mostrar_preco_login'] == "S";
-                                    $mostrarPrecoLogout = $config['mostrar_preco_logout'] == "S";
-                                    $usuarioLogado = isset($_SESSION['user']) && $_SESSION['user'] == true;
-                                    
-                                    $mostrarPreco = ($mostrarPrecoLogin && $mostrarPrecoLogout) ||
-                                                    ($mostrarPrecoLogin && !$mostrarPrecoLogout && $usuarioLogado) ||
-                                                    ($mostrarPrecoLogout && !$mostrarPrecoLogin && !$usuarioLogado);
-                                    
-                                    if($mostrarPreco): ?>
-                                        <div class="price"><h3>R$ <?= htmlspecialchars(number_format($productCard['precos']['valor_final'], 2, ',', '.')) ?></h3></div>
-                                    <?php endif; ?>
-                                    
-                                    <?php if($config['liberado_comprar'] == "S"): ?>
-                                        <!-- <button class="product-button">Comprar</button> -->
+                                    <div class="card-footer">
+                                        <?php 
+                                        $mostrarPrecoLogin = $config['mostrar_preco_login'] == "S";
+                                        $mostrarPrecoLogout = $config['mostrar_preco_logout'] == "S";
+                                        $usuarioLogado = isset($_SESSION['user']) && $_SESSION['user'] == true;
+                                        
+                                        $mostrarPreco = ($mostrarPrecoLogin && $mostrarPrecoLogout) ||
+                                                        ($mostrarPrecoLogin && !$mostrarPrecoLogout && $usuarioLogado) ||
+                                                        ($mostrarPrecoLogout && !$mostrarPrecoLogin && !$usuarioLogado);
+                                        
+                                        if($mostrarPreco): ?>
+                                            <div class="price"><h3>R$ <?= htmlspecialchars(number_format($productCard['precos']['valor_final'], 2, ',', '.')) ?></h3></div>
+                                        <?php endif; ?>
+                                        
+                                        <?php if($config['liberado_comprar'] == "S"): ?>
+                                            <!-- <button class="product-button">Comprar</button> -->
+                                        <?php endif; ?>
+                                    </div>
                                     <?php endif; ?>
                                 </div>
-                                <?php endif; ?>
-                            </div>
-                        </a>
+                            </a>
+                        <?php endforeach; ?>
                     <?php endforeach; ?>
-                <?php endforeach; ?>
+                </div>
             </div>
-        </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
 
-</section>
+    </section>
+<?php endif; ?>
+
 
 

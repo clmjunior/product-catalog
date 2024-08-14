@@ -1,8 +1,10 @@
 <?php 
 /** @var \League\Plates\Template\Template $this */
 use app\controllers\Controller;
+use app\helpers\ApiHelper;
 
 $config = Controller::getConfig();
+$hostUrl = ApiHelper::getApiHost();
 ?>
 <?php $this->layout('master', ['title' => 'Detalhe', 'name' => 'product_detail']) ?>
 
@@ -29,7 +31,7 @@ $config = Controller::getConfig();
                         </div>
                     </div>
                     <div class="download-images">
-                        <a href="https://totalcommerce-dev.ddns.net/api/product/download_product_images?sku=<?= htmlspecialchars($product['sku']) ?>" class="download-link">Baixar Imagens do Produto</a>
+                        <a href="<?= $hostUrl ?>/product/download_product_images?sku=<?= htmlspecialchars($product['sku']) ?>" class="download-link">Baixar Imagens do Produto</a>
                     </div>
                 </div>
             </div>
@@ -52,7 +54,7 @@ $config = Controller::getConfig();
                     </div>
                 <?php endif; ?>
 
-                <p><?= htmlspecialchars($product['descricao_produto']) ?></p>
+                <p><?= $product['descricao_produto'] ?></p>
 
                 
                 <?php 
