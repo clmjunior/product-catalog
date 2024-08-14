@@ -35,7 +35,9 @@ $config = ConfigController::getConfig();
     <div class="banner-content">
         <h1 class="animate__animated  animate__fadeInUp">ELEVE-SE AO MÁXIMO</h1>
         <h4 class="animate__animated  animate__fadeInUp animate__delay-1s">FORÇA E SAÚDE EM HARMONIA</h4>
-        <button onclick="rollToProductsSection();" type="button" class="explore-button animate__animated  animate__fadeInUp animate__delay-2s">EXPLORAR PRODUTOS</button>
+        <?php if(!empty($products)): ?>
+            <button onclick="rollToProductsSection();" type="button" class="explore-button animate__animated  animate__fadeInUp animate__delay-2s">EXPLORAR PRODUTOS</button>
+        <?php endif; ?>
     </div>
 </section>
 <section class="about-container">
