@@ -57,6 +57,7 @@ class HomeController extends Controller
             $productsArray = json_decode($response, true);
             if(isset($productsArray['filtro']['categorias'][0]['categoria'])) {
                 $data[$productsArray['filtro']['categorias'][0]['categoria']] = [
+                    "category_banner" => $showcaseCategory['banner_categoria'],
                     "items" => $productsArray['itens']
                 ];
             }

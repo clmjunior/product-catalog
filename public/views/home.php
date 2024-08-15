@@ -61,8 +61,8 @@ $config = ConfigController::getConfig();
             
         </div>
         <?php foreach($products as $key => $value): ?>
-            <div class="options">
-                <div id="hot" class="option-item"><?= $key ?></div>
+            <div class="category-banner">
+                <img src="<?= $value['category_banner'] ?>" alt="">
             </div>
             <div class="carousel-container">
                 <div class="multiple-items">
