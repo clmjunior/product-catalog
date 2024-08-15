@@ -588,10 +588,10 @@ a {
 .footer {
     width: 100%;
     height: fit-content;
-    padding: 40px 100px 40px 100px;
+    padding: 40px 0 20px 0;
     background-color: #252525;
     z-index: 2;
-    border-top: 1px solid #4d4f51;
+    border-top: 3px solid #E74101;
 }
 
 .company-info {
@@ -604,6 +604,11 @@ a {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+}
+
+.footer-top {
+    padding: 30px 150px 30px 150px;
+    font-size: 14px;
 }
 
 .footer-img {
@@ -623,10 +628,10 @@ a {
     justify-content: center;
     align-items: center;
     color: #4d4f51;
-    padding: 20px 0;
+    padding: 20px 0 0 0;
     gap: 12px;
     border-top: 1px solid #4d4f51;
-    margin-top: 10px;
+    margin-top: 50px;
     background-color: transparent;
 }
 
@@ -698,7 +703,7 @@ a {
     cursor: pointer;
     margin: 20px 0;
     transition: all 0.5s ease;
-    border: 2px solid #e7420117;
+    border: 2px solid #4d4f5117;
     position: relative;
     box-sizing: border-box;
     min-height: 55vh;
@@ -709,7 +714,7 @@ a {
 .product-card:hover {
     scale: 1.04;
     background-color: #ffffff;
-    border: 2px solid #E74101;
+    border: 2px solid #4d4f5152;
     box-shadow: 0 5px 12px #bebebe;
 }
 

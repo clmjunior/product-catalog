@@ -146,7 +146,7 @@ $config = ConfigController::getConfig();
 
     <footer class="footer">
         <div class="footer-wrapper">
-            <div>
+            <div class="footer-top">
                 <img src="<?=$config['empresa_logomarca']?>" class="footer-img" alt="">
                 <div class="company-info">
                     <h3 class="footer-company"><?=$config['nome_empresa']?></h3>
