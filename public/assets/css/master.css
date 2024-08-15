@@ -163,7 +163,7 @@ a {
     flex-direction: column;
     justify-content: space-between;
     background-color: transparent;
-    padding: 15px 80px 15px 80px;
+    padding: 16px 0;
     transition: padding 0.3s ease;
     color: #4d4f51;
     position: fixed;
@@ -174,8 +174,9 @@ a {
     max-width: 100vw;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     z-index: 3;
+    padding: 0 80px;
 }
 
 .icon-img {
@@ -187,14 +188,16 @@ a {
 
 .nav-bot {
     display: flex;
-    max-width: 80vw;
     justify-content: center;
     align-items: center;
     gap: 5px;
+    padding-top: 15px;
     transition: height 0.3s ease;
     justify-content: center;
     margin-top: 10px;
-    height: 30px;
+    height: 40px;
+    width: 100%;
+    border-top: 1px solid #414141;
 }
 
 .categ-icon {
@@ -203,8 +206,21 @@ a {
 
 .more-categories {
     position: relative;
-    height: 100%;
+    height: 50px;
+    width: 160px;
     cursor: pointer;
+    background-color: #E74101;
+}
+
+.more-categories .categ-name small {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 15px;
+}
+
+.more-categories .categ-name small ion-icon{
+    font-size: 18px;
 }
 
 .categ-wrap {
@@ -215,7 +231,6 @@ a {
     width: 145px;
     height: 100%;
     cursor: pointer;
-    color: white;
 }
 
 .categ-wrap:hover .categ-name {
@@ -327,6 +342,7 @@ a {
 .categ-name {
     font-weight: bold;
     font-size: 15px;
+    color: #ffffff;
 }
 
 .nav-logo {
@@ -518,20 +534,21 @@ a {
 .search-input {
     position: relative;
     display: inline-block;
-    width: 250px;
+    width: 600px;
     transition: all 1.2s ease;
 }
 
 .searchbar {
     width: 100%;
-    height: 30px;
-    border-radius: 2px;
+    height: 40px;
+    border-radius: 4px;
     border: none;
     outline: none;
-    padding: 2px 10px;
-    font-size: 10px;
+    padding: 2px 20px;
+    font-size: 16px;
     transition: all 1.2s ease;
-    background-color: #eeeeee;
+    background-color: #000000;
+    color: #909090; 
 }
 
 .search-icon {
@@ -541,7 +558,7 @@ a {
     transform: translateY(-50%);
     pointer-events: none; 
     font-size: 16px; 
-    color: #ccc; 
+    color: #909090; 
 }
 
 .searchbar:focus {
@@ -556,15 +573,11 @@ a {
     align-items: center;
     justify-content: center;
     height: 40px;
-    background-color: #E74101;
-    width: 150px;
-    border-radius: 60px;
-    border: none;
     gap: 10px;
     text-decoration: none;
     font-weight: bold;
     transition: all 0.5s;
-    color: #ffffff;
+    color: #909090;
     cursor: pointer;
 }
 
@@ -574,15 +587,16 @@ a {
 
 .footer {
     width: 100%;
-    height: 40vh;
+    height: fit-content;
     padding: 40px 100px 40px 100px;
-    background-color: transparent;
+    background-color: #252525;
     z-index: 2;
-    border-top: 1px solid #e741013d;
+    border-top: 1px solid #4d4f51;
 }
 
 .company-info {
     margin-top: 40px;
+    color: #fff;
 }
 
 .footer-wrapper {
@@ -604,20 +618,20 @@ a {
 
 .privacy-terms {
     width: 100%;
-    min-height: 60px;
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ccc;
-    padding: 50px 0;
+    color: #4d4f51;
+    padding: 20px 0;
     gap: 12px;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #4d4f51;
     margin-top: 10px;
+    background-color: transparent;
 }
 
 .privacy-terms a {
-    color: #ccc;
+    color: #4d4f51;
 }
 
 .info-items {

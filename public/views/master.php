@@ -30,20 +30,20 @@ $config = ConfigController::getConfig();
                 <img src="<?=$config['empresa_logomarca']?>" class="nav-logo" alt="">
             </a>
             
+            <form action="/pesquisar" method="get">
+                <div class="search-input">
+                    <input type="text" name="search" class="searchbar" placeholder="O que você procura?" />
+                    <ion-icon class="search-icon" name="search"></ion-icon>
+                </div>
+            </form>
+
             <div class="right-container">
-                <form action="/pesquisar" method="get">
-                    <div class="search-input">
-                        <input type="text" name="search" class="searchbar" />
-                        <ion-icon class="search-icon" name="search"></ion-icon>
-                    </div>
-                </form>
-                <div class="separator"></div>
+                <!-- <div class="separator"></div> -->
 
                 <?php if(!isset($_SESSION['user'])): ?>
-                    <a href="/login">
-                        <button class="login-link">
-                            <ion-icon name="log-in"></ion-icon> <p>Login</p>
-                        </button>
+                    <a class="login-link" href="/login">
+                        <ion-icon name="log-in"></ion-icon> 
+                        <p>Entrar</p>
                     </a>
                     <?php else: ?>
                         <div class="dropdown account">
@@ -113,7 +113,7 @@ $config = ConfigController::getConfig();
         <div class="nav-bot">
             <div class="all-center more-categories">
                 <div class="categ-name">
-                    <small><h3>+ CATEGORIAS</h3></small>
+                    <small><ion-icon name="menu"></ion-icon> CATEGORIAS</small>
                 </div>
                 <ul class="dropdown-menu">
                     <?php foreach($categoriesArray['nivel_abaixo'] as $category): ?>
