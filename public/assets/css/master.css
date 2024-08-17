@@ -190,7 +190,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 40px;
     padding-top: 15px;
     transition: height 0.3s ease;
     justify-content: center;
@@ -225,10 +225,8 @@ a {
 
 .categ-wrap {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 145px;
     height: 100%;
     cursor: pointer;
 }
@@ -860,6 +858,18 @@ a {
     .product-card {
         min-height: 60vh;
     }
+    
+    .nav-bot {
+        gap: 10px;
+    }
+
+    .categ-wrap {
+        padding: 0 20px 0 20px;
+    }
+}
+
+@media (max-width: 1380px) {
+    
     
 }
 

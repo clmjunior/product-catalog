@@ -1,3 +1,7 @@
+.navbar {
+    background-color: #252525 !important;
+}
+
 #products, #products:hover {
     opacity: 0.7;
 }
