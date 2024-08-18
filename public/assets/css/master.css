@@ -733,7 +733,7 @@ a {
     border: 2px solid #4d4f5117;
     position: relative;
     box-sizing: border-box;
-    min-height: 55vh;
+    min-height: 58vh;
     height: auto;
     background-color: #ffffff;
 }
@@ -923,6 +923,14 @@ a {
         font-size: 0.7em;
     }
 
+    .footer-img {
+        width: 20%;
+    }
+
+    .footer-top {
+        padding: 30px 130px 30px 130px;
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -979,6 +987,10 @@ a {
 
     .navbar-menu {
         display: block;
+    }
+
+    .footer-top {
+        padding: 30px 50px 30px 50px;
     }
 
     .footer-img {
@@ -1052,6 +1064,10 @@ a {
 
     .footer {
         padding: 30px 20px;
+    }
+
+    .privacy-terms {
+        font-size: 0.8em;
     }
     
 }

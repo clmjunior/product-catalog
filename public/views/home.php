@@ -1,7 +1,9 @@
 <?php
 /** @var \League\Plates\Template\Template $this */
 use app\controllers\ConfigController;
+use app\controllers\CategoryController;
 
+$topCategoriesArray = CategoryController::getTopCategories();
 $config = ConfigController::getConfig();
 ?>
 <?php $this->layout('master', ['title' => 'Home', 'name' => 'home']) ?>
@@ -56,31 +58,16 @@ $config = ConfigController::getConfig();
 </section>
 <section class="small-categories-container">
     <div class="small-categories">
-        <div class="small-category">
-            <img src="https://random.imagecdn.app/500/150">
-        </div>
-        <div class="small-category">
-            <img src="https://random.imagecdn.app/500/150">
-        </div>
-        <div class="small-category">
-            <img src="https://random.imagecdn.app/500/150">
-        </div>
-        <div class="small-category">
-            <img src="https://random.imagecdn.app/500/150">
-        </div>
-        <div class="small-category">
-            <img src="https://random.imagecdn.app/500/150">
-        </div>
-        <div class="small-category">
-            <img src="https://random.imagecdn.app/500/150">
-        </div>
-        <div class="small-category">
-            <img src="https://random.imagecdn.app/500/150">
-        </div>
-        <div class="small-category">
-            <img src="https://random.imagecdn.app/500/150">
-        </div>
+        <?php foreach($topCategoriesArray as $topCategory): ?>
+            <div class="category-container">
+                <a href="/produtos?categoria=<?= $topCategory['id'] ?>">
+                    <h4 class="category-title"><?= mb_strtoupper($topCategory['categoria'], "UTF-8") ?></h4>
+                    <img src="<?= str_replace("https://www.liveupsports.com.br", "https://totalcommerce-dev.ddns.net/", $topCategory['url_icone']) ?>">
+                </a>
+            </div>
+        <?php endforeach; ?>
     </div>
+
 
 </section>
 <?php if(!empty($products)): ?>
