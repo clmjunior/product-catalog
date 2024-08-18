@@ -1,10 +1,5 @@
 .navbar {
-    padding: 12px 80px 12px 80px;
-    box-shadow: 1px 1px 10px #eee;
-}
-
-.nav-bot {
-    height: 30px;
+    background-color: #252525 !important;
 }
 
 .icon-img, .categ-icon {
@@ -21,8 +16,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fafafa;
-    padding-top: 50px;
+    background-color: #f7f7f7;
+    padding-top: 80px;
 }
 
 .container {
@@ -36,7 +31,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 300px 20px;
+    padding: 0 20px;
 }
 
 .login-form {

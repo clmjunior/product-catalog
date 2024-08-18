@@ -26,10 +26,13 @@ $config = ConfigController::getConfig();
 <body>
     <nav class="navbar">
         <div class="nav-top">
-            <a href="/">
-                <img src="<?=$config['empresa_logomarca']?>" class="nav-logo" alt="">
-            </a>
-            
+            <div class="logo-menu-container">
+                <a href="/">
+                    <img src="<?=$config['empresa_logomarca']?>" class="nav-logo" alt="">
+                </a>
+                <ion-icon class="navbar-menu" name="menu"></ion-icon>
+            </div>
+    
             <form action="/pesquisar" method="get">
                 <div class="search-input">
                     <input type="text" name="search" class="searchbar" placeholder="O que você procura?" />
@@ -58,29 +61,23 @@ $config = ConfigController::getConfig();
                     <?php endif; ?>
             </div>
             
-            <ion-icon class="navbar-menu" name="menu"></ion-icon>
 
             <div class="sidebar" id="sidebar">
-                <ion-icon class="close-sidebar" name="chevron-forward"></ion-icon>
-                <div class="side-search">
-                    <form action="/pesquisar" method="get">
-                        <div class="search-input">
-                            <input type="text" name="search" class="searchbar" />
-                            <ion-icon class="search-icon" name="search"></ion-icon>
-                        </div>
-                    </form>
-                </div>
+                <ion-icon class="close-sidebar" name="close"></ion-icon>
                 <div class="side-categories">
                     <ul class="dropdown-menu-side">
                         <?php foreach($categoriesArray['nivel_abaixo'] as $category): ?>
                             <li class="parent-category">
-                                <a href="javascript:void(0);" class="dropdown-toggle"><ion-icon class="caret-forward" name="caret-forward"></ion-icon><?= htmlspecialchars($category['categoria']) ?></a>
+                                <a href="javascript:void(0);" class="dropdown-toggle"><?= htmlspecialchars($category['categoria']) ?><ion-icon class="caret-down" name="caret-down"></ion-icon></a>
                                 <ul class="dropdown-menu-side">
                                     <?php foreach($category['nivel_abaixo'] as $subCategory): ?>
                                         <li class="side-subcategory">
                                             <a href="/produtos?categoria=<?= $subCategory['id'] ?>"><?= htmlspecialchars($subCategory['categoria']) ?></a>
                                         </li>
-                                    <?php endforeach; ?>
+                                        <?php endforeach; ?>
+                                        <li class="side-subcategory">
+                                            <a href="/produtos?categoria=<?= $category['id'] ?>">Mostrar Tudo</a>
+                                        </li>
                                 </ul>
                             </li>
                         <?php endforeach; ?>
@@ -90,8 +87,24 @@ $config = ConfigController::getConfig();
                 <script>
                     document.querySelectorAll('.side-categories .dropdown-toggle').forEach(function(toggle) {
                         toggle.addEventListener('click', function() {
+                            // Fechar todos os outros dropdowns
+                            document.querySelectorAll('.side-categories .parent-category').forEach(function(parent) {
+                                if (parent !== toggle.parentElement) {
+                                    parent.classList.remove('open');
+                                    parent.querySelector('ul.dropdown-menu-side').style.maxHeight = null;
+                                }
+                            });
+
+                            // Alternar o dropdown clicado
                             var parentCategory = this.parentElement;
                             parentCategory.classList.toggle('open');
+
+                            var dropdown = parentCategory.querySelector('ul.dropdown-menu-side');
+                            if (parentCategory.classList.contains('open')) {
+                                dropdown.style.maxHeight = dropdown.scrollHeight + "px";
+                            } else {
+                                dropdown.style.maxHeight = null;
+                            }
                         });
                     });
                 </script>

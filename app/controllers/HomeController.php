@@ -52,7 +52,7 @@ class HomeController extends Controller
 
             // Fecha a sessão cURL
             curl_close($ch);
-
+            
             // Convertendo a resposta JSON em um array associativo
             $productsArray = json_decode($response, true);
             if(isset($productsArray['filtro']['categorias'][0]['categoria'])) {

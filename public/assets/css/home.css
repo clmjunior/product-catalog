@@ -7,8 +7,34 @@
     opacity: 0.7;
 }
 
-.carousel-container {
+.small-categories-container {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F7F7F7;
+    padding-top: 20px;
+}
+
+.small-categories {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.small-category {
+    width: 23%;
+}
+
+.small-category img {
+    width: 100%;
+}
+
+.carousel-container {
+    width: 66%;
     margin: 20px 0;
 }
 
@@ -26,12 +52,50 @@
     width: 100%;    
 }
 
-.product-card {
-    margin: 0 10px;
+.slick-arrow {
+    width: 40px; 
+    height: 40px; 
+    background-color: #252525;
+    border-radius: 2px; 
+}
+
+.slick-arrow::before {
+    color: #ffffff;
+    font-size: 25px;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.slick-arrow:hover {
+    opacity: 0.8;
+    color: #ffffff;
+    background-color: #252525;
+}
+
+.slick-arrow:focus {
+    color: #ffffff;
+    background-color: #252525;
+}
+
+.slick-prev {
+    left: -70px;
+}
+
+.slick-next {
+    right: -70px;
+}
+
+.slick-prev::before {
+    content: "⬅";
+}
+
+.slick-next::before {
+    content: "⮕";
 }
 
 .banner-content h1, .banner-content h4 {
-    letter-spacing: 15px;
+    letter-spacing: 10px;
 }
 
 .explore-button {
@@ -73,8 +137,8 @@
 }
 
 .about-container {
-    height: 50vh;
-    background-color: #F57F26;
+    height: 45vh;
+    background-color: #414141;
     padding: 40px 100px 40px 100px;
     color: #ffffff;
     display: flex;
@@ -97,8 +161,7 @@
 .products-section {
     width: 100%;
     height: fit-content;
-    background-color: #fafafa;
-    /* padding: 80px 100px; */
+    background-color: #f7f7f7;
     padding: 80px 0;
     color: #000000;
     display: flex;
@@ -117,6 +180,7 @@
 
 .category-banner img {
     width: 100%;
+    max-width: 1500px;
 }
 
 .option-item {
@@ -165,13 +229,28 @@
 
 @media (max-width: 1450px) {
     
-    
+    .carousel-container {
+        width: 75%;
+        margin: 20px 0;
+    }
+
+}
+
+@media (max-width: 1025px) {
+
+    .about-container {
+        padding: 40px 60px; 
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
 }
 
 @media (max-width: 768px) {
-    
+
     .about-container {
         flex-direction: column;
+        align-items: center;
         height: auto;
         padding: 70px 40px;
         gap: 50px;
@@ -186,6 +265,14 @@
 
 @media (max-width: 500px) {
     
+    .nav-top form {
+        width: 100%;
+    }
+
+    .search-input {
+        max-width: 100% !important;
+    }
+
     .banner-content h1 {
         font-size: 1.2em;
         width: 100%;
@@ -203,7 +290,7 @@
     }
     
     .products-section {
-        padding: 60px 20px;
+        padding: 60px 0;
     }
     
 }

@@ -102,23 +102,23 @@ $hostUrl = ApiHelper::getApiHost();
     <section class="specs-container">
         <div class="product-specifications">
             <?php foreach ($product['especificacoes_produto'] as $category => $specs): ?>
-                
                 <table class="spec-table">
                     <th colspan="2"><h2 class="spec-category"><?= htmlspecialchars($category) ?></h2></th>
                     <tbody>
                         <?php foreach ($specs as $spec):
-                                $specArr = explode(":", $spec);
-                                if(count($specArr) > 1):
-                                    list($key, $value) = $specArr;
-                        ?>
-                            <tr>
-                                <td><?= htmlspecialchars($key) ?></td>
-                                <td><?= htmlspecialchars($value) ?></td>
-                            </tr>
-                            <?php else: ?>
-                            <tr>
-                                <td><?= htmlspecialchars($spec) ?></td>
-                            </tr>
+                            $specArr = explode(":", $spec);
+                            $key = isset($specArr[0]) ? trim($specArr[0]) : '';
+                            $value = isset($specArr[1]) ? trim($specArr[1]) : '';
+                            
+                            if (!empty($key) && !empty($value)): ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($key) ?></td>
+                                    <td><?= htmlspecialchars($value) ?></td>
+                                </tr>
+                            <?php elseif (!empty($key)): ?>
+                                <tr>
+                                    <td colspan="2"><?= htmlspecialchars($key) ?></td>
+                                </tr>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </tbody>

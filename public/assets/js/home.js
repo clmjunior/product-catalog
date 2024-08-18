@@ -1,9 +1,10 @@
 $(document).ready(function(){
   $('.multiple-items').slick({
       infinite: true,
+      arrows: true,
       slidesToShow: 4,
       slidesToScroll: 4,
-      dots: false,
+      dots: true,
       responsive: [{
             breakpoint: 769,
             settings: {
@@ -13,6 +14,7 @@ $(document).ready(function(){
         }, {
             breakpoint: 501,
             settings: {
+                arrows: false,
                 slidesToShow: 2,
                 slidesToScroll: 2,
     }

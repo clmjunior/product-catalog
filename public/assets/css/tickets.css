@@ -4,7 +4,7 @@
 
 .tickets-section {
     padding: 40px 20px;
-    background-color: #fafafa;
+    background-color: #f7f7f7;
     min-height: 60vh;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .tickets-table tr:nth-child(even) {
-    background-color: #fafafa;
+    background-color: #f7f7f7;
 }
 
 .tickets-table tr:hover {

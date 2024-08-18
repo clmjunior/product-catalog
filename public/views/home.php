@@ -54,20 +54,45 @@ $config = ConfigController::getConfig();
         <p><?= $config['texto_paginas']['politica_troca'] ?></p>
     </div>
 </section>
+<section class="small-categories-container">
+    <div class="small-categories">
+        <div class="small-category">
+            <img src="https://random.imagecdn.app/500/150">
+        </div>
+        <div class="small-category">
+            <img src="https://random.imagecdn.app/500/150">
+        </div>
+        <div class="small-category">
+            <img src="https://random.imagecdn.app/500/150">
+        </div>
+        <div class="small-category">
+            <img src="https://random.imagecdn.app/500/150">
+        </div>
+        <div class="small-category">
+            <img src="https://random.imagecdn.app/500/150">
+        </div>
+        <div class="small-category">
+            <img src="https://random.imagecdn.app/500/150">
+        </div>
+        <div class="small-category">
+            <img src="https://random.imagecdn.app/500/150">
+        </div>
+        <div class="small-category">
+            <img src="https://random.imagecdn.app/500/150">
+        </div>
+    </div>
+
+</section>
 <?php if(!empty($products)): ?>
     <section id="products-section" class="products-section">
-        <div>
-            <h1 class="text-center">PRODUTOS</h1>
-            
-        </div>
-        <?php foreach($products as $key => $value): ?>
+        <?php foreach($products as $categoryItems): ?>
             <div class="category-banner">
-                <img src="<?= $value['category_banner'] ?>" alt="">
+                <img src="<?= $categoryItems['category_banner'] ?>" alt="">
             </div>
             <div class="carousel-container">
                 <div class="multiple-items">
-                    <?php foreach($value as $product): ?>
-                        <?php foreach($product as $productCard): ?>
+                    <?php foreach($categoryItems['items'] as $productCard): ?>
+                        <?php //foreach($product as $productCard): ?>
                             <a class="product-card" href="/produto?id=<?= htmlspecialchars($productCard['sku']) ?>&titulo=<?= htmlspecialchars($productCard['slug_titulo_produto']) ?>">
                                 <div class="product-img-container">
                                     <img src="<?= htmlspecialchars($productCard['fotos'][0]['url_imagem_0350']) ?>" alt="<?= htmlspecialchars($productCard['titulo_produto']) ?>" class="product-image">
@@ -100,7 +125,7 @@ $config = ConfigController::getConfig();
                                     <?php endif; ?>
                                 </div>
                             </a>
-                        <?php endforeach; ?>
+                        <?php //endforeach; ?>
                     <?php endforeach; ?>
                 </div>
             </div>
