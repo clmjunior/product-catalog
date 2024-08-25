@@ -4,6 +4,8 @@ namespace app\routes;
 
 use app\helpers\Uri;
 use app\helpers\Request;
+use app\helpers\ApiHelper;
+use app\controllers\Controller;
 
 class Router
 {
@@ -13,6 +15,11 @@ class Router
     public static function load(string $controller, string $action)
     {
         try {
+
+            if (!ApiHelper::isApiAccessible()) {
+                Controller::view('error', ["msg" => "A API está inacessível no momento. Tente novamente mais tarde."]);
+                exit;
+            }
             
             $controllerNamespace = self::CONTROLLER_NAMESPACE.'\\'.$controller;
 

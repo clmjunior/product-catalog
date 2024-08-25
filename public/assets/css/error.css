@@ -1,0 +1,22 @@
+.error-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+    color: #b3b3b3;
+    text-align: center;
+    padding: 20px;
+}
+
+.error-container h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+.error-container p {
+    font-size: 1.1em;
+    max-width: 600px;
+    line-height: 1.6;
+}

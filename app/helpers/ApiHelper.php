@@ -8,6 +8,19 @@ use Dotenv\Dotenv;
 class ApiHelper
 {
 
+    public static function isApiAccessible() {
+        $url = getenv('API_HOST'); // ou usar o valor diretamente
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_NOBODY, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        return $httpCode >= 200 && $httpCode < 300;
+    }
+
     public static function getApiHost()
     {
         $dotenv = Dotenv::createImmutable(dirname(__DIR__, 2));

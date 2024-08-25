@@ -3,7 +3,9 @@
 /** @var \League\Plates\Template\Template $this */
 use app\controllers\CategoryController;
 use app\controllers\ConfigController;
+use app\helpers\ApiHelper;
 
+if (ApiHelper::isApiAccessible()):
 $topCategoriesArray = CategoryController::getTopCategories();
 $categoriesArray = CategoryController::getCategories();
 $config = ConfigController::getConfig();
@@ -197,3 +199,21 @@ $config = ConfigController::getConfig();
     <script type="text/javascript" src="../assets/js/<?=$this->e($name)?>.js"></script>
 </body>
 </html>
+<?php else: ?>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/master.css">
+    <link rel="stylesheet" href="../assets/css/<?=$this->e($name)?>.css">
+    
+    <title><?=$this->e($title)?></title>
+</head>
+<body>
+    
+    <?= $this->section('content') ?>
+
+    </body>
+</html>
+<?php endif; ?>
