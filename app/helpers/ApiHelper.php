@@ -9,7 +9,7 @@ class ApiHelper
 {
 
     public static function isApiAccessible() {
-        $url = getenv('API_HOST'); // ou usar o valor diretamente
+        $url = self::getApiHost() ."/";
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_NOBODY, true);
