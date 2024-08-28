@@ -760,13 +760,13 @@ a {
 }
 
 .product-info {
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     width: 100%;
     flex-grow: 1; 
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: space-between;
 }
 
 .product-name {
@@ -1015,10 +1015,6 @@ a {
         width: 170%;
         height: auto;
         margin-left: 60px;
-    }
-
-    .product-info {
-        padding: 16px;
     }
 
     .image-container {
