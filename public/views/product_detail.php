@@ -71,7 +71,11 @@ $hostUrl = ApiHelper::getApiHost();
                     <div class="top">
 
                         <?php if($mostrarEstoque): ?>
-                            <small><ion-icon class="stock-check" name="checkbox"></ion-icon> <?= htmlspecialchars($product['quantidade_estoque']) ?> Em estoque</small>
+                            <?php if($product['quantidade_estoque'] > 0): ?>
+                                <small><ion-icon class="stock-check" name="checkbox"></ion-icon> Disponível</small>
+                            <?php else: ?>
+                                <small><ion-icon class="stock-check" name="close-circle"></ion-icon> Indisponível</small>
+                            <?php endif; ?>
                         <?php endif; ?>
 
 

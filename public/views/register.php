@@ -99,11 +99,11 @@ $config = ConfigController::getConfig();
                         <input type="number" id="phone" name="phone" value="<?= isset($data['contact']['phone_number']) ? $data['contact']['phone_number'] : '' ?>" required>
                     </div>
                 </div>
-
+<!-- 
                 <div class="checkbox-input">
                     <input type="checkbox" name="receive" id="receive" <?= isset($data['receber_email']) && $data['receber_email'] == "on" ? "checked" : "" ?>>
                     <label for="receive"><small>Receber informações por E-mail</small></label>
-                </div>
+                </div> -->
                 
                 <button class="register-button" type="submit">REGISTRAR</button>
                 <div class="login-link-redirect">

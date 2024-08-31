@@ -358,7 +358,7 @@ a {
 .nav-logo {
     width: 250px;
     transition: all 1.2s ease;
-    filter: invert(100%) brightness(1000000%);
+    /* filter: invert(100%) brightness(1000000%); */
 }
 
 .logo-menu-container {
@@ -614,14 +614,14 @@ a {
 .footer {
     width: 100%;
     height: fit-content;
-    padding: 40px 0 20px 0;
+    padding: 10px 0 20px 0;
     background-color: #252525;
     z-index: 2;
     border-top: 3px solid #E74101;
 }
 
 .company-info {
-    margin-top: 40px;
+    margin-top: 20px;
     color: #fff;
 }
 
@@ -633,7 +633,7 @@ a {
 }
 
 .footer-top {
-    padding: 30px 150px 30px 150px;
+    padding: 20px 40px;
     font-size: 14px;
 }
 
@@ -657,7 +657,7 @@ a {
     padding: 20px 0 0 0;
     gap: 12px;
     border-top: 1px solid #4d4f51;
-    margin-top: 50px;
+    margin-top: 20px;
     background-color: transparent;
 }
 
@@ -671,7 +671,7 @@ a {
 }
 
 .info-item {
-    padding: 5px;
+    padding: 3px;
 }
 
 .company-contact {

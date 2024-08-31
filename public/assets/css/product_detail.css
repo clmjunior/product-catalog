@@ -197,9 +197,9 @@
 }
 
 .spec-category {
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: bold;
-    padding: 25px;
+    padding: 10px;
 }
 
 .spec-table {
@@ -214,9 +214,10 @@
 }
 
 .spec-table td {
-    padding: 25px;
+    padding: 10px;
     text-transform: uppercase;
     width: 50%;
+    font-size: 0.8em;
 }
 
 .spec-table tr {

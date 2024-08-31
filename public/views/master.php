@@ -53,7 +53,8 @@ $config = ConfigController::getConfig();
                     <?php else: ?>
                         <div class="dropdown account">
                             <a class="nav-link dropdown-toggle" id="dropdownMenuButton">
-                                <ion-icon name="person-circle"></ion-icon> <p>Conta</p>
+                                <?php $user_name = $_SESSION['user_data']['nome_fantasia'] ?? "Conta"; ?>
+                                <ion-icon name="person-circle"></ion-icon> <p><?= $user_name ?></p>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="/boletos">Meus Boletos</a>
@@ -162,15 +163,15 @@ $config = ConfigController::getConfig();
     <footer class="footer">
         <div class="footer-wrapper">
             <div class="footer-top">
-                <img src="<?=$config['empresa_logomarca']?>" class="footer-img" alt="">
+                <!-- <img src="<?=$config['empresa_logomarca']?>" class="footer-img" alt=""> -->
                 <div class="company-info">
                     <h3 class="footer-company"><?=$config['nome_empresa']?></h3>
                     <ul class="info-items">
                         <li class="info-item">CNPJ: <?=$config['cnpj']?></li>
-                        <li class="info-item">LOCALIZAÇÃO: <?=$config['endereco_rua']?>, <?=$config['endereco_numero']?> <?=$config['endereco_bairro']?> - <?=$config['endereco_cidade']?>/<?=$config['endereco_estado']?></li>
+                        <li class="info-item">LOCALIZAÇÃO: <?=$config['endereco_rua']?>, <?=$config['endereco_numero']?> <?=$config['endereco_bairro']?>, <?=$config['endereco_cidade']?>/<?=$config['endereco_estado']?></li>
                         <li class="info-item">CEP: <?=$config['endereco_cep']?></li>
                         <li class="info-item">TEL: <?=$config['contato_telefone']?></li>
-                        <li class="info-item">E-MAIL: <?=$config['contato_email']?></li>
+                        <!-- <li class="info-item">E-MAIL: <?=$config['contato_email']?></li> -->
                     </ul>
                 </div>
             </div>
