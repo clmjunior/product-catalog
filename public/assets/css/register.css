@@ -7,8 +7,13 @@
 }
 
 .nav-logo {
-    width: 200px
+    width: 250px
 }
+
+.block-sr {
+    align-items: center;
+    display: flex;
+} 
 
 .cpf-data, .cnpj-data {
     display: none;
@@ -124,15 +129,17 @@ footer, .right-container {
 .checkbox-input {
     width: 100%;
     display: flex;
-    align-items: baseline;
+    align-items: center;
 }
 
 .checkbox-input label {
     width: 90%;
+    margin: 0;
 }
 
 .checkbox-input input {
     width: 10%;
+    margin: 0;
 }
 
 .password-wrap {

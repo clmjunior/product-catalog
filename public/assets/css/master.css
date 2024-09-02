@@ -49,6 +49,34 @@ a {
     color: #E74101;
 }
 
+.wpp-logo {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    font-size: 45px;
+    color: #ffffff; 
+    background-color: #25d366;
+    border-radius: 50%; 
+    padding: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+    cursor: pointer;
+}
+
+.wpp-logo:hover {
+    animation: bounce-scale 0.8s ease-in-out; /* Animação de bounce com scale */
+}
+
+@keyframes bounce-scale {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) scale(1); /* Posição inicial */
+    }
+    40% {
+        transform: translateY(-10px) scale(1.1); /* Salto para cima com aumento de escala */
+    }
+    60% {
+        transform: translateY(-5px) scale(1.05); /* Retorno parcial com leve redução na escala */
+    }
+}
 .message-container {
     position: fixed; /* Mantém o contêiner fixo no canto superior direito da tela */
     top: 22vh;
@@ -356,7 +384,7 @@ a {
 }
 
 .nav-logo {
-    width: 250px;
+    width: 300px;
     transition: all 1.2s ease;
     /* filter: invert(100%) brightness(1000000%); */
 }

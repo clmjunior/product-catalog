@@ -160,6 +160,13 @@ $config = ConfigController::getConfig();
 
     <?= $this->section('content') ?>
 
+    <?php
+    $telefone_formatado = '55' . preg_replace('/[^0-9]/', '', $config['contato_celular']);
+    ?>
+
+    <a target="_blank" href="https://api.whatsapp.com/send?phone=<?= $telefone_formatado ?>&text=Tenho interesse em um dos produtos do site <?= $config['nome_fantasia'] ?> ">
+        <ion-icon name="logo-whatsapp" class="wpp-logo"></ion-icon>
+    </a>
     <footer class="footer">
         <div class="footer-wrapper">
             <div class="footer-top">

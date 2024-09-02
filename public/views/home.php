@@ -121,5 +121,13 @@ $config = ConfigController::getConfig();
     </section>
 <?php endif; ?>
 
+<section class="info-map-section">
+    <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3598.8084646748252!2d-49.38573602494198!3d-25.578038338764994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dd0268556c524f%3A0xa4357da6f571c183!2sR.%20Marcelino%20Jasinski%2C%201023%20-%20Tindiquera%2C%20Arauc%C3%A1ria%20-%20PR%2C%2083708-132!5e0!3m2!1spt-BR!2sbr!4v1725241695613!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <video class="video" autoplay loop muted>
+        <source src="../assets/video/homevideo.mp4" type="video/mp4">
+        Seu navegador não suporta o elemento de vídeo.
+    </video>
+</section>
+
 
 

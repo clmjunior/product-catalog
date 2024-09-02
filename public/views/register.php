@@ -72,8 +72,19 @@ $config = ConfigController::getConfig();
                     <label for="trade_name">Nome Fantasia:</label>
                     <input type="text" id="trade_name" name="trade_name" value="<?= isset($data['trade_name']) ? $data['trade_name'] : '' ?>">
                     
-                    <label for="state_registration">Inscrição Estadual:</label>
-                    <input type="text" id="state_registration" name="state_registration" value="<?= isset($data['state_registration']) ? $data['state_registration'] : '' ?>">
+                    <div class="d-flex">
+                        <div class="w-50">
+                            <label for="state_registration">Inscrição Estadual:</label>
+                            <input type="text" id="state_registration" name="state_registration" value="<?= isset($data['state_registration']) ? $data['state_registration'] : '' ?>">
+                        </div>
+                        <div class="w-50 block-sr">
+                            <div class="checkbox-input">
+                                <input type="checkbox" id="isento" name="isento">
+                                <label for="isento">Isento</label>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 
                 <label for="email">Email:</label>
