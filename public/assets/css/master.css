@@ -661,7 +661,7 @@ a {
 }
 
 .footer-top {
-    padding: 20px 40px;
+    padding: 20px 40px 0 20px;
     font-size: 14px;
 }
 
@@ -682,10 +682,10 @@ a {
     justify-content: center;
     align-items: center;
     color: #4d4f51;
-    padding: 20px 0 0 0;
-    gap: 12px;
+    padding: 15px 0 0 0;
+    gap: 8px;
     border-top: 1px solid #4d4f51;
-    margin-top: 20px;
+    margin-top: 15px;
     background-color: transparent;
 }
 
