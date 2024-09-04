@@ -11,6 +11,18 @@
     opacity: 0.7;
 }
 
+.products-banner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.products-banner img {
+    width: 100%;
+    max-width: 1600px;
+}
+
 .products-section {
     width: 100%;
     height: fit-content;

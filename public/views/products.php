@@ -8,6 +8,9 @@ $config = Controller::getConfig();
 ?>
 
 <div class="nav-top-padding"></div>
+<div class="products-banner">
+    <img src="" alt="">
+</div>
 <section class="products-section">
     
     <?php 

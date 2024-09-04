@@ -20,16 +20,60 @@
 
 .video {
     border-radius: 10px;
-    height: 40vh;
+    height: 37vh;
 }
 
 .video-section {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 35px 8% 80px 8%;
+    padding: 35px 8% 35px 8%;
     background-color: #f7f7f7;
     gap: 90px;
+}
+
+.partners-section {
+    background-color: #f7f7f7;
+    padding: 40px 50px;
+    text-align: center;
+}
+
+.partners-section h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.partners-carousel {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.partner-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.partner-card img {
+    width: 150px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.partner-card:hover {
+    transform: scale(1.1);
+}
+
+.partner-card img:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .info-video h4 {
