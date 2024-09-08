@@ -25,17 +25,6 @@ window.addEventListener('scroll', function() {
     } 
 });
 
-document.getElementById('isento').addEventListener('change', function() {
-    var stateRegistrationInput = document.getElementById('state_registration');
-    
-    if (this.checked) {
-        stateRegistrationInput.value = '';
-        stateRegistrationInput.disabled = true;
-    } else {
-        stateRegistrationInput.disabled = false;
-    }
-});
-
 document.addEventListener("DOMContentLoaded", function() {
 
     const dropdownToggle = document.getElementById("dropdownMenuButton");

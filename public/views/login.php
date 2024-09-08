@@ -72,12 +72,12 @@ $config = ConfigController::getConfig();
                 <div class="password-wrap">
                     <label for="password">Senha:</label>
                     <input type="password" id="password" name="password" required>
-                    <a href="#">Esqueci minha senha</a>
+                    <!-- <a href="#">Esqueci minha senha</a> -->
                 </div>
 
                 <div class="checkbox-input">
                     <input type="checkbox" name="remember" id="remember" <?= isset($data['remember']) && $data['remember'] == "on" ? "checked" : "" ?>>
-                    <label for="remember"><small>Mantenha-me conectado</small></label>
+                    <!-- <label for="remember"><small>Mantenha-me conectado</small></label> -->
                 </div>
                 
                 <button class="login-button" type="submit">LOGIN</button>

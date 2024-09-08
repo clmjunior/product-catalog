@@ -137,6 +137,7 @@ $config = ConfigController::getConfig();
                 <?php if(isset($_SESSION['user'])): ?>
                     <div class="side-account">
                         <a class="dropdown-item" href="/boletos">Meus Boletos</a>
+                        <a class="dropdown-item" href="/pedidos">Histórico de Pedidos</a>
                         <a class="dropdown-item text-danger" href="/logout"><ion-icon name="log-out"></ion-icon> Sair</a>
                     </div>
                 <?php endif; ?>

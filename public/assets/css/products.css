@@ -19,7 +19,7 @@
 .banner-content {
     left: 65%;
     justify-content: flex-start;
-    max-width: 300px; 
+    max-width: 300px;
 }
 
 .banner-content h1 {
@@ -107,6 +107,14 @@
     
     .products-section {
         padding: 70px 40px;
+    }
+
+    .banner-content {
+        left: 50%;
+    }
+
+    .nav-top-padding {
+        padding-top: 136px;
     }
     
 }

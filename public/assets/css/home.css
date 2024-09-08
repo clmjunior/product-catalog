@@ -329,6 +329,15 @@
         gap: 50px;
     }
 
+    .video-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .video {
+        height: 25vh;
+    }
+
     .card {
         width: 80%;
         gap: 8px;
@@ -346,14 +355,6 @@
 
 @media (max-width: 500px) {
     
-    .nav-top form {
-        width: 100%;
-    }
-
-    .search-input {
-        max-width: 100% !important;
-    }
-
     .banner-content h1 {
         font-size: 1.2em;
         width: 100%;
