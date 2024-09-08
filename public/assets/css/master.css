@@ -162,7 +162,7 @@ a {
 }
 
 .nav-top-padding {
-    padding-top: 190px;
+    padding-top: 170px;
     background-color: #f7f7f7;
 }
 
@@ -195,6 +195,23 @@ a {
     align-items: center;
     flex-direction: column;
     gap: 30px;
+}
+
+
+.explore-button {
+    width: 50%;
+    height: 40px;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.7s ease;
+    font-weight: bold;
+}
+
+.explore-button:hover {
+    background-color: #ffffff;
+    color: rgba(24, 26, 29, 1);
 }
 
 .navbar {
@@ -288,7 +305,7 @@ a {
     list-style: none;
     padding: 0;
     margin: 0;
-    height: 500px;
+    height: fit-content;
 }
 
 .account .dropdown-menu {

@@ -35,6 +35,81 @@ class UserController extends Controller
 
     }
 
+    public function indexOrders()
+    {
+        session_start();
+        $document = preg_replace('/\D/', '', $_SESSION['user_data']['documento']); 
+        $orders = self::getUserOrders($document);
+        
+        self::view('orders', ['orders' => $orders]);
+
+    }
+
+
+    private static function getUserOrders($document)
+    {
+        if (!$document) {
+            return false;
+        }
+
+    
+        $url = ApiHelper::getApiHost() . "/user/get_user_orders?document={$document}";
+    
+        // Inicializa uma nova sessão cURL
+        $ch = curl_init();
+    
+        // Define a URL para a requisição
+        curl_setopt($ch, CURLOPT_URL, $url);
+    
+        // Define que a resposta deve ser retornada como string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    
+        // Faz a requisição
+        $response = curl_exec($ch);
+    
+        // Verifica se ocorreu um erro
+        if (curl_errno($ch)) {
+            echo 'Erro no cURL: ' . curl_error($ch);
+            curl_close($ch);
+            return null;
+        }
+    
+        // Fecha a sessão cURL
+        curl_close($ch);
+        
+        return json_decode($response, true)['body'];
+    }
+
+
+    public function decodeFile()
+    {
+        if (isset($_POST['file']) && isset($_POST['id'])) {
+            // Decodifica o conteúdo Base64 do arquivo XML
+            $xmlContent = base64_decode($_POST['file']);
+            
+            // Define o nome do arquivo a ser salvo
+            $fileName = "xml-{$_POST['id']}.xml";
+        
+            // Define os headers para forçar o download
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/xml');
+            header('Content-Disposition: attachment; filename="' . $fileName . '"');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . strlen($xmlContent));
+        
+            // Envia o conteúdo do arquivo para download
+            echo $xmlContent;
+
+        } else {
+            echo "Arquivo ou ID não fornecidos.";
+            exit;
+        }
+    }
+
+
+
     private static function getUserTickets($document)
     {
         if(!$document) {

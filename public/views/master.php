@@ -25,6 +25,24 @@ $config = ConfigController::getConfig();
     <link rel="icon" type="image/x-icon" href="<?=$config['favicon_url']?>">
     <title><?=$this->e($title)?></title>
 </head>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const dropdownToggle = document.getElementById("dropdownMenuButton");
+        const dropdownMenu = document.querySelector(".dropdown-menu");
+
+        dropdownToggle.addEventListener("click", function() {
+            dropdownMenu.classList.toggle("show");
+        });
+
+        window.addEventListener("click", function(event) {
+            if (!dropdownToggle.contains(event.target)) {
+                dropdownMenu.classList.remove("show");
+            }
+        });
+    });
+</script>
+
 <body>
     <nav class="navbar">
         <div class="nav-top">
@@ -58,6 +76,7 @@ $config = ConfigController::getConfig();
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="/boletos">Meus Boletos</a>
+                                <a class="dropdown-item" href="/pedidos">Histórico de Pedidos</a>
                                 <a class="dropdown-item text-danger" href="/logout"><ion-icon name="log-out"></ion-icon> Sair</a>
                             </div>
                         </div>

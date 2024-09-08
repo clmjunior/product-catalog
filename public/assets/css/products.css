@@ -1,5 +1,6 @@
-.navbar {
-    background-color: #252525 !important;
+.nav-top-padding {
+    background-color: #0a0a0a !important;
+    opacity: 0.9;
 }
 
 #products, #products:hover {
@@ -11,16 +12,39 @@
     opacity: 0.7;
 }
 
-.products-banner {
+.banner-container {
+    height: 60vh;
+}
+
+.banner-content {
+    left: 65%;
+    justify-content: flex-start;
+    max-width: 300px; 
+}
+
+.banner-content h1 {
+    font-size: 0.8em;
     width: 100%;
+    letter-spacing: 7px;
+}
+
+.banner {
+    padding: 30px;
+}
+
+.explore-button {
+    width: fit-content;
+    padding: 0 10px;
+    font-size: 0.6em;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.products-banner img {
-    width: 100%;
-    max-width: 1600px;
+.image-container {
+    max-height: 100%;
+    padding: 20px 0;
+    padding-right: 20%;
 }
 
 .products-section {

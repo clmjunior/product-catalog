@@ -8,4 +8,11 @@ class ConfigController extends Controller
     {
         return parent::getConfig();
     }
+
+    public static function getSiteFiles()
+    {
+        return parent::getSiteFiles();
+    }
+
+
 }

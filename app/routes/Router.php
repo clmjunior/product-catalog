@@ -51,6 +51,7 @@ class Router
                 '/logout' => fn() => self::load('UserController', 'logout'),
                 '/cadastro' => fn() => self::load('UserController', 'indexRegister'),
                 '/boletos' => fn() => self::load('UserController', 'indexTickets'),
+                '/pedidos' => fn() => self::load('UserController', 'indexOrders'),
                 '/pesquisar' => fn() => self::load('ProductController', 'searchItems'),
                 '/privacidade' => fn() => self::load('UserController', 'indexPrivacy'),
             ],
@@ -59,6 +60,7 @@ class Router
                 '/check-user' => fn() => self::load('UserController', 'check'),
                 '/auth' => fn() => self::load('UserController', 'authenticate'),
                 '/register' => fn() => self::load('UserController', 'register'),
+                '/download_xml' => fn() => self::load('UserController', 'decodeFile'),
             ],
         ];
     }

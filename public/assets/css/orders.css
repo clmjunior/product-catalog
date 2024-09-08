@@ -1,0 +1,104 @@
+.navbar {
+    background-color: #252525 !important;
+}
+
+.orders-section {
+    padding: 40px 20px;
+    background-color: #f7f7f7;
+    min-height: 60vh;
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.orders-table th, .orders-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.orders-table th {
+    background-color: #FFA07A;
+    color: white;
+}
+
+.orders-table tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+.orders-table tr:hover {
+    background-color: #ddd;
+}
+
+.download-button {
+    color: #FFA07A;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.orders-table td a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+    .orders-table, .orders-table thead, .orders-table tbody, .orders-table th, .orders-table td, .orders-table tr {
+        display: block;
+        width: 100%;
+    }
+
+    .orders-table tr {
+        margin-bottom: 15px;
+        border-bottom: 2px solid #ddd;
+    }
+
+    .orders-table th {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .orders-table td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    .orders-table td:before {
+        position: absolute;
+        top: 12px;
+        left: 10px;
+        width: calc(50% - 20px);
+        white-space: nowrap;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    /* Etiquetas para os dados */
+    .orders-table td:nth-of-type(1):before { content: "Documento"; }
+    .orders-table td:nth-of-type(2):before { content: "Data de Emissão"; }
+    .orders-table td:nth-of-type(7):before { content: "Ação"; }
+    }
+
+    @media (max-width: 500px) {
+        .orders-section {
+            padding: 20px 10px;
+        }
+
+        .orders-table td {
+            padding-left: 45%;
+        }
+
+        .orders-table td:before {
+            left: 5px;
+            width: calc(50% - 10px);
+        }
+    }
