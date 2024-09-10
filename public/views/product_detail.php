@@ -48,7 +48,7 @@ $hostUrl = ApiHelper::getApiHost();
                                     ($mostrarPrecoLogin && !$mostrarPrecoLogout && $usuarioLogado) ||
                                     ($mostrarPrecoLogout && !$mostrarPrecoLogin && !$usuarioLogado);
                     
-                    if($mostrarPreco): ?>
+                if($mostrarPreco && $_SESSION['user_data']['acesso_liberado'] == "S"): ?>
                     <div class="card-footer">
                         <h3>R$ <?= htmlspecialchars($product['precos']['valor_final']) ?></h3>
                     </div>

@@ -101,7 +101,7 @@ $config = ConfigController::getConfig();
                                                         ($mostrarPrecoLogin && !$mostrarPrecoLogout && $usuarioLogado) ||
                                                         ($mostrarPrecoLogout && !$mostrarPrecoLogin && !$usuarioLogado);
                                         
-                                        if($mostrarPreco): ?>
+                                        if($mostrarPreco && $_SESSION['user_data']['acesso_liberado'] == "S"): ?>
                                             <div class="price"><h3>R$ <?= htmlspecialchars(number_format($productCard['precos']['valor_final'], 2, ',', '.')) ?></h3></div>
                                         <?php endif; ?>
                                         

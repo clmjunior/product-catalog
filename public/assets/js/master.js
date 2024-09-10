@@ -25,22 +25,23 @@ window.addEventListener('scroll', function() {
     } 
 });
 
-document.addEventListener("DOMContentLoaded", function() {
+// document.addEventListener("DOMContentLoaded", function() {
 
-    const dropdownToggle = document.getElementById("dropdownMenuButton");
-    const dropdownMenu = document.querySelector(".dropdown-menu");
+const dropdownToggle = document.getElementById("dropdownMenuButton");
+const dropdownMenu = document.querySelector(".dropdown-menu");
 
-    dropdownToggle.addEventListener("click", function() {
-        dropdownMenu.classList.toggle("show");
-    });
-
-    window.addEventListener("click", function(event) {
-        if (!dropdownToggle.contains(event.target)) {
-            dropdownMenu.classList.remove("show");
-        }
-    });
-
+dropdownToggle.addEventListener("click", function() {
+    console.log( dropdownMenu.classList.toggle("show"));
+    dropdownMenu.classList.toggle("show");
 });
+
+window.addEventListener("click", function(event) {
+    if (!dropdownToggle.contains(event.target)) {
+        dropdownMenu.classList.remove("show");
+    }
+});
+
+// });
 
 function showMessage() {
     const messageBoxes = document.querySelectorAll('.message-box');

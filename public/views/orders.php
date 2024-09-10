@@ -14,6 +14,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user_data']['cliente_id'] <= 0) {
 <div class="nav-top-padding"></div>
 <section class="orders-section text-center">
     <h2>HISTÓRICO DE PEDIDOS</h2>
+    <?php if(!empty($orders)): ?>
     <table class="orders-table">
         <thead>
             <tr>
@@ -38,5 +39,8 @@ if (!isset($_SESSION['user']) || $_SESSION['user_data']['cliente_id'] <= 0) {
             <?php endforeach; ?>
         </tbody>
     </table>
+    <?php else: ?>
+        <h1 class="text-center color-lightgrey">Nenhum resultado encontrado...</h1>
+    <?php endif; ?>
 </section>
 

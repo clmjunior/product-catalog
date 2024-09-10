@@ -17,6 +17,7 @@ $config = Controller::getConfig();
 <div class="nav-top-padding"></div>
 <section class="tickets-section text-center">
     <h2>BOLETOS</h2>
+    <?php if(!empty($tickets)): ?>
     <table class="tickets-table">
         <thead>
             <tr>
@@ -43,5 +44,8 @@ $config = Controller::getConfig();
             <?php endforeach; ?>
         </tbody>
     </table>
+    <?php else: ?>
+        <h1 class="text-center color-lightgrey">Nenhum resultado encontrado...</h1>
+    <?php endif; ?>
 </section>
 
