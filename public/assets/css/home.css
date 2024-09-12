@@ -312,6 +312,10 @@
         align-items: flex-start;
     }
 
+    .about-container .card small {
+        font-size: 0.6em;
+    }
+
     
     .category-title {
         font-size: 0.8em;
