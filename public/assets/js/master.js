@@ -27,19 +27,19 @@ window.addEventListener('scroll', function() {
 
 // document.addEventListener("DOMContentLoaded", function() {
 
-const dropdownToggle = document.getElementById("dropdownMenuButton");
-const dropdownMenu = document.querySelector(".dropdown-menu");
+// const dropdownToggle = document.getElementById("dropdownMenuButton");
+// const dropdownMenu = document.querySelector(".dropdown-menu");
 
-dropdownToggle.addEventListener("click", function() {
-    console.log( dropdownMenu.classList.toggle("show"));
-    dropdownMenu.classList.toggle("show");
-});
+// dropdownToggle.addEventListener("click", function() {
+//     console.log( dropdownMenu.classList.toggle("show"));
+//     dropdownMenu.classList.toggle("show");
+// });
 
-window.addEventListener("click", function(event) {
-    if (!dropdownToggle.contains(event.target)) {
-        dropdownMenu.classList.remove("show");
-    }
-});
+// window.addEventListener("click", function(event) {
+//     if (!dropdownToggle.contains(event.target)) {
+//         dropdownMenu.classList.remove("show");
+//     }
+// });
 
 // });
 
@@ -56,21 +56,21 @@ function showMessage() {
 
 showMessage();
  
-const sidebar = document.getElementById('sidebar');
-const overlay = document.getElementById('overlay');
-const navbarMenu = document.querySelector('.navbar-menu');
-const closeSidebar = document.querySelector('.close-sidebar');
+// const sidebar = document.getElementById('sidebar');
+// const overlay = document.getElementById('overlay');
+// const navbarMenu = document.querySelector('.navbar-menu');
+// const closeSidebar = document.querySelector('.close-sidebar');
 
-function showSidebar() {
-    sidebar.classList.add('active');
-    overlay.classList.add('active');
-}
+// function showSidebar() {
+//     sidebar.classList.add('active');
+//     overlay.classList.add('active');
+// }
 
-function hideSidebar() {
-    sidebar.classList.toggle('active');
-    overlay.classList.toggle('active');
-}
+// function hideSidebar() {
+//     sidebar.classList.toggle('active');
+//     overlay.classList.toggle('active');
+// }
 
-navbarMenu.addEventListener('click', showSidebar);
-closeSidebar.addEventListener('click', hideSidebar);
-overlay.addEventListener('click', hideSidebar);
+// navbarMenu.addEventListener('click', showSidebar);
+// closeSidebar.addEventListener('click', hideSidebar);
+// overlay.addEventListener('click', hideSidebar);

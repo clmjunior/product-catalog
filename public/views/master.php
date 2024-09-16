@@ -26,23 +26,6 @@ $config = ConfigController::getConfig();
     <title><?=$this->e($title)?></title>
 </head>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const dropdownToggle = document.getElementById("dropdownMenuButton");
-        const dropdownMenu = document.querySelector(".dropdown-menu");
-
-        dropdownToggle.addEventListener("click", function() {
-            dropdownMenu.classList.toggle("show");
-        });
-
-        window.addEventListener("click", function(event) {
-            if (!dropdownToggle.contains(event.target)) {
-                dropdownMenu.classList.remove("show");
-            }
-        });
-    });
-</script>
-
 <body>
     <nav class="navbar">
         <div class="nav-top">
@@ -70,7 +53,7 @@ $config = ConfigController::getConfig();
                     </a>
                     <?php else: ?>
                         <div class="dropdown account">
-                            <a class="nav-link dropdown-toggle" id="dropdownMenuButton">
+                            <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="dropdownMenuButton" >
                                 <?php $user_name = $_SESSION['user_data']['nome_fantasia'] ?? "Conta"; ?>
                                 <ion-icon name="person-circle"></ion-icon> <p><?= $user_name ?></p>
                             </a>
@@ -225,6 +208,46 @@ $config = ConfigController::getConfig();
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script type="text/javascript" src="../assets/js/master.js"></script>
     <script type="text/javascript" src="../assets/js/<?=$this->e($name)?>.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const dropdownToggle = document.getElementById("dropdownMenuButton");
+            const dropdownMenu = document.querySelector(".dropdown-menu");
+
+            if (dropdownToggle && dropdownMenu) {
+                dropdownToggle.addEventListener("click", function(event) {
+                    event.preventDefault(); // Prevent the default anchor behavior
+                    dropdownMenu.classList.toggle("show");
+                });
+
+                window.addEventListener("click", function(event) {
+                    // Close the dropdown if clicking outside of it
+                    if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                        dropdownMenu.classList.remove("show");
+                    }
+                });
+            }
+
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const navbarMenu = document.querySelector('.navbar-menu');
+            const closeSidebar = document.querySelector('.close-sidebar');
+
+            function showSidebar() {
+                sidebar.classList.add('active');
+                overlay.classList.add('active');
+            }
+
+            function hideSidebar() {
+                sidebar.classList.toggle('active');
+                overlay.classList.toggle('active');
+            }
+
+            navbarMenu.addEventListener('click', showSidebar);
+            closeSidebar.addEventListener('click', hideSidebar);
+            overlay.addEventListener('click', hideSidebar);
+        });
+
+    </script>
 </body>
 </html>
 <?php else: ?>
