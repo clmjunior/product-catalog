@@ -37,6 +37,36 @@ document.addEventListener('DOMContentLoaded', () => {
             imageTag.classList.add('zoom-out');
         });
     });
+
+    var ufFilter = document.getElementById('uf-filter');
+    var partnerCards = document.querySelectorAll('.partner-card');
+    var shownSites = new Set();
+
+    function filterPartners() {
+        var selectedUf = ufFilter.value;
+        shownSites.clear();
+
+        partnerCards.forEach(function(card) {
+            var partnerUf = card.getAttribute('data-uf');
+            var partnerSite = card.getAttribute('href');
+
+            if ((selectedUf === '' || partnerUf === selectedUf) && !shownSites.has(partnerSite)) {
+            
+                card.classList.remove('hidden');
+                shownSites.add(partnerSite);
+            } else {
+            
+                card.classList.add('hidden');
+            }
+        });
+    }
+
+
+    filterPartners();
+
+
+    ufFilter.addEventListener('change', filterPartners);
+
 });
 
 function rollToProductsSection() {
@@ -47,15 +77,4 @@ function rollToProductsSection() {
     }
 }
 
-document.getElementById('uf-filter').addEventListener('change', function() {
-    var selectedUf = this.value;
-    var partnerCards = document.querySelectorAll('.partner-card');
 
-    partnerCards.forEach(function(card) {
-        if (selectedUf === '' || card.getAttribute('data-uf') === selectedUf) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-});

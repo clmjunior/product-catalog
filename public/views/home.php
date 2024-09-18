@@ -136,9 +136,8 @@ $config = ConfigController::getConfig();
 </section>
 
 <?php
-// Extrair UFs únicos dos parceiros
 $ufs = array_unique(array_column($partners, 'uf'));
-sort($ufs); // Ordenar os estados, se necessário
+sort($ufs);
 ?>
 
 <section class="partners-section">
