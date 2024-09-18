@@ -281,6 +281,58 @@
     opacity: 0.8;
 }
 
+.filter {
+    width: 100%;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+/* Estilo para o select */
+#uf-filter {
+    background: transparent; /* Fundo transparente */
+    border: 1px solid #ccc; /* Borda leve */
+    border-radius: 4px; /* Bordas arredondadas */
+    padding: 0.25rem 0.75rem; /* Espaçamento interno menor */
+    font-size: 0.875rem; /* Tamanho da fonte reduzido */
+    color: #333; /* Cor do texto */
+    appearance: none; /* Remove a aparência padrão do select */
+    cursor: pointer; /* Mostra o cursor de ponteiro */
+    transition: border-color 0.3s ease; /* Transição suave para a borda */
+    outline: none; /* Remove o contorno padrão */
+}
+
+/* Remove a seta padrão do select no Internet Explorer */
+#uf-filter::-ms-expand {
+    display: none;
+}
+
+/* Adicionando uma seta personalizada */
+#uf-filter::after {
+    content: '▼'; /* Adiciona uma seta para baixo */
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Ajuste a posição conforme necessário */
+    transform: translateY(-50%); /* Alinha verticalmente */
+    pointer-events: none; /* Faz com que a seta não interfira na interação */
+    font-size: 0.75rem; /* Tamanho da fonte da seta */
+    color: #333; /* Cor da seta */
+}
+
+/* Container do select */
+.partners-section {
+    position: relative;
+    padding: 1rem;
+}
+
+/* Ajuste a aparência no foco */
+#uf-filter:focus {
+    border-color: #007bff; /* Cor da borda no foco */
+}
+
+/* Estilo adicional para melhorar a experiência do usuário */
+#uf-filter option {
+    background: #fff; /* Cor de fundo das opções */
+}
 #hot, #hot:hover {
     opacity: 0.8;
 }

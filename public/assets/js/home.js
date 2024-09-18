@@ -46,3 +46,16 @@ function rollToProductsSection() {
         productsSection.scrollIntoView({ behavior: 'smooth' });
     }
 }
+
+document.getElementById('uf-filter').addEventListener('change', function() {
+    var selectedUf = this.value;
+    var partnerCards = document.querySelectorAll('.partner-card');
+
+    partnerCards.forEach(function(card) {
+        if (selectedUf === '' || card.getAttribute('data-uf') === selectedUf) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+});

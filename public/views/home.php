@@ -135,14 +135,30 @@ $config = ConfigController::getConfig();
     </video>
 </section>
 
+<?php
+// Extrair UFs únicos dos parceiros
+$ufs = array_unique(array_column($partners, 'uf'));
+sort($ufs); // Ordenar os estados, se necessário
+?>
+
 <section class="partners-section">
     <h2>Nossos Parceiros</h2>
+    <div class="filter">
+        <label for="uf-filter"><small>Filtrar por Estado:</small></label>
+        <select id="uf-filter">
+            <option value="">Todos os Estados</option>
+            <?php foreach ($ufs as $uf): ?>
+                <option value="<?= htmlspecialchars($uf) ?>"><?= htmlspecialchars($uf) ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+
     <div class="partners-carousel">
-        <?php foreach($partners as $partner): ?>
-            <a class="partner-card" href="<?= $partner['site'] ?>" target="_blank" title="<?= $partner['company_name'] ?>">
-                <img src="<?= $partner['logo'] ?>" alt="<?= $partner['company_name'] ?>">
+        <?php foreach ($partners as $partner): ?>
+            <a class="partner-card" data-uf="<?= htmlspecialchars($partner['uf']) ?>" href="<?= htmlspecialchars($partner['site']) ?>" target="_blank" title="<?= htmlspecialchars($partner['company_name']) ?>">
+                <img src="<?= htmlspecialchars($partner['logo']) ?>" alt="<?= htmlspecialchars($partner['company_name']) ?>">
             </a>
-        <?php endforeach ?>
+        <?php endforeach; ?>
     </div>
 </section>
 
