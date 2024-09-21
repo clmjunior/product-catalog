@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\controllers\Controller;
+use app\controllers\CategoryController;
 use app\helpers\ApiHelper;
 
 class ProductController extends Controller
@@ -14,31 +15,26 @@ class ProductController extends Controller
         self::view('products');
     }
 
-    public function showProductDetail()
+    public function showProductDetail($slug, $id)
     {
         session_start();
+        
+        $product_id = $id;
 
-        $product_id = $_GET['id'];
-        $product_id;
+        // Monta a URL para a API com o id do produto
+        $url = ApiHelper::getApiHost() . "/product/get_product_by_id?sku={$product_id}";
 
-        $url = ApiHelper::getApiHost()."/product/get_product_by_id?sku={$product_id}";
-
-        if(isset($_SESSION['user_data']) && $_SESSION['user_data']['cliente_id'] > 0) {
+        if (isset($_SESSION['user_data']) && $_SESSION['user_data']['cliente_id'] > 0) {
             $url .= "&client_id={$_SESSION['user_data']['cliente_id']}";
         }
 
-        // Inicializa uma nova sessão cURL
         $ch = curl_init();
 
-        // Define a URL para a requisição
         curl_setopt($ch, CURLOPT_URL, $url);
 
-        // Define que a resposta deve ser retornada como string
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-        // Faz a requisição
         $response = curl_exec($ch);
-        
         // Verifica se ocorreu um erro
         if (curl_errno($ch)) {
             echo 'Erro no cURL: ' . curl_error($ch);
@@ -46,15 +42,14 @@ class ProductController extends Controller
             return null;
         }
 
-        // Fecha a sessão cURL
         curl_close($ch);
 
-        // Convertendo a resposta JSON em um array associativo
         $product = json_decode($response, true);
         $product['especificacoes_produto'] = $this->formatSpecifications($product['especificacoes_produto']);
                 
         self::view('product_detail', ['product' => $product]);
     }
+
 
     private function formatSpecifications($specString)
     {
@@ -124,6 +119,7 @@ class ProductController extends Controller
 
 
         foreach($productsArray['paginacao']['navegacao'] as &$pages) {
+            $pages['url'] = str_replace('http','https', $pages['url']);
             $pages['url'] = str_replace(ApiHelper::getApiHost().'/product/search?p_atual=', "/pesquisar?search={$_GET['search']}&pagina=", $pages['url']);
             $pages['atual'] = $pagina;
         }
@@ -143,9 +139,16 @@ class ProductController extends Controller
         self::view('products', ['products' => $productsArray]);
     }
 
-    public function showProducts()
+    public function showProductsByCategory($category_slug)
     {
         session_start();
+
+        $category_id = CategoryController::getCategoryBySlug($category_slug);
+
+        if($category_id <= 0) {
+            return null;
+        }
+
 
         if(!isset($_GET['pagina'])) {
             $pagina = '1';
@@ -153,7 +156,8 @@ class ProductController extends Controller
             $pagina = $_GET['pagina'];
         }
 
-        $url = ApiHelper::getApiHost()."/product/get_products_by_category?category_id={$_GET['categoria']}&limit=24&offset={$pagina}";
+
+        $url = ApiHelper::getApiHost()."/product/get_products_by_category?category_id={$category_id}&limit=24&offset={$pagina}";
 
         if(isset($_SESSION['user_data']) && $_SESSION['user_data']['cliente_id'] > 0) {
             $url .= "&client_id={$_SESSION['user_data']['cliente_id']}";
@@ -185,17 +189,28 @@ class ProductController extends Controller
         $productsArray = json_decode($response, true);
 
         foreach($productsArray['paginacao']['navegacao'] as &$pages) {
-            $pages['url'] = str_replace(ApiHelper::getApiHost().'/product/get_products_by_category?p_atual=', "/produtos?categoria={$_GET['categoria']}&pagina=", $pages['url']);
+
+            if($pages['numero'] == 1) {
+
+                $pages['url'] = str_replace('http','https', $pages['url']);
+                $pages['url'] = str_replace(ApiHelper::getApiHost().'/product/get_products_by_category', "/{$category_slug}", $pages['url']);
+            } else {
+
+                $pages['url'] = str_replace('http','https', $pages['url']);
+                $pages['url'] = str_replace(ApiHelper::getApiHost().'/product/get_products_by_category?p_atual=', "/{$category_slug}?pagina=", $pages['url']);
+            }
+
             $pages['atual'] = $pagina;
         }
-        $productsArray['paginacao']['url_primeira_pagina'] = "/produtos?categoria={$_GET['categoria']}";
+        
+        $productsArray['paginacao']['url_primeira_pagina'] = "/{$category_slug}";
         $prev = $pagina - 1 <= 0 ? 1 : $pagina - 1;
-        $productsArray['paginacao']['url_pagina_anterior'] = "/produtos?categoria={$_GET['categoria']}&pagina={$prev}";
+        $productsArray['paginacao']['url_pagina_anterior'] = "/{$category_slug}?pagina={$prev}";
 
-        $productsArray['paginacao']['url_ultima_pagina'] = "/produtos?categoria={$_GET['categoria']}&pagina={$productsArray['paginacao']['paginas']}";
+        $productsArray['paginacao']['url_ultima_pagina'] = "/{$category_slug}?pagina={$productsArray['paginacao']['paginas']}";
 
         $next = $pagina + 1;
-        $nextPageUrl = $next >= $productsArray['paginacao']['paginas'] ? $productsArray['paginacao']['url_ultima_pagina'] : "/produtos?categoria={$_GET['categoria']}&pagina={$next}";
+        $nextPageUrl = $next >= $productsArray['paginacao']['paginas'] ? $productsArray['paginacao']['url_ultima_pagina'] : "/{$category_slug}?pagina={$next}";
 
         $productsArray['paginacao']['url_proxima_pagina'] = $nextPageUrl;
         

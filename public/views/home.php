@@ -58,9 +58,11 @@ $config = ConfigController::getConfig();
 </section>
 <section class="small-categories-container">
     <div class="small-categories">
-        <?php foreach($topCategoriesArray as $topCategory): ?>
+        <?php 
+        
+        foreach($topCategoriesArray as $topCategory): ?>
             <div class="category-container">
-                <a href="/produtos?categoria=<?= $topCategory['id'] ?>">
+                <a href="/<?= $topCategory['slug_categoria'] ?>">
                     <h4 class="category-title"><?= mb_strtoupper($topCategory['categoria'], "UTF-8") ?></h4>
                     <img src="<?= str_replace("https://www.liveupsports.com.br", "https://totalcommerce-dev.ddns.net/", $topCategory['url_icone']) ?>">
                 </a>
@@ -80,7 +82,7 @@ $config = ConfigController::getConfig();
                 <div class="multiple-items">
                     <?php foreach($categoryItems['items'] as $productCard): ?>
                         <?php //foreach($product as $productCard): ?>
-                            <a class="product-card" href="/produto?id=<?= htmlspecialchars($productCard['sku']) ?>&titulo=<?= htmlspecialchars($productCard['slug_titulo_produto']) ?>">
+                            <a class="product-card" href="/<?= htmlspecialchars($productCard['slug_titulo_produto']) ?>_<?= htmlspecialchars($productCard['sku']) ?>">
                                 <div class="product-img-container">
                                     <img src="<?= htmlspecialchars($productCard['fotos'][0]['url_imagem_0350']) ?>" alt="<?= htmlspecialchars($productCard['titulo_produto']) ?>" class="product-image">
                                     <img src="../assets/img/liveup-original-logo.png" alt="Marca d'água" class="watermark">

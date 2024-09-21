@@ -137,11 +137,11 @@ $config = ConfigController::getConfig();
                 <ul class="dropdown-menu">
                     <?php foreach($categoriesArray['nivel_abaixo'] as $category): ?>
                         <li class="subdropdown-link">
-                            <a href="/produtos?categoria=<?= $category['id'] ?>"><?= htmlspecialchars($category['categoria']) ?></a>
+                            <a href="/<?= $category['slug_categoria'] ?>"><?= htmlspecialchars($category['categoria']) ?></a>
                             <ul class="subdropdown-menu">
                                 <?php foreach($category['nivel_abaixo'] as $subCategory): ?>
                                     <li>
-                                        <a href="/produtos?categoria=<?= $subCategory['id'] ?>"><?= htmlspecialchars($subCategory['categoria']) ?></a>
+                                        <a href="/<?= $subCategory['slug_categoria'] ?>"><?= htmlspecialchars($subCategory['categoria']) ?></a>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
@@ -150,7 +150,7 @@ $config = ConfigController::getConfig();
                 </ul>
             </div>
             <?php foreach($topCategoriesArray as $topCategory): ?>
-                <a href="/produtos?categoria=<?= $topCategory['id'] ?>">
+                <a href="/<?= $topCategory['slug_categoria'] ?>">
                     <div class="categ-wrap">
                         <div class="categ-name">
                             <small><?= mb_strtoupper($topCategory['categoria'], 'UTF-8') ?></small>     

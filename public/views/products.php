@@ -27,7 +27,7 @@ $firstFile = reset($files);
         if(!empty($products['itens'])):
             foreach($products['itens'] as $product): 
     ?>
-                <a class="product-card" href="/produto?id=<?= htmlspecialchars($product['sku']) ?>&titulo=<?= htmlspecialchars($product['slug_titulo_produto']) ?>">
+                <a class="product-card" href="/<?= htmlspecialchars($product['slug_titulo_produto']) ?>_<?= htmlspecialchars($product['sku']) ?>">
                     <div class="product-img-container">
                         <img src="<?= htmlspecialchars($product['fotos'][0]['url_imagem_0350']) ?>" alt="<?= htmlspecialchars($product['titulo_produto']) ?>" class="product-image">
                         <img src="../assets/img/liveup-original-logo.png" alt="Marca d'água" class="watermark">

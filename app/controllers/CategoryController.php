@@ -50,6 +50,31 @@ class CategoryController extends Controller
         return $categoriesArray;
     }
 
+    public static function getCategoryBySlug($slug)
+    {
+        $categories = self::getCategories();
+
+        foreach($categories['nivel_abaixo'] as $category) {
+            
+            if(isset($category['nivel_abaixo']) && !empty($category['nivel_abaixo'])) {
+                foreach($category['nivel_abaixo'] as $subCategory) {
+
+                    $subCategoryMap[$subCategory['slug_categoria']] = $subCategory['id'];
+                } 
+            }
+
+            $subCategoryMap[$category['slug_categoria']] = $category['id'];
+
+        }
+
+        if(array_key_exists($slug, $subCategoryMap)) {
+            return $subCategoryMap[$slug]; 
+        } 
+        
+        return null;
+
+    }
+
     public static function getTopCategories()
     {
         $url = ApiHelper::getApiHost().'/category/get_top_categories';
