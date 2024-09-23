@@ -147,6 +147,7 @@ sort($ufs);
     <div class="filter">
         <label for="uf-filter"><small>Filtrar por Estado:</small></label>
         <select id="uf-filter">
+            <option value="none">[...]</option>
             <option value="">Todos os Estados</option>
             <?php foreach ($ufs as $uf): ?>
                 <option value="<?= htmlspecialchars($uf) ?>"><?= htmlspecialchars($uf) ?></option>

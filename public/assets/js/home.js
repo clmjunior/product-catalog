@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             var partnerUf = card.getAttribute('data-uf');
             var partnerSite = card.getAttribute('href');
 
-            if ((selectedUf === '' || partnerUf === selectedUf) && !shownSites.has(partnerSite)) {
+            if ((selectedUf === '' || partnerUf === selectedUf) && !shownSites.has(partnerSite) && selectedUf != 'none') {
             
                 card.classList.remove('hidden');
                 shownSites.add(partnerSite);
@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
                 card.classList.add('hidden');
             }
+
         });
     }
 
