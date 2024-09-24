@@ -1131,7 +1131,13 @@ a {
 @media (max-width: 415px) {
     
     .product-card {
+        width: 90%;
         min-height: 40vh;
+
+    }
+
+    .products-section {
+        justify-content: center;
     }
     
 }

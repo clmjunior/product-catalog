@@ -4,7 +4,6 @@ use app\controllers\ConfigController;
 
 $config = ConfigController::getConfig();
 $files = ConfigController::getSiteFiles();
-$firstFile = reset($files);
 
 ?>
 <?php $this->layout('master', ['title' => 'Produtos', 'name' => 'products']);
@@ -14,8 +13,12 @@ $firstFile = reset($files);
 <section class="banner-container">
     <div class="banner-content">
         <h1 class="animate__animated  animate__fadeInUp">EXPLORE NOSSO CATÁLOGO COMPLETO</h1>
-        <a target="_blank" href="<?= $firstFile['file_link'] ?>" class="explore-button animate__animated  animate__fadeInUp animate__delay-2s">VER CATÁLOGO</a>
-    </div>
+        <div class="d-flex catalog-links">
+            <?php foreach($files as $file): ?>
+                <a target="_blank" href="<?= $file['file_link'] ?>" class="explore-button animate__animated  animate__fadeInUp animate__delay-2s"><?= mb_strtoupper($file['title']) ?></a>
+                <?php endforeach; ?>
+            </div>
+        </div>
     <div class="image-container">
         <img src="../assets/img/catalog_banner.png" class="banner animate__animated animate__zoomOutSmooth" alt="">
     </div>

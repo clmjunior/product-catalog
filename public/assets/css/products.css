@@ -92,6 +92,14 @@
     height: 38px;
 }
 
+.catalog-links {
+    gap: 15px;
+}
+
+.catalog-links a {
+    gap: 15px;
+}
+
 
 @media (max-width: 1700px) {
     
@@ -132,6 +140,14 @@
     .products-section {
         padding: 30px 10px;
         gap: 10px;
+    }
+
+    .product-card {
+        width: 90%;
+    }
+
+    .products-section {
+        justify-content: center;
     }
     
 }
