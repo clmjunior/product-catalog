@@ -13,12 +13,12 @@ $files = ConfigController::getSiteFiles();
 <section class="banner-container">
     <div class="banner-content">
         <h1 class="animate__animated  animate__fadeInUp">EXPLORE NOSSO CATÁLOGO COMPLETO</h1>
-        <div class="d-flex catalog-links">
+        <div class="catalog-links">
             <?php foreach($files as $file): ?>
                 <a target="_blank" href="<?= $file['file_link'] ?>" class="explore-button animate__animated  animate__fadeInUp animate__delay-2s"><?= mb_strtoupper($file['title']) ?></a>
-                <?php endforeach; ?>
-            </div>
+            <?php endforeach; ?>
         </div>
+    </div>
     <div class="image-container">
         <img src="../assets/img/catalog_banner.png" class="banner animate__animated animate__zoomOutSmooth" alt="">
     </div>
