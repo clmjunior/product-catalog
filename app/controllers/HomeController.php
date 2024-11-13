@@ -60,7 +60,7 @@ class HomeController extends Controller
         
         foreach($showcaseCategories as $showcaseCategory) {
             
-            $url = ApiHelper::getApiHost()."/product/get_home_products?limit=10&category_id={$showcaseCategory['id']}&order=frequencia_venda";
+            $url = ApiHelper::getApiHost()."/product/get_home_products?limit=10&category_id={$showcaseCategory['id']}&order=titulo_produto&order_type=asc";
 
             if(isset($_SESSION['user_data']) && $_SESSION['user_data']['cliente_id'] > 0) {
                 $url .= "&client_id={$_SESSION['user_data']['cliente_id']}";

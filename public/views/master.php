@@ -77,11 +77,11 @@ $config = ConfigController::getConfig();
                                 <ul class="dropdown-menu-side">
                                     <?php foreach($category['nivel_abaixo'] as $subCategory): ?>
                                         <li class="side-subcategory">
-                                            <a href="/produtos?categoria=<?= $subCategory['id'] ?>"><?= htmlspecialchars($subCategory['categoria']) ?></a>
+                                            <a href="/<?= $subCategory['slug_categoria'] ?>"><?= htmlspecialchars($subCategory['categoria']) ?></a>
                                         </li>
                                         <?php endforeach; ?>
                                         <li class="side-subcategory">
-                                            <a href="/produtos?categoria=<?= $category['id'] ?>">Mostrar Tudo</a>
+                                            <a href="/<?= $category['slug_categoria'] ?>">Mostrar Tudo</a>
                                         </li>
                                 </ul>
                             </li>
@@ -144,6 +144,7 @@ $config = ConfigController::getConfig();
                                         <a href="/<?= $subCategory['slug_categoria'] ?>"><?= htmlspecialchars($subCategory['categoria']) ?></a>
                                     </li>
                                 <?php endforeach; ?>
+                                <li>
                             </ul>
                         </li>
                     <?php endforeach; ?>
@@ -157,7 +158,14 @@ $config = ConfigController::getConfig();
                         </div>
                     </div>
                 </a>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+                <a href="/produtos">
+                    <div class="categ-wrap">
+                        <div class="categ-name">
+                            <small class='text-orange'>+ MOSTRAR TUDO</small>   
+                        </div>
+                    </div>
+                </a>
         </div>
     </nav>
 
@@ -178,7 +186,7 @@ $config = ConfigController::getConfig();
                     <h3 class="footer-company"><?=$config['nome_empresa']?></h3>
                     <ul class="info-items">
                         <li class="info-item">CNPJ: <?=$config['cnpj']?></li>
-                        <li class="info-item">LOCALIZAÇÃO: <?=$config['endereco_rua']?>, <?=$config['endereco_numero']?> <?=$config['endereco_bairro']?>, <?=$config['endereco_cidade']?>/<?=$config['endereco_estado']?></li>
+                        <li class="info-item">LOCALIZAÇÃO: <?=$config['endereco_rua']?>, <?=$config['endereco_numero']?> <?=$config['endereco_bairro']?>, <?=$config['endereco_cidade']?>-<?=$config['endereco_estado'] == 'PARANA' ? 'PR' : $config['endereco_estado'] ?></li>
                         <li class="info-item">CEP: <?=$config['endereco_cep']?></li>
                         <li class="info-item">TEL: <?=$config['contato_telefone']?></li>
                         <!-- <li class="info-item">E-MAIL: <?=$config['contato_email']?></li> -->
@@ -197,7 +205,7 @@ $config = ConfigController::getConfig();
             </div> -->
             <div class="privacy-terms">
                 <a href="/privacidade" target="_blank"><b><small>Política de Privacidade</small></b></a>
-                <p><small>© Copyright 2024 – <?=$config['nome_empresa']?></small></p>
+                <p><small>© Copyright 2024 - <?=$config['nome_empresa']?></small></p>
             </div>
         </div>
     </footer>

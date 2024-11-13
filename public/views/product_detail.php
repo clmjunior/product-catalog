@@ -6,7 +6,7 @@ use app\helpers\ApiHelper;
 $config = Controller::getConfig();
 $hostUrl = ApiHelper::getApiHost();
 ?>
-<?php $this->layout('master', ['title' => 'Detalhe', 'name' => 'product_detail']) ?>
+<?php $this->layout('master', ['title' => "Liveup - {$product['titulo_produto']}", 'name' => 'product_detail']) ?>
 
 
 <div class="container-wrapper-detail">
