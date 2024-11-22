@@ -47,6 +47,7 @@ class Router
                 '/' => fn() => self::load('HomeController', 'index'),
                 '/{category_slug}' => fn($category_slug) => self::load('ProductController', 'showProductsByCategory', [$category_slug]),
                 '/{slug}_{id}' => fn($slug, $id) => self::load('ProductController', 'showProductDetail', [$slug, $id]),
+                '/produtos' => fn() => self::load('ProductController', 'showAllProducts'),
                 '/login' => fn() => self::load('UserController', 'indexLogin'),
                 '/logout' => fn() => self::load('UserController', 'logout'),
                 '/cadastro' => fn() => self::load('UserController', 'indexRegister'),

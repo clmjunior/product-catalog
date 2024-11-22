@@ -4,7 +4,7 @@ use app\controllers\ConfigController;
 
 $config = ConfigController::getConfig();
 ?>
-<?php $this->layout('master', ['title' => 'Privacidade', 'name' => 'privacy']) ?>
+<?php $this->layout('master', ['title' => 'Liveup - Privacidade', 'name' => 'privacy']) ?>
 <div class="wrap">
     <section class="privacy-container">
         <div class="privacy-header">

@@ -10,7 +10,7 @@ use app\controllers\ConfigController;
 
 $config = ConfigController::getConfig();
 ?>
-<?php $this->layout('master', ['title' => 'Login', 'name' => 'login']) ?>
+<?php $this->layout('master', ['title' => 'Liveup - Entrar', 'name' => 'login']) ?>
 
 <div class="message-container">
     

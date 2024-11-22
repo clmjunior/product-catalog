@@ -6,7 +6,7 @@ use app\controllers\CategoryController;
 $topCategoriesArray = CategoryController::getTopCategories();
 $config = ConfigController::getConfig();
 ?>
-<?php $this->layout('master', ['title' => 'Home', 'name' => 'home']) ?>
+<?php $this->layout('master', ['title' => 'Liveup', 'name' => 'home']) ?>
 
 <div class="message-container">
     
@@ -64,7 +64,7 @@ $config = ConfigController::getConfig();
             <div class="category-container">
                 <a href="/<?= $topCategory['slug_categoria'] ?>">
                     <h4 class="category-title"><?= mb_strtoupper($topCategory['categoria'], "UTF-8") ?></h4>
-                    <img src="<?= str_replace("https://www.liveupsports.com.br", "https://totalcommerce-dev.ddns.net/", $topCategory['url_icone']) ?>">
+                    <img src="<?= str_replace("https://www.liveupsports.com.br", "https://api.liveupsports.com.br", $topCategory['url_icone']) ?>">
                 </a>
             </div>
         <?php endforeach; ?>
@@ -131,7 +131,7 @@ $config = ConfigController::getConfig();
         <small>Nossa linha de produtos é projetada para oferecer durabilidade e conforto durante suas atividades físicas. Desde halteres e kettlebells até faixas de resistência e acessórios para yoga, cada item é desenvolvido com o mais alto padrão de qualidade, garantindo que você tenha tudo o que precisa para alcançar seus objetivos.</small>
     </div>
     
-    <video class="video" autoplay loop muted>
+    <video class="video" autoplay loop muted controls>
         <source src="../assets/video/homevideo.mp4" type="video/mp4">
         Seu navegador não suporta o elemento de vídeo.
     </video>

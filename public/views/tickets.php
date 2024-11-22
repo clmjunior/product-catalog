@@ -11,7 +11,7 @@ use app\controllers\Controller;
 
 $config = Controller::getConfig();
 ?>
-<?php $this->layout('master', ['title' => 'Boletos', 'name' => 'tickets']);
+<?php $this->layout('master', ['title' => 'Liveup - Boletos', 'name' => 'tickets']);
 ?>
 
 <div class="nav-top-padding"></div>
@@ -39,7 +39,7 @@ $config = Controller::getConfig();
                     <td><?= htmlspecialchars($ticket['status']); ?></td>
                     <td><?= htmlspecialchars($ticket['total_amount']); ?></td>
                     <td><?= htmlspecialchars($ticket['expires_in']); ?> dias</td>
-                    <td><a href="<?= htmlspecialchars($ticket['pdf']); ?>" target="_blank">Visualizar</a></td>
+                    <td><a href="#" onclick="downloadPdf('<?= $ticket['pdf']; ?>', '<?= $ticket['duplicate_number']; ?>')">Visualizar</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

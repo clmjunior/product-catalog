@@ -4,17 +4,20 @@ use app\controllers\ConfigController;
 
 $config = ConfigController::getConfig();
 $files = ConfigController::getSiteFiles();
-$firstFile = reset($files);
 
 ?>
-<?php $this->layout('master', ['title' => 'Produtos', 'name' => 'products']);
+<?php $this->layout('master', ['title' => 'Liveup - Produtos', 'name' => 'products']);
 ?>
 
 <div class="nav-top-padding"></div>
 <section class="banner-container">
     <div class="banner-content">
         <h1 class="animate__animated  animate__fadeInUp">EXPLORE NOSSO CATÁLOGO COMPLETO</h1>
-        <a target="_blank" href="<?= $firstFile['file_link'] ?>" class="explore-button animate__animated  animate__fadeInUp animate__delay-2s">VER CATÁLOGO</a>
+        <div class="catalog-links">
+            <?php foreach($files as $file): ?>
+                <a target="_blank" href="<?= $file['file_link'] ?>" class="explore-button animate__animated  animate__fadeInUp animate__delay-2s"><?= mb_strtoupper($file['title']) ?></a>
+            <?php endforeach; ?>
+        </div>
     </div>
     <div class="image-container">
         <img src="../assets/img/catalog_banner.png" class="banner animate__animated animate__zoomOutSmooth" alt="">
@@ -26,8 +29,9 @@ $firstFile = reset($files);
     <?php 
         if(!empty($products['itens'])):
             foreach($products['itens'] as $product): 
+                $class = $product['quantidade_estoque'] <= 0 ? "opaque" : "";
     ?>
-                <a class="product-card" href="/<?= htmlspecialchars($product['slug_titulo_produto']) ?>_<?= htmlspecialchars($product['sku']) ?>">
+                <a class="product-card <?= $class ?>" href="/<?= htmlspecialchars($product['slug_titulo_produto']) ?>_<?= htmlspecialchars($product['sku']) ?>">
                     <div class="product-img-container">
                         <img src="<?= htmlspecialchars($product['fotos'][0]['url_imagem_0350']) ?>" alt="<?= htmlspecialchars($product['titulo_produto']) ?>" class="product-image">
                         <img src="../assets/img/liveup-original-logo.png" alt="Marca d'água" class="watermark">
@@ -35,8 +39,11 @@ $firstFile = reset($files);
                     <div class="product-info">
                         <p class="product-name" title="<?= htmlspecialchars($product['titulo_produto']) ?>"><?= mb_strimwidth(htmlspecialchars($product['titulo_produto']), 0, 80, '...') ?></p>
                         <p class="product-description"><small><b><?= $product['referencia'] ?></b></small></p>
-                        <?php if($config['mostrar_preco_login'] == "S" || $config['mostrar_preco_logout'] == "S" || $config['liberado_comprar'] == "S"): ?>
 
+                        <?php if($config['mostrar_preco_login'] == "S" || $config['mostrar_preco_logout'] == "S" || $config['liberado_comprar'] == "S"): ?>
+                            <?php if($product['quantidade_estoque'] <= 0): ?>
+                                <small class='text-dark-orange'><ion-icon class="stock-check" name="close-circle"></ion-icon> Indisponível</small>
+                            <?php endif; ?>
                         <div class="card-footer">
                             <?php 
                             $mostrarPrecoLogin = $config['mostrar_preco_login'] == "S";
