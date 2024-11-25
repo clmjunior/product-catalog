@@ -38,6 +38,13 @@ $hostUrl = ApiHelper::getApiHost();
 
             <div class="product-details">
                 <h1><?= htmlspecialchars($product['titulo_produto']) ?></h1>
+                <?php if(isset($product['codigo_barras']) && !empty($product['codigo_barras'])): ?>
+                    <small><b>EAN: </b><?= $product['codigo_barras'] ?></small>
+                <?php endif; ?>
+                <?php if(isset($product['referencia']) && !empty($product['referencia'])): ?>
+                    <br>
+                    <small><b>REF: </b><?= $product['referencia'] ?></small>
+                <?php endif; ?>
                 <hr class="divisor"/>
                     <?php 
                     $mostrarPrecoLogin = $config['mostrar_preco_login'] == "S";
