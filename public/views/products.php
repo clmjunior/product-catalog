@@ -6,7 +6,7 @@ $config = ConfigController::getConfig();
 $files = ConfigController::getSiteFiles();
 
 ?>
-<?php $this->layout('master', ['title' => 'Liveup - Produtos', 'name' => 'products']);
+<?php $this->layout('master', ['title' => 'Liveup Sports - Produtos', 'name' => 'products']);
 ?>
 
 <div class="nav-top-padding"></div>

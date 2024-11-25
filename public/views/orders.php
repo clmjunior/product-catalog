@@ -8,7 +8,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user_data']['cliente_id'] <= 0) {
 }
 
 ?>
-<?php $this->layout('master', ['title' => 'Liveup - Pedidos', 'name' => 'orders']);
+<?php $this->layout('master', ['title' => 'Liveup Sports - Pedidos', 'name' => 'orders']);
 ?>
 
 <div class="nav-top-padding"></div>
