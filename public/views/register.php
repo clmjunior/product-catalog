@@ -11,7 +11,7 @@ use app\controllers\ConfigController;
 $config = ConfigController::getConfig();
 
 ?>
-<?php $this->layout('master', ['title' => 'Liveup Sports - Cadastro', 'name' => 'register']) ?>
+<?php $this->layout('master', ['title' => 'Liveup - Cadastro', 'name' => 'register']) ?>
 
 <div class="message-container">
     

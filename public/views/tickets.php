@@ -11,7 +11,7 @@ use app\controllers\Controller;
 
 $config = Controller::getConfig();
 ?>
-<?php $this->layout('master', ['title' => 'Liveup Sports - Boletos', 'name' => 'tickets']);
+<?php $this->layout('master', ['title' => 'Liveup - Boletos', 'name' => 'tickets']);
 ?>
 
 <div class="nav-top-padding"></div>

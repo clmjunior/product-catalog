@@ -85,8 +85,12 @@ class ProductController extends Controller
             echo "Error";
         } 
 
-        $url = ApiHelper::getApiHost()."/product/search?term={$_GET['search']}&limit=24&offset={$pagina}";
-
+        // $_GET['search'] = urlencode($_GET['search']);
+        $_GET['search'] = str_replace(' ', '%20', $_GET['search']);
+        $reqSearch = utf8_decode($_GET['search']);
+        
+        $url = ApiHelper::getApiHost()."/product/search?term={$reqSearch}&limit=24&offset={$pagina}";
+       
         if(isset($_SESSION['user_data']) && $_SESSION['user_data']['cliente_id'] > 0) {
             $url .= "&client_id={$_SESSION['user_data']['cliente_id']}";
         }
@@ -102,7 +106,7 @@ class ProductController extends Controller
 
         // Faz a requisição
         $response = curl_exec($ch);
-        
+
         // Verifica se ocorreu um erro
         if (curl_errno($ch)) {
             echo 'Erro no cURL: ' . curl_error($ch);
@@ -117,12 +121,19 @@ class ProductController extends Controller
         $productsArray = json_decode($response, true);
 
 
-
         foreach($productsArray['paginacao']['navegacao'] as &$pages) {
             if (strpos($pages['url'], 'https://') === false) {
                 $pages['url'] = str_replace('http://', 'https://', $pages['url']);
             }
-            $pages['url'] = str_replace(ApiHelper::getApiHost().'/product/search?p_atual=', "/pesquisar?search={$_GET['search']}&pagina=", $pages['url']);
+
+            if($pages['numero'] == 1) {
+
+                $pages['url'] = str_replace(ApiHelper::getApiHost().'/product/search', "/pesquisar?search={$_GET['search']}", $pages['url']);
+            
+            } else {
+                $pages['url'] = str_replace(ApiHelper::getApiHost().'/product/search?p_atual=', "/pesquisar?search={$_GET['search']}&pagina=", $pages['url']);
+            }
+
             $pages['atual'] = $pagina;
         }
         

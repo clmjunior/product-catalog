@@ -6,7 +6,7 @@ use app\controllers\CategoryController;
 $topCategoriesArray = CategoryController::getTopCategories();
 $config = ConfigController::getConfig();
 ?>
-<?php $this->layout('master', ['title' => 'Liveup', 'name' => 'home']) ?>
+<?php $this->layout('master', ['title' => 'Liveup Sports', 'name' => 'home']) ?>
 
 <div class="message-container">
     
