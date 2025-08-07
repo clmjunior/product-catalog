@@ -134,22 +134,23 @@ $config = ConfigController::getConfig();
                 <div class="categ-name">
                     <small><ion-icon name="menu"></ion-icon> CATEGORIAS</small>
                 </div>
-                <ul class="dropdown-menu">
+
+                <ul class="dropdown-menu" id="main-dropdown-menu">
                     <?php foreach($categoriesArray['nivel_abaixo'] as $category): ?>
-                        <li class="subdropdown-link">
-                            <a href="/<?= $category['slug_categoria'] ?>"><?= htmlspecialchars($category['categoria']) ?></a>
-                            <ul class="subdropdown-menu">
-                                <?php foreach($category['nivel_abaixo'] as $subCategory): ?>
-                                    <li>
-                                        <a href="/<?= $subCategory['slug_categoria'] ?>"><?= htmlspecialchars($subCategory['categoria']) ?></a>
-                                    </li>
-                                <?php endforeach; ?>
-                                <li>
-                            </ul>
+                        <li class="subdropdown-link" 
+                            data-submenu='<?= json_encode($category['nivel_abaixo']) ?>'>
+                            <a href="/<?= $category['slug_categoria'] ?>">
+                                <?= htmlspecialchars($category['categoria']) ?>
+                            </a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
             </div>
+
+            <!-- Submenu fora da estrutura -->
+            <ul id="floating-submenu" class="subdropdown-menu"></ul>
+
+
             <?php foreach($topCategoriesArray as $topCategory): ?>
                 <a href="/<?= $topCategory['slug_categoria'] ?>">
                     <div class="categ-wrap">

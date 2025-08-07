@@ -314,7 +314,8 @@ a {
     display: none;
     position: absolute;
     top: 90%;
-    width: 30vw;
+    min-width: 15vw;
+    width: fit-content;
     overflow-y: auto;
     left: 0;
     background-color: white;
@@ -404,13 +405,43 @@ a {
     background-color: #e9e9e9;
 }
 
-.subdropdown-link {
-    width: 50%;
-}
-
 .subdropdown-link:hover .subdropdown-menu {
     display: block;
 }
+
+
+
+
+
+#floating-submenu {
+    display: none;
+    position: absolute;
+    width: fit-content;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    border: 1px solid #ccc;
+    list-style: none;
+    z-index: 999999;
+    padding: 0;
+    min-width: 15vw;
+    margin: 0;
+    max-height: 80vh;      /* evita estouro vertical */
+    overflow-y: auto;      /* rolagem se necessário */
+}
+
+#floating-submenu li a {
+    display: block;
+    padding: 0;
+    text-decoration: none;
+    color: #333;
+}
+
+#floating-submenu li:hover {
+    background-color: #f1f1f1;
+}
+
+
+
 
 .categ-name {
     font-weight: bold;

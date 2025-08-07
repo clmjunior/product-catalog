@@ -25,24 +25,6 @@ window.addEventListener('scroll', function() {
     } 
 });
 
-// document.addEventListener("DOMContentLoaded", function() {
-
-// const dropdownToggle = document.getElementById("dropdownMenuButton");
-// const dropdownMenu = document.querySelector(".dropdown-menu");
-
-// dropdownToggle.addEventListener("click", function() {
-//     console.log( dropdownMenu.classList.toggle("show"));
-//     dropdownMenu.classList.toggle("show");
-// });
-
-// window.addEventListener("click", function(event) {
-//     if (!dropdownToggle.contains(event.target)) {
-//         dropdownMenu.classList.remove("show");
-//     }
-// });
-
-// });
-
 function showMessage() {
     const messageBoxes = document.querySelectorAll('.message-box');
 
@@ -56,21 +38,81 @@ function showMessage() {
 
 showMessage();
  
-// const sidebar = document.getElementById('sidebar');
-// const overlay = document.getElementById('overlay');
-// const navbarMenu = document.querySelector('.navbar-menu');
-// const closeSidebar = document.querySelector('.close-sidebar');
 
-// function showSidebar() {
-//     sidebar.classList.add('active');
-//     overlay.classList.add('active');
-// }
+document.addEventListener("DOMContentLoaded", function () {
+    const menu = document.querySelector("#main-dropdown-menu");
+    const submenu = document.getElementById("floating-submenu");
+    const trigger = document.querySelector(".more-categories");
+    let hideTimeout;
 
-// function hideSidebar() {
-//     sidebar.classList.toggle('active');
-//     overlay.classList.toggle('active');
-// }
+    function showMenu() {
+        clearTimeout(hideTimeout);
+        menu.style.display = "block";
+    }
 
-// navbarMenu.addEventListener('click', showSidebar);
-// closeSidebar.addEventListener('click', hideSidebar);
-// overlay.addEventListener('click', hideSidebar);
+    function hideMenuWithDelay() {
+        hideTimeout = setTimeout(() => {
+            if (!menu.matches(':hover') && !submenu.matches(':hover') && !trigger.matches(':hover')) {
+                menu.style.display = "none";
+                submenu.style.display = "none";
+            }
+        }, 200);
+    }
+
+    // Mostrar menu ao passar o mouse
+    trigger.addEventListener("mouseenter", showMenu);
+    menu.addEventListener("mouseenter", showMenu);
+    submenu.addEventListener("mouseenter", showMenu);
+
+    // Esconder menu ao sair com atraso
+    trigger.addEventListener("mouseleave", hideMenuWithDelay);
+    menu.addEventListener("mouseleave", hideMenuWithDelay);
+    submenu.addEventListener("mouseleave", hideMenuWithDelay);
+
+    // Tratar os submenus dinâmicos
+    document.querySelectorAll('.subdropdown-link').forEach(link => {
+        link.addEventListener('mouseenter', function () {
+            clearTimeout(hideTimeout);
+    
+            const items = JSON.parse(this.dataset.submenu);
+            if (!items || items.length === 0) {
+                submenu.style.display = 'none';
+                return;
+            }
+    
+            // Popula o submenu
+            submenu.innerHTML = '';
+            items.forEach(item => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = `/${item.slug_categoria}`;
+                a.textContent = item.categoria;
+                li.appendChild(a);
+                submenu.appendChild(li);
+            });
+    
+            // Torna o submenu visível para calcular altura
+            submenu.style.display = 'block';
+            submenu.style.position = 'fixed';
+    
+            const rect = this.getBoundingClientRect();
+            const submenuHeight = submenu.offsetHeight;
+            const viewportHeight = window.innerHeight;
+    
+            // Verifica se há espaço suficiente abaixo
+            let top;
+            if (rect.top + submenuHeight > viewportHeight) {
+                // Sem espaço → abre para cima
+                top = rect.bottom - submenuHeight;
+            } else {
+                // Espaço suficiente → abre para baixo
+                top = rect.top;
+            }
+    
+            submenu.style.top = `${top}px`;
+            submenu.style.left = `${rect.right}px`;
+        });
+    });
+    
+});
+
